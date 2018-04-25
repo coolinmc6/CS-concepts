@@ -217,6 +217,17 @@ object that holds the miscellaneous methods
 | Attributes |
 | Operations |
 
+
+| Class Diagram  |
+|:----:|
+|  |
+| Product |
+| name: string
+isActive: Boolean
+launchDate: Date
+itemNumber: Integer |
+| Operations |
+
 ## Inheritance and Composition
 
 ## Advanced Concepts
