@@ -164,12 +164,16 @@ accomplish within it
 **Diagramming Use Cases**
 - see lecture for image
 **User Story**
-- Example of User Story formula
+- Example of User Story formula:
+
 As a (_type of user_)
+
 I want (_goal_)
+
 so that (_reason_)
 
 **User Stories and Use Cases**
+
 | User Stories | Use Cases|
 | :------------: | :--------: |
 | short - one index card | long - a document |
@@ -179,6 +183,11 @@ so that (_reason_)
 
 
 ## Domain Modeling (Modeling the App)
+- we need to create a conceptual model of our system
+- It simply means identifying the most important objects in the application
+- don't worry about imperfection, you are trying to get the main ones
+**Identifying Objects**
+- go through your
 
 ## Creating Classes
 
