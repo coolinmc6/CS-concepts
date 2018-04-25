@@ -170,9 +170,8 @@ I want (_goal_)
 so that (_reason_)
 
 **User Stories and Use Cases**
-
 | User Stories | Use Cases|
-| ------------ | -------- |
+| :------------: | :--------: |
 | short - one index card | long - a document |
 | one goal, no details | multiple goals and details |
 | informal | casual to (very) formal |
