@@ -186,8 +186,25 @@ so that (_reason_)
 - we need to create a conceptual model of our system
 - It simply means identifying the most important objects in the application
 - don't worry about imperfection, you are trying to get the main ones
+
 **Identifying Objects**
-- go through your
+- go through your Use Cases and just underline the nouns
+- combine some of the duplicates (i.e. "sale" and "order" probably refer to the same thing) 
+and split whichever ones you think need to be broken out
+- You'll also notice that some of these nouns are really properties of some larger parent objects
+- see lecture for diagram
+- It's a series of boxes that represent the objects with lines (with accompanying verb) to represent
+the relationships between these objects
+
+**Identifying Responsibilities**
+- highlight the verbs
+- Avoid Global Master Objects
+- responsibilities should be distributed amongst your objects, there shouldn't be an overarching "System"
+object that holds the miscellaneous methods
+- CRC Cards:
+	+ **C**lass Name
+	+ **R**esponsibilities => the things it needs to take care of
+	+ **C**ollaborators => the other classes it interacts with
 
 ## Creating Classes
 
