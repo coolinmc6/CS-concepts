@@ -171,11 +171,11 @@ so that (_reason_)
 
 **User Stories and Use Cases**
 | User Stories | Use Cases|
-|---|---|
-|short - one index card | long - a document|
-|one goal, no details | multiple goals and details |
-| informal| casual to (very) formal|
-|"placeholder for conversation"|"record of conversation"|
+| --- | --- |
+| short - one index card | long - a document |
+| one goal, no details | multiple goals and details |
+| informal | casual to (very) formal |
+| "placeholder for conversation" | "record of conversation" |
 
 
 ## Domain Modeling (Modeling the App)
