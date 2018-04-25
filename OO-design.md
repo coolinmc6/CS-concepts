@@ -206,7 +206,13 @@ object that holds the miscellaneous methods
 	+ **R**esponsibilities => the things it needs to take care of
 	+ **C**ollaborators => the other classes it interacts with
 
-## Creating Classes
+## Creating Classes (Section #5)
+
+**Creating Class Diagrams**
+
+| Class Name |
+| Attributes |
+| Operations |
 
 ## Inheritance and Composition
 
