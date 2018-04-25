@@ -222,10 +222,7 @@ object that holds the miscellaneous methods
 |:----:|
 |  |
 | Product |
-| name: string
-isActive: Boolean
-launchDate: Date
-itemNumber: Integer |
+| name: string<br>isActive: Boolean<br>launchDate: Date<br>itemNumber: Integer |
 | Operations |
 
 ## Inheritance and Composition
