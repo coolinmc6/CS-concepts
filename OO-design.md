@@ -210,6 +210,9 @@ object that holds the miscellaneous methods
 
 **Creating Class Diagrams**
 
+| Class Diagram  |
+|:----:|
+|  |
 | Class Name |
 | Attributes |
 | Operations |
