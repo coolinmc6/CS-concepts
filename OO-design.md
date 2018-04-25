@@ -54,7 +54,7 @@
 	+ Inheritance lets programmers create new classes that share some of the attributes of existing classes.
 	This lets us build on previous work without reinventing the wheel
 - **What is polymorphism?**
-	+ polymorphism means "mean forms"
+	+ polymorphism means "many forms"
 	+ we can inherit when useful but override the super class's method/attribute when needed
 	+ polypmorphism adds flexibility
 
@@ -115,6 +115,68 @@ these other requirements) before we start programming
 - UML = Unified Modeling Language
 
 ## Utilitizing Use Cases
+- Use Cases
+	+ Title: what is the goal?
+	+ Actor: who desires it?
+	+ Scenario: how is it accomplished?
+- Title:
+	+ short phrase, active verb
+	+ examples:
+		* "register new member"
+		* "transfer funds"
+		* "purchase items"
+		* etc
+- Actor
+	+ Who? User, Customer, Member, Administrator, etc.
+		* could be a computer system (i.e. ACMESystem)
+- Scenario (as paragraph)
+	+ in a paragraph is common
+	+ series of steps
+	+ you can also add additional details
+		* Extensions: "describe steps for out-of-stock situations"
+		* Precondition
+		* Postcondition
+		* Stakeholders
+		* Technology list...
+	+ be careful => requiring this level of formality can kill productivity
+	+ casual write-ups are fine
+- Actors are anything with behavior that lives outside of your system but has a goal they want to
+accomplish within it
+**Identifying Actors**
+	+ External Systems / Organizations
+		* external data sources, web services, corporate apps, tax reporting, backup systems
+	+ Roles / Security Groups
+	+ Job Titles / Departments
+	+ the primary actor is who initiates the request / work - that doesn't mean that they will always do
+	the most work
+
+**Identifying Scenarios**
++ User focused goals are: purchase items, create new document, etc.
++ Logging in is not an adequate scenario
++ we are shooting for readability and ease of use
++ use active voice and shorter sentences, be concise
++ Focus on the intention - not "customer clicks the buy now button"
++ Use Case Prompts
+	* Who performs system administration tasks?
+	* Who manages users and security?
+	* What happens if the system fails?
+	* Is anyone looking at performance metrics or logs?
+**Diagramming Use Cases**
+- see lecture for image
+**User Story**
+- Example of User Story formula
+As a (_type of user_)
+I want (_goal_)
+so that (_reason_)
+
+**User Stories and Use Cases**
+| User Stories | Use Cases|
+|---|---|
+|short - one index card | long - a document|
+|one goal, no details | multiple goals and details |
+| informal| casual to (very) formal|
+|"placeholder for conversation"|"record of conversation"|
+
 
 ## Domain Modeling (Modeling the App)
 
