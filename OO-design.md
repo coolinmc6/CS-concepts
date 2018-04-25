@@ -217,13 +217,15 @@ object that holds the miscellaneous methods
 | Attributes |
 | Operations |
 
+Example:
 
-| Class Diagram  |
-|:----:|
-|  |
 | Product |
-| name: string<br>isActive: Boolean<br>launchDate: Date<br>itemNumber: Integer |
-| Operations |
+|:----:|
+| - name: String<br>- isActive: Boolean<br>- launchDate: Date<br>- itemNumber: Integer |
+| + getName(): String<br>+ setActive(Boolean)<br>+ getProductDetails(): String<br>+ displayProduct()<br>- formatProductDetails(): String |
+
+- notice that we give the type of variable 
+
 
 ## Inheritance and Composition
 
