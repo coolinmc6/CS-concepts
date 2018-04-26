@@ -220,26 +220,136 @@ object that holds the miscellaneous methods
 Example:
 
 | Product |
-|:----:|
+|:----|
 | - name: String<br>- isActive: Boolean<br>- launchDate: Date<br>- itemNumber: Integer |
 | + getName(): String<br>+ setActive(Boolean)<br>+ getProductDetails(): String<br>+ displayProduct()<br>- formatProductDetails(): String |
 
-- notice that we give the type of variable 
+- we give the type of variable for the attributes
+- we provide the type the arguments (if any) for the various methods
+- we also show the visibility as denoted by the "-" or "+"; so "-" means private
+- Avoid building plain data structures
 
+**Instantiation**
+- The `new` keyword is often responsible for creating an object. In the background, the computer 
+is allocating a little bit of memory for your new object, and then initializing all the variables in 
+it and returning a reference to that object.
+- a constructor is a special method that exists to construct the object
+- in UML, if you see a method with the same name as the class, that is the constructor
+
+**Using Static / Shared Members**
+- Interest rate => an example of a property that applies to all savings accounts but is the same
+- That's where the "static" keyword comes in
+- We can make a static property to say that there is only ONE of these (not a separate property on each
+instance of our class) and applies to all accounts
+- There are also static methods
 
 ## Inheritance and Composition
+- Inheritance describes an "is a" relationship
+- A car **is a** vehicle
+- A bus **is a** vehicle
+- If BankAccount is the parent class or super class, CheckingAccount, SavingsAccount, and InvestmentAccount
+could be the child classes or sub-classes that inherit from it
+- You always inheriting from some other class, for example, the base Object class
+- sometimes calling a method in the subclass that is from the parent class, you might need "super"
+	+ i.e. `super.doSomething()`
+- Abstract classes are objects that are never instantiated. A great example is the BankAccount class. The
+BankAccount class is a great parent object for CheckingAccount, SavingsAccount, InvestmentAccount but it
+will never be instantiated itself
+- an interface is similar to a class but with no actual functionality
+- it will just have method signatures that all classes that "implement" that interface must create
+- aggregation is often referred to as a "Has A" relationship
+	+ a customer **has a** address
+	+ a car **has a** engine
+	+ a bank **has many** bank accounts
+	+ a university **has many** students
+- Composition is a more specific form of Aggregation and implies ownership
+- filled in diamond implies that the associated objects would be destroyed. So a Document class **has many**
+Pages but if the Document is destroyed, those pages are destroyed
+- This would not be the case with a Classroom: if a Classroom is destroyed, the associated Student objects
+would not be
 
 ## Advanced Concepts
+- Sequence diagrams (UML)
+	+ only sketch out the scenarios that are not completely clear
+- UML Diagrams
+	+ there are a list of 14 diagrams
+
 
 ## Object-Oriented Design Patterns
+- design patterns are best practices to keep in mind
+- Design Patterns book by the "Gang of Four"
+- Types of Patterns
+	+ creational
+	+ structural
+	+ behavioral
+- Singleton
+	+ we want to ensure a class only has one instance
+	+ we want one way of accessing it
+	+ private constructor but public static method that checks a private property that looks at whether
+	an instance exists - if it does, return that; if not, create new
+- Memento Design Pattern
+	+ this is a way of managing change, basically a way to undo a change to an object, but doing it in
+	a way that does not violate encapsulation
+
+
 
 ## Object-Oriented Design Principles
 
+**General Development Principles**
+- DRY: Don't Repeat Yourself
+	+ there should be a single source of truth
+- YAGNI: You Ain't Gonna Need It
+- Code Smells
+	+ long methods
+	+ very short (or long) identifiers
+	+ pointless comments
+	+ God object
+	+ Feature envy
+		* if one class does very little except use all the methods of another class
+
+**SOLID**
+- S: Single Responsibility Principle
+- O: Open / Closed Principle
+- L: Liskov Substitution Principle
+- I: Interface Segregation Principle
+- D: Dependecy Inversion Principle
+
+**S: Single Responsibility Principle**
+- an object should have one reason to exist, one reason to change - one primary responsibility
+- don't create God objects
+
+**O: Open / Closed Principle**
+- Open for extension, closed for modification
+- after you've written some working code, and then your requirements change, if you 
+need to add additional behavior, you do it by writing new code, not by changing all code that 
+already works.
+
+**L: Liskov Substitution Principle**
+- Derived classes must be substitutable for their base classes
+
+**I: Interface Segregation Principle**
+- many specific interfaces are better than one general interface
+
+**D: Dependecy Inversion Principle**
+- depend on abstraction, not on concretions
+
+**SOLID Conclusion**
+- SOLID can be used as a checklist
+
+**GRASP**
+- GRASP = General Responsibility Assignment Software Patterns
+- GRASP has 9 ideas:
+	+ Creator
+	+ Controller
+	+ Pure Fabrication
+	+ Information Expert
+	+ High Cohesion
+	+ Indirection
+	+ Low Coupling
+	+ Polymorphism
+	+ Protected Variations
+
 ## Conclusion
-
-
-
-
 
 
 
