@@ -348,20 +348,38 @@ already works.
 	+ Low Coupling
 	+ Polymorphism
 	+ Protected Variations
++ Expert / Information Expert
+	* assign the responsibility to the class that has the information needed to fulfill it
++ Creator
+	* Who is responsible for creating an object/
+* Low Coupling / High Cohesion
+	- Coupling: the level dependencies between object
+	- Cohesion: the level that a class contains focused, relative behaviors
+	- The aiming is LOW COUPLING and HIGH COHESION
+- Controller
+	+ Don't connect UI elements directly to business objects
+	+ i.e. MVC
++ Pure Fabricaiton
+	* what the behavior does not belong anywhere else, create a new class
+* Indirection
+	- to reduce coupling, introduce an intermediate object
+- Polymorphism
+	+ automatically correct bahvior based on type
+		* as opposed to: conditional logic that checks for particular types
+* Protected Variations
+	- protect the system from changes and variations
+		+ identify the most likely points of change
+		+ use multiple techniques: encapsulation, LSP, OCP
 
 ## Conclusion
 
-
-
-
-
-
-
-
-
-
-
-
+**Resources**
+- Software Requirements by Karl Wiegers
+- Writing Effective Use Cases by Alistair Cockburn's
+- User Stories Applied by Mike Cohn
+- UML Distilled by Martin Fowler
+- Refactoring by Martin Fowler
+- Head First Design Patterns
 
 
 
