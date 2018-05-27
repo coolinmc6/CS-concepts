@@ -9,10 +9,11 @@ explore a number of different computer science concepts.
 
 ## Computer Science Courses
 
-|---|---|
+| Course | Comments |
+|:---:|:---|
+| CS50 Introduction to Computer Science - HarvardX - edX | |
+| CS101 Computer Science 101 - Stanford University | [https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)|
 
-CS50 Introduction to Computer Science - HarvardX - edX
-CS101 Computer Science 101 - Stanford University - https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info
 
 
 

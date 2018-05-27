@@ -22,6 +22,6 @@
 | Type | Comments |
 | :---: | :---|
 | **int** | 32 bits worth of information (8 bits in a byte); -2 ^ 31 to 2 ^ 31 |
-| *unsigned* **int** | essentially removes the negative values and doubles the number of potential values you can have |
+| *unsigned* **int** |- removes the negative values and doubles the number of potential values you can have<br>- upper bound is around 4 billion |
 | **int** |  |
 | **int** |  |
