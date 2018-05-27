@@ -1,12 +1,12 @@
 # CS50 - Intro to Computer Science
 
-## Lecture 0 - Scratch
+## Week 0 - Scratch
 
 **Lecture:** [https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu](https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu)
 
 - phone book problem => keep splitting in half until you find Mike Smith
 
-## Lecture 1
+## Week 1
 
 source code needs to be converted to machine code for the computer to read it
 source code => compiler => machine code
@@ -33,10 +33,20 @@ int main(void)
 ```c
 #include <stdio.h>
 
+// C is now made aware of the square function
+int square(int n);
+
 int main(void)
 {
-	int
+	// get_int is not from the C library
+	int x = get_int("x: ");
+	// printf("%i\n", x * x)
+	printf("%i\n", square(x))
 }
 
+int square(int n)
+{
+	return n * n;
+}
 ```
-1:11:43
+
