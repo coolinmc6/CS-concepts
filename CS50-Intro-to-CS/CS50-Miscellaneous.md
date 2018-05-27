@@ -21,9 +21,7 @@
 
 | Type | Comments |
 | :---: | :---|
-| **int** | - 32 bits worth of information (8 bits in a byte)
-- range of numbers is -2 ^ 31 to 2 ^ 31, minus 1
- |
-| *unsigned* **int** | - essentially removes the negative values and doubles the number of potential values you can have |
+| **int** | 32 bits worth of information (8 bits in a byte); -2 ^ 31 to 2 ^ 31 |
+| *unsigned* **int** | essentially removes the negative values and doubles the number of potential values you can have |
 | **int** |  |
 | **int** |  |
