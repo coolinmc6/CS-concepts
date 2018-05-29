@@ -1,12 +1,12 @@
 # CS50 - Intro to Computer Science
 
-## Week 0 - Scratch
+# Week 0 - Scratch
 
 **Lecture:** [https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu](https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu)
 
 - phone book problem => keep splitting in half until you find Mike Smith
 
-## Week 1
+# Week 1
 
 source code needs to be converted to machine code for the computer to read it
 source code => compiler => machine code
@@ -49,4 +49,15 @@ int square(int n)
 	return n * n;
 }
 ```
+
+```c
+int main(void)
+
+int main(int argc, string argv[])
+// argc => integer
+// argv => array of strings
+
+```
+
+## Cryptography
 
