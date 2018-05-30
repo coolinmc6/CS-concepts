@@ -1,5 +1,8 @@
 # C Language Notes
 
+[https://reference.cs50.net/](https://reference.cs50.net/)
+
+
 - to run a program in the Cloud9 IDE:
 
 ```sh
@@ -26,7 +29,20 @@ printf("%i", integer);
 // Random Bites
 
 // checks for ending "integer" that indicates end of a string in C
-while(s[b] != '\0) 
+// while(s[b] != '\0)
+// {
+
+// }
+
+string num = "50";
+int i = atoi(num);
+ 
+// isalpha('Z') -> true
+// isupper('Z) -> true
+// islower('Z') - false
+
+// when in single quotes, we can treat it as ASCII
+('A' + 2) % 26
 
 ```
 
@@ -39,7 +55,7 @@ while(s[b] != '\0)
 void set_array(int array[4]);
 void set_int(int x);
 
-// main function
+// main function => this does NOT accept any arguments at running in the CL
 int main(void)
 {
     // CODE
@@ -57,6 +73,16 @@ void set_int(int x)
 }
 ```
 
+- If you are accepting arguments at the command line, the main function is different:
+
+```c
+int main(int argc, string argv[])
+{
+
+}
+```
+  - **argc** => int; the number of arguments passed in (with one argument being the program itself)
+  - **argv** => array of strings; the list of arguments passed
 
 
 ## Arrays
@@ -76,6 +102,7 @@ truthtable[0] = false;
 truthtable[1] = true;
 truthtable[2] = true;
 ```
+
 
 - Arrays can also have multiple dimensions
 
