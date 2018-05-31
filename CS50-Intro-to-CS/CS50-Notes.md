@@ -1,5 +1,17 @@
 # CS50 - Intro to Computer Science
 
+# Introduction / Notes
+
+## Homework
+
+|Week|Homework|Submitted|
+|:---:|:---|:---:|
+|Week 0|*none*|*n/a*|
+|Week 1|Mario|yes|
+| |Cash|yes|
+| |Caesar|yes|
+| |Vigenere|yes|
+
 # Week 0 - Scratch
 
 **Lecture:** [https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu](https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu)
