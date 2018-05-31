@@ -1,8 +1,14 @@
 # CS50 - Intro to Computer Science
 
-# Introduction / Notes
+**Lectures**
 
-## Homework
+- [Week 0](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-0)
+- [Week 1](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-1)
+- [Week 2](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-2)
+
+
+
+# Homework
 
 |Week|Homework|Submitted|
 |:---:|:---|:---:|
@@ -12,7 +18,7 @@
 | |Caesar|yes|
 | |Vigenere|yes|
 
-# Week 0 - Scratch
+# Week 0
 
 **Lecture:** [https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu](https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu)
 
@@ -71,5 +77,9 @@ int main(int argc, string argv[])
 
 ```
 
-## Cryptography
+# Week 2
+
+# Week 3
+
+# Week 4
 
