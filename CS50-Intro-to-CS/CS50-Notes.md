@@ -88,6 +88,52 @@ int main(int argc, string argv[])
 
 # Week 2
 
+## Music Homework Notes
+- white keys are the non-sharp keys
+- accidentals
+	+ sharp = #
+	+ flat = b
+- C# = Db
+- the piano is divided into octaves. The middle octave is Octave 4
+- D4 = the D key in the 4th Octave
+- C starts the Octaves so it would go from C4-D4-E4-F4-G4-A4-B4-C5
+- **bday**
+	+ using the sheet music
+	+ figure out which notes are being played
+	+ write down the ASCII representation in the bday.txt
+	+ C4@1/8 => C, fourth octave, eighth note
+	+ C#4@1/8 => C#, fourth octave, eighth note
+	+ blank line means a resst for 1/8th note
+- **helpers.c**
+	+ Write three functions:
+		* is_reset
+		* duration
+		* frequency
+	+ is_rest
+	+ duration
+		* `int duration(string fraction)`
+		* takes in a fraction as a string and output a whole number representing how many eight notes
+		* 1/8 => 1
+		* 1/4 => 2
+		* 3/8 => 3
+		* 1/2 => 4
+	+ frequency
+		* * `int frequency(string note)`
+		* parse the string into a note and its octave => A#4 -> separate into A# and Octave 4
+		* calculate the frequency of the note in the given octave
+		* return the frequency
+		* Frequencies 
+			* A4 = 440 Hz
+			* Every semitone up => frequency * 2 ^ 1/12
+			* Every semitone down => frequency / 2 ^ 1/12
+			* if moving two up => f * 2 ^ **2**/12
+			* sounds like I will essentially just need to figure out out how many semitones away from A4 I am
+			+ A5 = 880 Hz = 440 * 2 ^ 12/12 = 440 * 2 ^ 1 = 440 * 2
+
+
+
+
+
 # Week 3
 
 # Week 4
