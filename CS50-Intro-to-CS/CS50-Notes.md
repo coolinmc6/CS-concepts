@@ -13,10 +13,10 @@
 |Week|Homework|Submitted|See the code|
 |:---:|:---|:---:|:---|
 |Week 0|*none*|*n/a*||
-|Week 1|Mario|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/cash.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/mario.c)|
+|Week 1|Mario|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/mario_less.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/mario_less.c)|
 | |Cash|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/cash.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/cash.c)|
-| |Caesar|yes||
-| |Vigenere|yes||
+| |Caesar|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c)|
+| |Vigenere|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c)|
 
 # Week 0
 
