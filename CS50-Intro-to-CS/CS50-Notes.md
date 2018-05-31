@@ -1,3 +1,4 @@
+<a name='top'></a>
 # CS50 - Intro to Computer Science
 
 **Lectures**
@@ -5,7 +6,15 @@
 - [Week 0](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-0)
 - [Week 1](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-1)
 - [Week 2](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-2)
-
+- [Week 3](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-3)
+- [Week 4](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-4)
+- [Week 5](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-5)
+- [Week 6](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-6)
+- [Week 7](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-7)
+- [Week 8](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-8)
+- [Week 9](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-9)
+- [Week 10](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-10)
+- [Week 11](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-11)
 
 
 # Homework
@@ -136,5 +145,36 @@ int main(int argc, string argv[])
 
 # Week 3
 
+[back to top](#top)
+
 # Week 4
 
+[back to top](#top)
+
+# Week 5
+
+[back to top](#top)
+
+# Week 6
+
+[back to top](#top)
+
+# Week 7
+
+[back to top](#top)
+
+# Week 8
+
+[back to top](#top)
+
+# Week 9
+
+[back to top](#top)
+
+# Week 10
+
+[back to top](#top)
+
+# Week 11
+
+[back to top](#top)
