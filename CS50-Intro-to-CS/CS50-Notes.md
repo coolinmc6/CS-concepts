@@ -26,7 +26,7 @@
 | |Cash|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/cash.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset1/cash.c)|
 | |Caesar|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c)|
 | |Vigenere|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c)|
-|2||||
+|2|Music|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset3/helpers.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset3/helpers.c)|
 |3||||
 |4||||
 |5||||
@@ -273,6 +273,7 @@ int fact(int n)
 ## Algorithms Summary
 
 |Algorithm Name|Basic Concept|O|Omega|
+|:---:|:---|:---:|:---:|
 |Selection Sort|Find the smallest unsorted element in an array and swap it with first unsorted element in that array|n^2|n^2|
 |Bubble Sort|Swap adjacent pairs of elements if they are out of order, effecting "bubbling" larger elements to the right and smaller ones to the left|n^2|n|
 |Insertion Sort|Go through the array one time from left to right, shifting elements as necessary to insert each element into its correct place|n^2|n|
