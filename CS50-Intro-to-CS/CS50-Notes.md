@@ -139,7 +139,34 @@ int main(int argc, string argv[])
 			* sounds like I will essentially just need to figure out out how many semitones away from A4 I am
 			+ A5 = 880 Hz = 440 * 2 ^ 12/12 = 440 * 2 ^ 1 = 440 * 2
 
+## Computational Complexity
+- when we talk about about the complexity of an algorithm, we generally reger to the worst-case scenario
+	+ this is **Big O**
+- best case scenario is **Big Omega**
+- We can measure how much it takes up (in resources) in terms of time or memory. This measure is *f(n)*
+- Computation Complexity
 
+|Big O|Time|Description
+|O(1)|constant time|Always takes a single operation in the worst case|
+|O(log n)|logarithmic time|Always takes *n* operations in the worst case|
+|O(n)|linear time||
+|O(n log n|linearithmic time||
+|O(n^2|quadratic time||
+|O(n ^C|polynomial time||
+|O(c^n|exponential time||
+|O(n!)|factorial time||
+|O(infinity)|infinite time||
+
+## Selection Sort
+- Find the smallest unsorted element and add it to the end of a sorted list
+- In pseudocode (repeat this until sorted):
+	+ Search the unsorted part of the data to find the smallest value
+	+ swap the smallest found value with the first element of the unsorted part
+- Worst-case scenario: iterate over each of the n elements (to find the smallest unsorted element) and we must repeat this process *n* times, since only one element gets sorted on each pass
+- Best-case scenario: exactly the same! There's no way to guarantee the array is sorted until we go through
+the process for all of the elements
+- Worst Case: O(n^2)
+- Best Case: Omega (n^2)
 
 
 
