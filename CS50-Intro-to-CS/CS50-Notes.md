@@ -168,7 +168,117 @@ the process for all of the elements
 - Worst Case: O(n^2)
 - Best Case: Omega (n^2)
 
+## Bubble Sort
+- In pseudocode:
+	+ set swap counter to a non-zero value (i.e. -1; otherwise it won't run once)
+	+ repeat until the swap counter is 0:
+		* reset swap counter to 0;
+		* look at each adjacent pair; if not in order, swap them and add one to the swap counter
+- Worst-case scenario: array is in reverse order
+- Best-case: array is already perfectly sorted and make no swaps on the first pass
+- Worst Case: O(n^2)
+- Best Case: Omega (n)
 
+## Insertion Sort
+- build your sorted array in place, shifting elements out of the way if necesary to make room as you go
+- In pseudocode:
+	+ call the first element of the array "sorted"
+	+ Repeat until all elements are sorted:
+		* Look at the next unsorted element. Insert into the sorted portion by shifting the requisite number
+		of elements
+- we didn't have to go back and forth across the array
+- Worst case scenario: array is in reverse order; we have to shift *n*elements *n* positions each time we make an insertion
+- Best case scenario: the array is already perfectly sorted and we simply keep moving the line between "unsorted" and "sorted" as we examine each element
+- Worst Case: O(n^2)
+- Best Case: Omega (n)
+
+## Merge Sort
+- Merge sort leverages recursion
+- Break arrays into arrays of one element that are "sorted"
+- Essentially: sort the left half, sort the right half, merge the two halves
+- Worst-case scenario: split n elements up and then recombine them, effectively doubling the sorted
+subarrays as we build them up
+- Best case scenario: The array is already perfectly sorted but we will still have to split and recombine it back together
+- Worst Case: O(n log n)
+- Best Case: Omega (n log n)
+
+## Linear Search
+- itrate across the array from left to right, searching for a specified element
+- In pseudocode:
+	+ repeat, starting at first element:
+		* is the first element is what you're looking for? Yes, stop;
+		* If No, move to the next element
+- Worst-case scenario: we look through entire array of n elements (it's the last item or it's not in the array)
+- Best-case scenario: it's the first item
+- Worst Case: O(n)
+- Best Case: Omega (1)
+
+## Binary Search
+- This is divide and conquer => we can only do this if the array is **sorted**
+- In pseudocode:
+	+ Repeat until the (sub)array is of size 0:
+		* calculate midpoint
+		* if target, then stop
+		* if target < midpoint, move start point to left of that and then divide in half again
+- if element does not exist, end point will be lower than start point creating a subarray of 0
+- Worst case scenario: we have to divide a list of n elements repeatedly in half either because that's where
+the element is or it's not in the array
+- Best case scenario: target element is at midpoint of full array
+- Worst Case: O(log n)
+- Best Case: Omega (1)
+
+## Recursion
+- A recursive funciton is one that, as part of its execution, calls itself
+- `fact(n) = n * fact(n-1)`
+- Every recursive function has two cases that could apply, given any input:
+	+ the **base case**, which when triggered will terminate the recursive function
+	+ the **recursive case**, which is where the function calls itself
+
+```c
+int fact(int n)
+{
+	if (n == 1) 
+	{
+		return 1;
+	}
+	else
+	{
+		return n * fact(n-1);
+	}
+
+}
+
+```
+
+- that can be slimmed down in C if a conditional only has a return line then:
+
+```c
+int fact(int n)
+{
+	if (n == 1) 
+		return 1;
+	else
+		return n * fact(n-1);
+}
+
+```
+
+- In general, but not always, recursive functions replace loops in non-recursive functions
+- It's possible to have more than one base case
+- The Collatz Conjecture applies to positive integers and speculates that it is always possible to get back to 1:
+	+ if n is 1, stop
+	+ Otherwise, if n is even, repeat this process on n/2
+	+ Otherwise, if n is odd, repeat this process on 3n + 1
+
+## Algorithms Summary
+
+|Algorithm Name|Basic Concept|O|Omega|
+|Selection Sort|Find the smallest unsorted element in an array and swap it with first unsorted element in that array|n^2|n^2|
+|Bubble Sort|Swap adjacent pairs of elements if they are out of order, effecting "bubbling" larger elements to the right and smaller ones to the left|n^2|n|
+|Insertion Sort|Go through the array one time from left to right, shifting elements as necessary to insert each element into its correct place|n^2|n|
+|Merge Sort Sort|Split the full array into subarrays, then merge those subarrays back together in the correct order|n log n|n log n|
+|Linear Search|Iterate across the array from left-to-right, trying to find the target element|n|1|
+|Binary Search|Given a sorted array, divide and conquer by systematically elminating half of the remaining elements in the search for the target|log n|1|
 
 # Week 3
 
