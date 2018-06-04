@@ -272,7 +272,7 @@ int fact(int n)
 
 ## Algorithms Summary
 
-|Algorithm Name|Basic Concept|O|Omega|
+|Algorithm Name|Basic Concept|Big O|Omega|
 |:---:|:---|:---:|:---:|
 |Selection Sort|Find the smallest unsorted element in an array and swap it with first unsorted element in that array|n^2|n^2|
 |Bubble Sort|Swap adjacent pairs of elements if they are out of order, effecting "bubbling" larger elements to the right and smaller ones to the left|n^2|n|
