@@ -283,6 +283,63 @@ int fact(int n)
 
 # Week 3
 
+## Whodunit
+- take BMP clue
+- Items To Do:
+	+ open file
+	+ update header's info for outfile
+	+ read clue's scanline, pixel by pixel
+	+ change pixel's color as necessary
+	+ write verdict's scanline, pixel by pixel
+- `copy.c`
+	+ already does a lot of things: opens a file, updates header, reads each scanline, writes each pixel in the output file
+- Items to do:
+	+ `cm copy.c whodunit.c`
+- BITMAPINFOHEADER
+	+ biWidth (bitmap info Width)
+	+ biHeight
+	+ biSizeImage
+- BITMAPFILEHEADER
+	+ bfSize
+		* total size of file (in bytes)
+	+ bf.bfSize = bi.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER)
+- fread(data, size, number, inptr)
+	+ data - pointer to a struct that will contain the bytes you're reading
+	+ size - size of each element to read
+	+ number - number of elements to read
+	+ inptr - FILE * (pointer) to read from
+- pixel color - represented by 3 bytes
+- RGBTRIPLE scruct
+	+ a struct to represent pixels
+	+ here is a green pixel:
+
+```c
+RGBTRIPLE triple;
+triple.rgbtBlue = 0x00;
+triple.rgbtGreen = 0xff;
+triple.rgbtRed = 0x00;
+```
+
+- One way to decode it would be to turn all pure red into white
+- writing files
+	+ `fwrite(data, size, number, outptr)`
+- padding
+	+ each pixel is 3 bytes
+	+ length of each scanline must be 4 bytes
+	+ if the number of pixels isn't 4, we must add some padding (0x00)
+	+ each scanline must be a multiple of 4:
+		* Ex #1: scanline has 4 RGBtriple's => no padding needed (4 * 3 = 12; 12 is a multiple of 4)
+		* Ex #2: scanline has 5 RGBtriple's => 1 byte of padding required (5 * 3 = 15; plus 1 is 16)
+			- one byte of padding is 0x00
+		* Ex #3: scanline has 6 RGBtriple's => 2 bytes of padding required (6 * 3 = 12; plus 2 is 20)
+	+ We don't have to come up with the formula, the padding formula is given
+- write padding
+	+ `fputc(chr, outptr)`
+		* chr => char to write
+		* outptr => FILE * to write to
+- file position indicator
+	+ `fseek(inptr, offset, from);`
+
 [back to top](#top)
 
 # Week 4
