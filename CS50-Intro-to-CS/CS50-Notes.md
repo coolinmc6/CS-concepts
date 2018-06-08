@@ -294,7 +294,7 @@ int fact(int n)
 - `copy.c`
 	+ already does a lot of things: opens a file, updates header, reads each scanline, writes each pixel in the output file
 - Items to do:
-	+ `cm copy.c whodunit.c`
+	+ `cp copy.c whodunit.c`
 - BITMAPINFOHEADER
 	+ biWidth (bitmap info Width)
 	+ biHeight
@@ -331,7 +331,7 @@ triple.rgbtRed = 0x00;
 		* Ex #1: scanline has 4 RGBtriple's => no padding needed (4 * 3 = 12; 12 is a multiple of 4)
 		* Ex #2: scanline has 5 RGBtriple's => 1 byte of padding required (5 * 3 = 15; plus 1 is 16)
 			- one byte of padding is 0x00
-		* Ex #3: scanline has 6 RGBtriple's => 2 bytes of padding required (6 * 3 = 12; plus 2 is 20)
+		* Ex #3: scanline has 6 RGBtriple's => 2 bytes of padding required (6 * 3 = 18; plus 2 is 20)
 	+ We don't have to come up with the formula, the padding formula is given
 - write padding
 	+ `fputc(chr, outptr)`
@@ -339,6 +339,36 @@ triple.rgbtRed = 0x00;
 		* outptr => FILE * to write to
 - file position indicator
 	+ `fseek(inptr, offset, from);`
+
+## Resize
+
+- bitmaps are just an arrangement of bytes, it's all about how we read them
+- Because we are changing the size of the file we have to change the header file
+- BITMAPINFOHEADER
+	+ biWidth (width of image in pixels)
+	+ biHeight (height of image in pixels)
+	+ biSizeImage (total size of image in bytes) => includes pixels and padding
+- What's changing when scaling by n?
+	+ bi.biWidth => bi.biWidth * n
+	+ bi.biHeight => bi.biHeight * n
+	+ bi.biSizeImage => ((biWidth * n) * sizeof(RGBTRIPLE) + padding) * abs(biHeight * n)
+	+ bi.bfSize => sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + biSizeImage
+- Resize horizontally
+	+ write each pixel twice!
+- padding
+	+ to write padding, we need `fputc()`
+- fseek() needed
+- pseudocode:
+	+ for each row:
+		* for each pixel
+			- write to array n times
+		* for n times
+			- write array to outfile
+			- write outfile padding
+		* skip over infile padding
+- 
+
+
 
 [back to top](#top)
 
