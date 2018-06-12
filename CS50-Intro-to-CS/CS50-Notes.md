@@ -352,7 +352,7 @@ triple.rgbtRed = 0x00;
 	+ bi.biWidth => bi.biWidth * n
 	+ bi.biHeight => bi.biHeight * n
 	+ bi.biSizeImage => ((biWidth * n) * sizeof(RGBTRIPLE) + padding) * abs(biHeight * n)
-	+ bi.bfSize => sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + biSizeImage
+	+ bf.bfSize => sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + biSizeImage
 - Resize horizontally
 	+ write each pixel twice!
 - padding
