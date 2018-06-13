@@ -76,7 +76,7 @@ void set_int(int x)
 - If you are accepting arguments at the command line, the main function is different:
 
 ```c
-int main(int argc, string argv[])
+int main(int argc, char *argv[])
 {
 
 }
@@ -84,6 +84,35 @@ int main(int argc, string argv[])
   - **argc** => int; the number of arguments passed in (with one argument being the program itself)
   - **argv** => array of strings; the list of arguments passed
 
+- Here is an example that receives takes as an argument a file name:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        fprintf(stderr, "This program requires the name of the file that you wish to recover.\n");
+        return 1;
+    }
+
+    char* infile = argv[1];		// notice that the file is the 2nd argument or of index 1
+    printf("%s\n", infile);
+
+
+    // end of file
+    return 0;
+
+}
+```
+
+- To run this program:
+
+```sh
+./recover card.raw
+```
 
 ## Arrays
 

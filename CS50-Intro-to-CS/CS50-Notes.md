@@ -366,9 +366,73 @@ triple.rgbtRed = 0x00;
 			- write array to outfile
 			- write outfile padding
 		* skip over infile padding
-- 
 
+## Recover
 
+- TODO
+	+ open memory card file
+		* fopen
+		* check if its null
+		* we start at the beginning and check the first few bytes to see if it is a JPEG. If not, we can then
+		skip to the next block of 512 bytes
+		* CM => right away, I am unsure about how to read the bytes or the proper struct I should be using. The
+		looping through the bytes seems easy; it's the comparison of those bytes is what seems hard
+	+ find beginning of JPEG
+		* once we find a JPEG, we just write 512 bytes at a time until we reach the end of the JPEG
+	+ open a new JPEG write 512 bytes until new JPEG is found
+	+ 
+	+ detect end of file
+
+- JPEGs
+	+ each JPEG starts with a distinct header
+		* first three bytes: 0xff 0xd8 0xff
+		* last byte: 0xe0 0xe1 0xe2 ... 0xef
+	+ stored side-by-side on the memory card
+	+ each block is 512 bytes
+	+ One recommendation is the bitwise and operator:
+		* `if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)`
+		* filenames need to be formated as follows: ###.jpg
+		* named in the order in which they are found, starting at 000
+	+ making a new JPEG
+		* `sprintf(filename, "%03i.jpg", 2);`
+			- filename: char array to store the resultant string
+			- looks like this returns something with 3 places whatever the ith int is where 2 is the
+			number we want in there ====> 002.jpg
+		- FILE *img = fopen(filename, "w");
+- Reading files
+	+ fread(data, size, number, inptr)
+	+ data: pointer to a **struct** that will contain the bytes you're reading
+	+ size: size of each element to read
+		* sizeof
+	+ number: number of elements to read
+	+ inptr: FILE * to read from
+	+ fread returns the number of elements successfully read
+		* `fread(buffer, 1, 512, raw_file)` OR
+		* `fread(buffer, 512, 1, raw_file)`
+- Writing files
+	+ `fwrite(data, size, number, outptr);`
+	+ data - pointer to the struct that contains the bytes you're reading from
+	+ size
+	+ number
+	+ outptr: FILE * to write to
+- End of file?
+	+ fread returns the number of elements successfully read
+		* `fread(buffer, 1, 512, raw_file)` OR
+		* `fread(buffer, 512, 1, raw_file)`
+	+ `fread(data, size, number, inptr);`
+		* return how many items of size `size` were read (and ideally, it returns a number)
+		* use directly in a condition!
+- pseudocode
+	+ open card file
+	+ repeat until end of card
+		* read 512 bytes into a buffer
+		* start of a new JPEG?
+			- yes ->
+			- no ->
+		* already found a JPEG?
+			- no ->
+			- yes ->
+	+ close any remaining files
 
 [back to top](#top)
 
