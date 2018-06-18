@@ -18,21 +18,21 @@
 
 **Lecture Notes**
 
-|Lecture|Link|
-|:---:|:---|
-|0|[https://docs.cs50.net/2017/fall/notes/0/lecture0.html](https://docs.cs50.net/2017/fall/notes/0/lecture0.html)|
-|1<br>(Week 1)|[https://docs.cs50.net/2017/fall/notes/1/lecture1.html](https://docs.cs50.net/2017/fall/notes/1/lecture1.html)|
-|2<br>(Week 1 cont.)|[https://docs.cs50.net/2017/fall/notes/2/lecture2.html](https://docs.cs50.net/2017/fall/notes/2/lecture2.html)|
-|3|[https://docs.cs50.net/2017/fall/notes/3/lecture3.html](https://docs.cs50.net/2017/fall/notes/3/lecture3.html)|
-|4<br>(Week 3)|[https://docs.cs50.net/2017/fall/notes/4/lecture4.html](https://docs.cs50.net/2017/fall/notes/4/lecture4.html)|
-|5<br>(Week 4)|[https://docs.cs50.net/2017/fall/notes/5/lecture5.html](https://docs.cs50.net/2017/fall/notes/5/lecture5.html)|
-|6<br>(Week 5)|[https://docs.cs50.net/2017/fall/notes/6/lecture6.html](https://docs.cs50.net/2017/fall/notes/6/lecture6.html)|
-|7<br>(Week 6)|[https://docs.cs50.net/2017/fall/notes/7/lecture7.html](https://docs.cs50.net/2017/fall/notes/7/lecture7.html)|
-|8<br>(Week 6 cont.)|[https://docs.cs50.net/2017/fall/notes/8/lecture8.html](https://docs.cs50.net/2017/fall/notes/8/lecture8.html)|
-|9<br>(Week 7)|[https://docs.cs50.net/2017/fall/notes/9/lecture9.html](https://docs.cs50.net/2017/fall/notes/9/lecture9.html)|
-|10<br>(Week 8)|[https://docs.cs50.net/2017/fall/notes/10/lecture10.html](https://docs.cs50.net/2017/fall/notes/10/lecture10.html)|
-|11<br>(Week 9)|[https://docs.cs50.net/2017/fall/notes/11/lecture11.html](https://docs.cs50.net/2017/fall/notes/11/lecture11.html)|
-|12<br>(Week 11)|[https://docs.cs50.net/2017/fall/notes/12/lecture12.html](https://docs.cs50.net/2017/fall/notes/12/lecture12.html)|
+|Lecture|Week|Lecture Notes Link|
+|:---:|:---:|:---|
+|0|0|[https://docs.cs50.net/2017/fall/notes/0/lecture0.html](https://docs.cs50.net/2017/fall/notes/0/lecture0.html)|
+|1|1|[https://docs.cs50.net/2017/fall/notes/1/lecture1.html](https://docs.cs50.net/2017/fall/notes/1/lecture1.html)|
+|2|1|[https://docs.cs50.net/2017/fall/notes/2/lecture2.html](https://docs.cs50.net/2017/fall/notes/2/lecture2.html)|
+|3|2|[https://docs.cs50.net/2017/fall/notes/3/lecture3.html](https://docs.cs50.net/2017/fall/notes/3/lecture3.html)|
+|4|3|[https://docs.cs50.net/2017/fall/notes/4/lecture4.html](https://docs.cs50.net/2017/fall/notes/4/lecture4.html)|
+|5|4|[https://docs.cs50.net/2017/fall/notes/5/lecture5.html](https://docs.cs50.net/2017/fall/notes/5/lecture5.html)|
+|6|5|[https://docs.cs50.net/2017/fall/notes/6/lecture6.html](https://docs.cs50.net/2017/fall/notes/6/lecture6.html)|
+|7|6|[https://docs.cs50.net/2017/fall/notes/7/lecture7.html](https://docs.cs50.net/2017/fall/notes/7/lecture7.html)|
+|8|6|[https://docs.cs50.net/2017/fall/notes/8/lecture8.html](https://docs.cs50.net/2017/fall/notes/8/lecture8.html)|
+|9|7|[https://docs.cs50.net/2017/fall/notes/9/lecture9.html](https://docs.cs50.net/2017/fall/notes/9/lecture9.html)|
+|10|8|[https://docs.cs50.net/2017/fall/notes/10/lecture10.html](https://docs.cs50.net/2017/fall/notes/10/lecture10.html)|
+|11|9|[https://docs.cs50.net/2017/fall/notes/11/lecture11.html](https://docs.cs50.net/2017/fall/notes/11/lecture11.html)|
+|12|11|[https://docs.cs50.net/2017/fall/notes/12/lecture12.html](https://docs.cs50.net/2017/fall/notes/12/lecture12.html)|
 
 # Homework
 
@@ -47,12 +47,13 @@
 |3|Whodunit|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/whodunit.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/whodunit.c)|
 ||Resize|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/resize.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/resize.c)|
 ||Recover|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/recover.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/recover.c)|
-|4||||
-|5||||
-|6||||
-|7||||
-|8||||
-|9||||
+|4|Speller|||
+|5|*none*|*n/a*||
+|6|*none*|*n/a*||
+|7<br>**pset 6**|Sentimental|||
+|7<br>**pset 6**|Similarities|||
+|8|Finance|||
+|9|Mashup|||
 |10|*none*|*n/a*||
 |11|Final Project|||
 
@@ -457,15 +458,18 @@ triple.rgbtRed = 0x00;
 [back to top](#top)
 
 # Week 4
-
+- lecture 5
+- 
 
 [back to top](#top)
 
 # Week 5
+- lecture 6
 
 [back to top](#top)
 
 # Week 6
+- lectures 7 & 8
 
 [back to top](#top)
 
