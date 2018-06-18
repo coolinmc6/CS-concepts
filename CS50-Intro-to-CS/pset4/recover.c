@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
                 fclose(img);
             }
 
-            // filename
+            // filename => 7 characters plus \0?
             char filename[8];
             sprintf(filename, "%03d.jpg", fileCount);
 

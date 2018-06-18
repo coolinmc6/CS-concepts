@@ -16,6 +16,22 @@
 - [Week 10](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-10)
 - [Week 11](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#week-11)
 
+**Lecture Notes**
+
+|Lecture|Link|
+|0|[https://docs.cs50.net/2017/fall/notes/0/lecture0.html](https://docs.cs50.net/2017/fall/notes/0/lecture0.html)|
+|1|[]()|
+|2|[]()|
+|3|[https://docs.cs50.net/2017/fall/notes/3/lecture3.html](https://docs.cs50.net/2017/fall/notes/3/lecture3.html)|
+|4<br>(Week 3)|[https://docs.cs50.net/2017/fall/notes/4/lecture4.html](https://docs.cs50.net/2017/fall/notes/4/lecture4.html)|
+|5|[]()|
+|6|[]()|
+|7|[]()|
+|8|[]()|
+|9|[]()|
+|10|[]()|
+|11|[]()|
+|12|[]()|
 
 # Homework
 
@@ -437,6 +453,7 @@ triple.rgbtRed = 0x00;
 [back to top](#top)
 
 # Week 4
+
 
 [back to top](#top)
 
