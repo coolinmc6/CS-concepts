@@ -19,6 +19,7 @@
 **Lecture Notes**
 
 |Lecture|Link|
+|:---:|:---|
 |0|[https://docs.cs50.net/2017/fall/notes/0/lecture0.html](https://docs.cs50.net/2017/fall/notes/0/lecture0.html)|
 |1|[]()|
 |2|[]()|
