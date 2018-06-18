@@ -44,7 +44,9 @@
 | |Caesar|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/caesar.c)|
 | |Vigenere|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset2/vigenere.c)|
 |2|Music|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset3/helpers.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset3/helpers.c)|
-|3||||
+|3|Whodunit|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/whodunit.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/whodunit.c)|
+||Resize|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/resize.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/resize.c)|
+||Recover|yes|[https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/recover.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/recover.c)|
 |4||||
 |5||||
 |6||||
