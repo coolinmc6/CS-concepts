@@ -57,6 +57,11 @@
 |10|*none*|*n/a*||
 |11|Final Project|||
 
+# Next Steps
+- go through and take notes on EACH of the shorts. I need to understand these concepts. Use the relevant
+C-language ones to build your C-Notes.
+
+
 # Week 0
 
 **Lecture:** [https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu](https://www.youtube.com/watch?v=y62zj9ozPOM&list=PLhQjrBD2T3828ZVcVzEIhsHVgjANGZveu)
@@ -114,6 +119,115 @@ int main(int argc, string argv[])
 // argc => integer
 // argv => array of strings
 
+```
+
+## Debugging
+
+- help50, eprintf, debug50
+- help50
+	+ helps when your program is not compiling
+	+ to use it: `help50 make example1`
+- eprintf
+	+ can show you where in the code a variable came from
+	+ use `eprintf` in your code and then do `./eprintf`
+- debug50
+	+ `debug50 ./debug1`
+
+## Arrays
+- are a fundamential data structure
+- We use arrays to hold values of the same type at contiguous memory locations
+- arrays have been partitioned into small, identically sized blocks called elements
+- each black can store a certain amount of data
+- all of the same data type (int or char)
+- and which can be accessed with an index number
+- first index is 0
+- C will not prevent you from going outside of the bounds of your array but you will get a
+segmentation fault
+- Array declaration:
+	+ `type name[size]`
+	+ the `type` is what kind of variable each element of the array will be
+	+ the `name` is what you want to call your array
+	+ the `size` is how many elements you would like your array to hold
+	+ Examples:
+		* `int studen_grades[40]`
+		* `double menu_prices[8]`
+- if you think of a single element of an array of type `data-type` the same as you would any other
+variable of type `data-type`, then all the familiar operations make sense
+
+```c
+bool truthtable[10]
+
+if(truthtable[7] == true)
+{
+	printf("TRUE\n");
+}
+```
+
+- You can declare and initialize an array simultaneously:
+
+```c
+// instantiation syntax
+bool truthtable[3] = { false, true, true };
+
+// individual element syntax
+bool truthtable[3];
+truthtable[0] = false;
+truthtable[1] = true;
+truthtable[2] = true;
+```
+
+- Arrays can also have multiple dimensions
+
+```c
+bool battleship[10][10];
+```
+- in memory, it's really just a 100-element array
+- we cannot assign one array to another array; we'd have to copy one array into the other
+
+```c
+int foo[5] = {1, 2, 3, 4, 5};
+int bar[5];
+
+for(int j = 0; j < 5; j++)
+{
+    bar[j] = foo[j];
+}
+```
+- to pass something by value means we are copying the variable
+- Arrays are passed by reference. The callee receives the actual array, **NOT** a copy of it
+
+## Command Line Arguments
+
+- To collect so called command-line arguments from the user, declare main as:
+	- `int main(int argc, string argv[])`
+	- argc = argument count
+	- argv = argument vector
+* argc is an integer and will store the number of command line arguments the user typed in
+	- `./greedy` => argc = 1
+	- `./greedy 1024 cs50` => argc = 3
+* argv (argument vector)
+	- this array of strings stores, one string per element, the actual text the user typed at the
+	command-line when the program was executed
+	- the first element of argv is always found at argv[0]
+
+|argv indices|argv contents|comments|
+|:---:|:---:|:---|
+|argv[0]|"./greedy"||
+|argv[1]|"1024"|notice that it is captured as a **string**, not an int<br>We will need to convert this to an int|
+|argv[2]|"cs50"||
+
+## Magic Numbers
+
+- this allows you to declare, essentially, a global variable that can't be changed.
+- when the code is compiled, it goes through the program and replaces all instances of that
+constant with the number, string, etc.
+- if `#include` is similar to copy/paste, `#define` is analagous to find/replace
+
+```c
+// define NAME REPLACEMENT(value)
+#define PI 3.14159265
+#define DECK_SIZE 52
+#define COURSE "CS50"
 ```
 
 # Week 2
@@ -302,6 +416,26 @@ int fact(int n)
 |Linear Search|Iterate across the array from left-to-right, trying to find the target element|n|1|
 |Binary Search|Given a sorted array, divide and conquer by systematically elminating half of the remaining elements in the search for the target|log n|1|
 
+## GDB (the GNU Debugger)
+- to kick things off with GDB:
+	+ `gdb <program name>`
+	+ that will pull up the GDB environment. The next two major commands you'll likely use (in order) are:
+		* `b [function name, line number]`
+			- program will run uninterrupted until it encounters the function with that name or hits that line
+			number, at which point it will pause and wait further instructions
+		* `r [command-line arguments]`
+			- runs program with the command line arguments provided, if any
+- Other commands:
+
+|command|actions|
+|:---:|:---:|
+|`n`|will step forward one block of code|
+|`s`|will step forward one line of code|
+|`p [variable]`|prints out the value of the variable given|
+|`info locals`|prints out the values of all local variables|
+|`bt`|show you what series of function calls led you to the current point in the program|
+|`q`|quits GDB|
+
 # Week 3
 
 ## Whodunit
@@ -459,6 +593,94 @@ triple.rgbtRed = 0x00;
 
 # Week 4
 - lecture 5
+
+## Structures
+- structures provide a way to unify several variables of different dyptes into a single, new variable
+type which can be assigned to its own type name
+- we structures (structs) to group together elements of a variety of data types that have a logical
+connection
+
+```c
+// Defining a Struct
+struct car
+{
+	int year;
+	char model[10];
+	char plate[7];
+	int odometer;
+	double engine_size;
+}
+
+```
+  - `struct` => indicates that we are creating a new struct
+  - `car` => name of the struct
+  - inside the curly braces are the fields of my struct
+  - each field (or member) of the struct must end with a semicolon
+  	+ *similar to the **property** of a JS object*
+- Once we have a defined structure, which we typically do in separate .h files or atop our programs outside
+of any funcitons
+- that means we create variables of that type using the familiar syntax
+- we access those fields (also known as members) using the dot operator (.)
+
+```c
+// variable declaration
+struct car mycar;
+
+// field accessing
+mycar.year = 2011;
+mycar.plate = "CS50";
+mycar.odometer = 50505;
+```
+
+- Structures, like variables of all other data types, do not need to be created on the stack. We can 
+dynamically allocate structure at run time if our program requires it
+- In order to access the fields of our structures in that situation, we first need to dereference the
+pointer to the structure, and then we can access its fields
+
+```c
+// variable declaration
+struct car *mycar = malloc(sizeof(struct car));
+
+// field accessing
+(*mycar).year = 2011;
+(*mycar).plate = "CS50";
+(*mycar).odometer = 50505;
+```
+- Instead of declaring mycar on the stack `struct car mycar`, I can do the above. That returns a pointer to the
+block of memory. As a refresher, **malloc** allocates the requested memory of a particular size and returns a
+pointer to it.
+- To access the fields, I first dereference my car using the dereference operator, `*mycar`, and then after I
+dereference, I use the dot operator to access the various fields of mycar.
+- THe arrow operator allows us to trim that down
+
+```c
+// variable declaration
+struct car *mycar = malloc(sizeof(struct car));
+
+// field accessing
+mycar->year = 2011;
+mycar->plate = "CS50";
+mycar->odometer = 50505;
+```
+- what is happening is that first, we are dereferencing `mycar` (which is a pointer here), we then access the fields.
+- **So what is dereferencing?**
+	+ "Dereferencing a pointer means getting the value that is stored in the memory location pointed by the pointer"
+
+## Speller
+- TODO
+	+ calls `load` on the dictionary file
+		* dictionary contains valid words, one per line
+	+ calls `check` on each word in the text file and prints all misspelled words
+	+ calls `size` to determine the number of words in dictionary
+	+ calls `unload` to free up memory
+- `check`
+	+ case-insensitivity
+	+ assume strings with only alphabetical characters and/or apostrophes
+	+ if the word exists, it can be found in the hash table
+	+ which bucket would the word be in?
+		* `hashtable[hash(word)]`
+	+ search in that linked list
+		* `strcasecmp`
 - 
 
 [back to top](#top)
