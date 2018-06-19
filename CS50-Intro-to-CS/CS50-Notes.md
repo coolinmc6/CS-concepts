@@ -420,7 +420,7 @@ int fact(int n)
 - to kick things off with GDB:
 	+ `gdb <program name>`
 	+ that will pull up the GDB environment. The next two major commands you'll likely use (in order) are:
-		* `b [function name, line number]`
+		* `b [function name, line number]` or `break [function name, line number]`
 			- program will run uninterrupted until it encounters the function with that name or hits that line
 			number, at which point it will pause and wait further instructions
 		* `r [command-line arguments]`
@@ -436,9 +436,109 @@ int fact(int n)
 |`bt`|show you what series of function calls led you to the current point in the program|
 |`q`|quits GDB|
 
+
 # Week 3
 
-## Whodunit
+## Call Stacks
+- when you call a function, the system sets aside space in memory for that function to do its necessary work. These
+chunks of memory are called **stack frames** or **function frames**
+- More than one function's stack frame may exist in memory at a given time. If `main()` calls `move()`, which then
+calls `direction()`, all three have open frames but they don't all have active frames
+- only the frame on the top of the stack is "active"
+- Frames are arranged in a **stack**. The frame for the most recently called function is always on top
+- When a new frame is called, it's pushed onto the top of the stack and becomes *active*
+- When a function finishes its work, its frame is popped off the stack and the frame below it becomes the new, 
+active function on top of the stack. This function immediately picks up where it left off
+
+## File Pointers
+- the ability to read data from and write data to files is the primary means of storing **persistent data**, 
+data that does not disappear when your program stops running
+- the abstraction of files that C provides is implemented in a data structure known as a FILE
+	+ almost universally when working with files, we will be using pointers to them, `FILE*`
+- The file manupulations functions all live in `stdio.h`
+	+ all of them accept `FILE*` as one of their parameters, except for `fopen`
+- `fopen()`
+	+ opens a file and returns a file pointer to it
+	+ always check the return value to make sure you don't get back NULL
+	+ `FILE* ptr = fopen(<filename>, <operation>);`
+	+ example: `FILE* ptr = fopen("file1.txt", "r");`
+		* "r" = read
+		* "w" = write (risks overwriting the file)
+		* "a" = append (add to the file)
+- `fclose()`
+	+ closes the file pointed to by the given file pointer
+	+ `fclose(ptr1)`
+- `fgetc()`
+	+ reads and returns the next character from the file pointed to
+	+ Note: the operation of the file pointer passed in as a parameter must be "r" for read, or you'll
+	get an error
+	+ `char ch = fgetc(<file pointer>);`
+- the ability to get single characters from files, if wrapped in a loop, means we could read all the 
+characters from a file and print them to the screen, one-by-one:
+
+```c
+char ch;
+while((ch = fgetc(ptr)) != EOF)	// EOF is a special word indicating end-of-file
+	printf("%c", ch);
+```
+- `fputc()`
+	+ writes or appends the specified character to the pointed-to file
+	+ Note: the operation of the file pointer passed in as a parameter must be "w" for write or "a" for
+	append or you'll get an error
+	+ `fputc('A', ptr2);`
+
+```c
+char ch;
+while((ch = fgetc(ptr)) != EOF)
+	fputc(ch, ptr2);
+```
+  - this is essentially the `cp` command in Linux command line
+- `fread()`
+	+ reads <qty> units of size <size> from the file pointed to and stores them in memory in a buffer
+	(usually an array) pointed to by <buffer>
+	+ Note: the operation of the file pointer passed in as a parameter must be "r" for read or you'll
+	get an error
+	+ Examples:
+	
+```c
+int arr[10]
+fread(arr, sizeof(int), 10, ptr);
+
+// We could also dynamically allocate a buffer using malloc.
+// When dynamically allocating memory, we're saving it on the heap, not the stack
+double* arr2 = malloc(sizeof(double) * 80);
+fread(arr2, sizeof(double), 80, ptr);
+
+/*
+- We can also treat `fread` just like a call to `fgetc`.
+- In this case, we're just trying to get one character from the file and we don't need an array to hold a character,
+we can just store it in a character variable.
+- The catch, though, is that when we just have a variable, we need to pass in the address of that variable
+because recall that the first argument to fread is a pointer to the location and memory where we want to store the information.
+- Hence the &c as opposed to just c
+*/
+char c;
+fread(&c, sizeof(char), 1, ptr);
+```
+
+- `fwrite()`
+	+ writes <qty> units of size <size> to the file pointed to by reading them from a buffer (usually an array)
+	pointed to by <buffer>
+	+ Note: the operation of the file pointer passed in as a parameter must be "w" for write or "a" for append
+	or you'll get an error
+
+
+## Pointers
+
+
+## Dynamic Memory Allocation
+
+
+## Hexadecimal
+
+
+
+## HOMEWORK: Whodunit
 - take BMP clue
 - Items To Do:
 	+ open file
