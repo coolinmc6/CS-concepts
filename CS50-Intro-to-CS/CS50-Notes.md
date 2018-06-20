@@ -529,6 +529,35 @@ fread(&c, sizeof(char), 1, ptr);
 
 
 ## Pointers
+- Pointers provide an alternative way to pass data between functions
+	+ recall that we have (up to this point) passed all data by value, with one exception
+	+ when we pass data vy value, we only pass a copy of that data
+- If we use pointers instead, we have the power to pass the variable itself
+	+ that means that a change that is made in one function **can** impact what happens in a different function
+	+ previously, that wasn't possible!
+- Pointers are related to memory
+- Every file on your computers lives on your disk drive, either a hard disk drive (HDD) or a solid state drive (SSD)
+disk drives are just storage space; we can't directly work there. Manipulation and use of data can only take place in
+RAM, so we have to move data there
+- Memory is basically a huge array of 8-bit wide bytes (512 MB, 1GB. 2GB. 4GB)
+
+|Data Type|Size (in bytes)|
+|:---:|:---:|
+|int|4|
+|char|1|
+|float|4|
+|double|8|
+|long long|8|
+|string|???|
+
+- memory is just a big array of byte-sized cells
+- every element of that array has an address
+- arrays are useful for not just **storage** of information but also for *random access* (accessing
+individual elements of the array by indicating which index location we want)
+- every location in memory has an address
+- string must end with `\0` so if there are 5 characters, we need a size of 6
+- A pointer is nothing more than an address
+- Pointers are addresses to memory where variables live
 
 
 ## Dynamic Memory Allocation
