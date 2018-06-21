@@ -558,10 +558,145 @@ individual elements of the array by indicating which index location we want)
 - string must end with `\0` so if there are 5 characters, we need a size of 6
 - A pointer is nothing more than an address
 - Pointers are addresses to memory where variables live
+- a pointer is a data item whose:
+	- **value** is a memory address
+	- **type** describes the data located at that memory address
+* pointers allow data structures and/or variables to be shared among functions
+* pointers make a computer environment more like the real world
+	- think of the notebook example of making changes
+* the simplest pointer available to us in C is the NULL pointer
+* When you create a pointer and you dont set its value immediately, you should **always** set the value
+of the pointer to NULL
+* You can check whether a pointer is NULL using the equality operator
+* Another way is to simply extract the address of an already existing variable. We can do this
+with the address extraction operator (&)
+* if `x` is an int-type variable, then `&x` is a pointer-to-int whose value is the address of x
+* if `arr` is an array of doubles, then `&arr[i]` is a pointer-to-double whose value is the address
+of the ith element of `arr`
+	- an array's name, then, is actually just a pointer to its first element
+* arrays are just pointers
+* The main purpose of a pointer is to allow us to modify or inspect the location to which it points
+	- we do this by dereferencing the pointer
+* if we have a pointer-to-char called `pc`, then `*pc` is the data that lives at the memory address stored
+inside the variable `pc`
+* Used in this context, `*` is known as the dereference operator
+* It "goes to the reference" and accesses the data at that memory location, allowing you to manipulate
+it at will
+* This is just like visiting your neighbor. Having their address isn't enough. You need to **go to** the address
+and only then can you interact with them
+- What happens if we try to dereference a pointer whose value is NULL
+	+ **Segmentation fault**
+	+ this is good behavior! It defends against accidental dangerous manipulation of unknown pointers
+	+ that's why we recommend you set your pointers to NULL immediately if you aren't setting them to a known, 
+	desired value
+- `int* p;`
+	+ the value of `p` is an address (*because all pointers are addresses*)
+	+ we can dereference `p` with the `*` operator
+	+ if we do, what we'll find at that location is an int
+- Another annoying thing with those *'s. They're an important of both the name and the variable name
+	+ `int* px, py, pz` => doesn't work
+	+ `int* pa, *pb, *pc` => creates three pointers on one line
+- string doesn't exist; it's actually a `char*`
 
+|Data Type|Size (in bytes)|
+|:---:|:---:|
+|int|4|
+|char|1|
+|float|4|
+|double|8|
+|long long|8|
+|string|???|
+|char*|4 or 8|
+
+- `*pk = 35;`
+	+ we go to the address of that pointer and change the value there to be 35
+
+```c
+int m;
+m = 4;
+pk = &m;
+```
+- building from the example before it, what we are doing here is simply changing pk to point at m and not 35
 
 ## Dynamic Memory Allocation
+- we can use pointers to get access to a block of dynamically-allocated memory at runtime
+- dynamically allocated memory comes from a pool of memory known as the **heap**
+- prior to this point, all memory we've been working with has been coming from a pool of memory known as the stack
+- the heap and stack are part of the same pool of memory they just come from different parts; heap goes down, stack goes up (in the common illustration of heap and stack)
+- We get this dynamically-allocated memory by making a call to the C standard library function `malloc()`, passing as its parameter the number of bytes requested
+- After obtaining memory for it, `malloc()` will return a pointer to that memory
+- What if `malloc()` can't give you memory? It'll hand you back NULL
+	+ when using `malloc()`, you must check that it is not NULL
+	+ dereferencing a NULL pointer leads to a segmentation fault
 
+```c
+// statically obtain an integer
+int x;
+
+// dynamically obtain an integer
+int *pk = malloc(sizeof(int));
+
+// get an integer from the user
+int x = getInt();
+
+// array of floats on the stack
+float stack_array[x];
+
+// array of floats on the heap
+float* heap_array = malloc(X * sizeof(float));
+```
+
+- Here's the trouble: Dynamically-allocated memory is not automatically returned to the system for later use when
+the function in which it's created finishes execution
+- Failing to return memory back to the system when you're finished with it results in a memory leak which can
+compromise your system's performance
+- When you finish working with dynamically-allocated memory, you must `free()` it
+
+```c
+char* word = malloc(50 * sizeof(char));
+
+// do stuff with word
+
+// now we're done working with that block
+free(word);
+```
+
+- Three golden rules:
+	+ every block of memory that you `malloc()` must be subsequently be `free()`d
+	+ Only memory that you `malloc()` should be `free()`d
+	+ Do not `free()` a block of memory you have already freed
+
+```c
+// we create an integer variable called m; it stores integers
+int m;
+
+// similar; it's capable of holding an int but is not itself an integer
+int* a;
+
+// this actually creates two boxes but also establishes a pointer relationship
+// b is a pointer and lives on the stack; b contains the address
+int* b = malloc(sizeof(int));
+
+// a points to m (a is getting m's address)
+a = &m;
+
+// a NOW points to the same place that b points to; a now points to where b points
+a = b;
+
+// puts a 10 in the box for variable m
+m = 10;
+
+// dereference b and put some value in that memory location; in this case, it is 10 + 2 = 12;
+// so now, b is pointing to 12
+*b = m + 2;
+
+// we give up the memory that we malloc()d for b; we have essentially gotten rid of 12
+free(b);
+
+// we'd get a segmentation fault
+// a WAS pointing to b but we freed b...so now that value is gone and we'd get a segmentation fault
+*a = 11;
+```
 
 ## Hexadecimal
 
