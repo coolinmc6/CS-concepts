@@ -60,6 +60,12 @@
 # Next Steps
 - go through and take notes on EACH of the shorts. I need to understand these concepts. Use the relevant
 C-language ones to build your C-Notes.
+- Shorts:
+	+ Week 0
+	+ Week 1: Complete
+	+ Week 1 (cont): Complete
+	+ Week 2: Complete
+	+ Week 3: Complete
 
 
 # Week 0
@@ -699,7 +705,42 @@ free(b);
 ```
 
 ## Hexadecimal
+- most Western cultures use the decimal system, aka *base-10* to represent numeric data
+- computers use the binary system, *base-2*, to represent numeric data
+- as computer scientists, it's useful to be able to epxress data the same way the computer does
+- the problem, of course, is that trying to parse a huge chain of of 0s and 1s can be quite difficult
+- the hexadecimal system, *base-16*, is a much more concise way to express the data on a computer's system
+	+ 0 1 2 3 4 5 6 7 8 9 a b c d e f
+- hexadecimal makes this mapping easy because a group of four binary digits (bits) has 16 different combinations, and each of those combinations maps to a single hexadecimal digit
+- we usually preface hexadecimal with `0x` to indicate that we are looking at hexadecimal
 
+|Decimal|Binary|Hexadecimal|
+|:---:|:---:|:---:|
+|0|0000|0x0|
+|1|0001|0x1|
+|2|0010|0x2|
+|3|0011|0x3|
+|4|0100|0x4|
+|5|0101|0x5|
+|6|0110|0x6|
+|7|0111|0x7|
+|8|1000|0x8|
+|9|1001|0x9|
+|10|1010|0xA|
+|11|1011|0xB|
+|12|1100|0xC|
+|13|1101|0xD|
+|14|1110|0xE|
+|15|1111|0xF|
+
+- binary has place values (1,2,4,8,...)
+- as does decimal (1,10,100,1000)
+- to convert binary to hexadecimal, group four binary digits (bits) together from right to left
+	+ pad the leftmost group with extra 0 bits at the fron if necessary
+- 01000110101000101011100100111101
+- 0100 0110 1010 0010 1011 1001 0011 1101
+-   4    6   A    2    B    9    3    D
+-   0x46A2B93D
 
 
 ## HOMEWORK: Whodunit
@@ -929,6 +970,159 @@ mycar->odometer = 50505;
 - what is happening is that first, we are dereferencing `mycar` (which is a pointer here), we then access the fields.
 - **So what is dereferencing?**
 	+ "Dereferencing a pointer means getting the value that is stored in the memory location pointed by the pointer"
+
+## Defining Custom Types
+- the C keyword `typedef` provides a way to create a shorthand or rewritten name for data types
+- the basic idea is to first define a type in the normal way, then alias it to something else
+- `typedef <old name> <new name>`
+- `typedef unsigned char byte`
+	+ we can now just use "byte" instead of unsigned char
+- `typedef char* string`
+
+```c
+struct car
+{
+	int year;
+	char model[10];
+	char plate[7];
+	int odometer;
+	double engine_size;
+};
+
+typedef struct car car_t;
+
+// that can be rewritten more concisely by essentially wrapping the struct code between "typedef"
+// and the our alias. See below:
+
+typedef struct car
+{
+	int year;
+	char model[10];
+	char plate[7];
+	int odometer;
+	double engine_size;
+}
+car_t;
+```
+
+- here is an example of what we had to do before and what we can do now:
+
+```c
+// OLD WAY
+// variable declaration
+struct car mycar;
+
+// field accessing
+mycar.year = 2011;
+mycar.plate = "CS50";
+mycar.odometer = 50505;
+
+// NEW WAY
+// variable declaration
+car_t mycar;
+
+// field accessing
+mycar.year = 2011;
+mycar.plate = "CS50";
+mycar.odometer = 50505;
+```
+
+## Singly-Linked Lists
+- So far in the course, we've only had one kind of data structure for representing collections of
+like values
+	+ structs, recall, give us "containers" for holding variables of different data types, typically
+- Arrays are great for element lookup, but unless we want to insert at the very end of the array, 
+inserting elements is quite costly
+- arrays also suffer from a great inflexibility - what happens if we need a larger array than we thought?
+- through clever use of pointers, dynamic memory allocation and structs, ew can put the pieces together to develop a new kind of data structure that gives us the ability grow and shrink a collection of like values to fit our needs
+- Signly-Linked Lists
+	+ we call this combination of elements, when used in this way, a linked list
+	+ a linked list **node** is a psecial kind of struct with two members:
+		* data of some data type (int, char, float)
+		* a pointer to another node of the same type
+	+ in this way, a set of nodes together can be though of as forming a chain of elements that we can follow from beginning to end
+
+```c
+typedef struct sllist
+{
+	// VALUE just represents any data type (int, char, etc); VALUE is an arbitrary data type
+	VALUE val;
+	struct sllist* next;
+}
+sllnode;
+```
+- this is a self-referential structure
+- at the end of the day, we want to call it `sllnode`
+- but we can't reference it because we haven't created it yet
+- So `struct sllist` is the temporary name that we use so that we can point to it in the struct
+and then provide the real name `sllnode` at the bottom
+- In order to work with linked lists effectively, there are a number of operations that we need to understand:
+	+ Create a linked list when it doesn't exist
+	+ search through a linked list to find an element
+	+ insert a new node into the linked list
+	+ delete a single element from a linked list
+	+ delete an entire linked list
+- Create a linked list
+	+ `sllnode* create(VALUE val);`
+	+ this function should return a pointer to that list
+	+ Pseudocode:
+		* dynamically allocate space for a new `sllnode`
+		* check to make sure we didn't run out of memory
+		* initialize the node's `val` field
+		* initialize the node's `next` field
+		* return a pointer to the newly created `sllnode`
+	- `sllnode* new = create(6);`
+- Search through a linked list to find an element
+	+ `bool find(sllnode* head, VALUE val);`
+	+ pseudocode:
+		* create a traversal pointer pointing to the list's head
+		* if the current node's val field is what we're looking for, report success
+		* if not, set the traversal pointer to the next pointer in the list and go back to step b
+		* if you've reached the end of the list, report failure
+	+ `bool exists = find(list, 6);`
+	+ with linked lists, we no longer really have random access; we can't go to the 3rd element in the list, 
+	we have to traverse the tree
+- Insert a new node into the linked list
+	+ `sllnode* insert(sllnode* head, VALUE val);`
+	+ Steps involved:
+		* Dynamically allocate space for a new sllnode
+		* Check to make sure we didn't run out of money
+		* Populate and insert the node at the beginning of the linked list
+			- why? Because you can do it immediately. you don't have to traverse the entire list just
+			to add a new node
+		* Return a pointer to the new head of the linked list
+	+ `list = insert(list, 12);`
++ Delete an entire linked list
+	* `void destroy(sllnode* head);`
+	* pseudocode:
+		- if you've reach a null pointer, stop
+		- Delete the rest of the list
+		- free the current node
+	* If we just freed the first element, we wouldn't be able to find the other nodes and free them. Those other elements would still be taking up memory and would represent a memory leak
++ Delete a single element from a linked list
+	* we will talk about this in doubly-linked lists
+
+
+## Hash Tables
+- Hash tables combine the random access ability of an array with dynamism of a linked list
+- This means (assuming we define our hash table well):
+	+ insert can start to tend toward (theta)(1)
+	+ deletion can start to tend toward (theta)(1)
+	+ lookup can start to tend toward (theta)(1)
+- We're gaining the advantages of both types of data structure while mitigating the disadvantages
+
+## Tries
+
+
+## Stacks
+
+
+## Queues
+
+
+## Data Structures
+
+
 
 ## Speller
 - TODO
