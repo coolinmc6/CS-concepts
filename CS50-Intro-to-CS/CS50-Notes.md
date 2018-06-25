@@ -1110,12 +1110,154 @@ and then provide the real name `sllnode` at the bottom
 	+ deletion can start to tend toward (theta)(1)
 	+ lookup can start to tend toward (theta)(1)
 - We're gaining the advantages of both types of data structure while mitigating the disadvantages
+- To get this performance upgrade, we createa  new structure whereby when we insert data into the structure, the data itself gives us a clues about where we will find the data, should we need to look it up
+- The trade is off is that hash tables are not great at ordering or sorting data
+- Only use hash tables if we don't care if data is sorted
+- A hash table amount to a combination of two things with which we're quite familiar:
+	+ a **hash function**, which returns a nonnegative integer value called a *hash code*
+	+ an **array** capable of storing data of the type we wish to place into the data structure
+- The idea is that we run our data through the hash function and then store the data in the element of the array represented by the hash code
+- How to define a hash function? Really no limit to the number of possible hash functions
+- A good hash function should:
+	+ use only the data being hashed
+	+ use all of the data being hashed
+	+ Be deterministic
+	+ uniformly distribute data
+	+ Generate very different hash code for very similar data
+
+```c
+unsigned int hash(char* str)
+{
+	int sum = 0;
+	for(int j = 0; str[j] != '\0'; j++)
+	{
+		sum += str[j];
+	}
+	return sum % HASH_MAX;
+}
+```
+
+- You should **not** be writing your own hash functions. There are plenty of hash functions on the internet that do what you want
+- A **collision** occurs when two pieces of data, when run through the hash function, yield the same hash code
+- presumably we want to store *both* pieces of data in the hash table, so we shouldn't simply overwrite the data that happened to be placed in there first
+- We need to find a way to get both elements into the hash table while trying to preserve quick insertion and lookup
+- Resolving collisions: *linear probing*
+- In this method, if we have a collision, we try to place the data in the next consecutive element in the array (wrapping around to the beginning if necessary) until we find a vacancy
+- that way, if we don't find what we're looking for in the first location, at least hopefully the element is somewhere nearby
+- Linear probing is subject to a problem called **clustering**. One there's a miss, two adjacent cells will contain data making it more likely in the future that the cluster will grow
+- Even if we switch to another probing technique, we're still imited. We can only store as much as we have locations in our array
+- Resolving collisions: **Chaining**
+- What if instead of each element of the array holding just one of piece of data, it held multiple pieces of data
+- If each element of the array is a pointer to the head of a linked list, then multiple pieces of data can yield the same hash code and we'll be able to store it all
+- With chaining, we've eliminated clustering
+- We know that linked lists that insertion (and creation, if necessary) into a linked list is an O(1) operation
+- For lookup, we only need to serach through what is hopefully a small list since we're distributing what would otherwise be one huge list across *n* lists
 
 ## Tries
+- Arrays: the key is the element index, the value is the data at that location
+- Hash table: the key is the has code of the data, the value is a linked list of data hashing to that hash code
+- What about a slightly different kind of data structure where the key is guaranteed to be unique?
+- Tries combine structures and pointers together to store data in an interesting way
+- the data to be searched for in the trie is now a roadmap
+	+ if you can follow the map from beginning to end, the data exists in the trie
+	+ if you can't, it doesn't
+- Unlike a hash table, there are no collisions, and no two pieces of data (unless they're identical) have the same path
+- Let's map key-value pairs where the keys are four-digit years (YYYY) the values are names of universities founded during those years
+- in a trie, the paths from a central **root** node to a **leaf** node (where the school names would be) would be labeled with digits of the year
+- each node on the path from root to leaf could have 10 pointers emanating from it, one for each digit
 
+```c
+typedef struct _trie
+{
+	char university[20];
+	struct _trie* paths[10];
+}
+trie;
+```
 
 ## Stacks
+- Stack is also a name for a section of memory a statically declared memory but there is also a stack data structure
+- A stack is a special type of structure that can be used to maintain data in an organized way
+- this data structure is commonly implemented in one of two ways: as an **array** or as a **linked list**
+- in either case, the important rule is that when data is added to the stack, it sites "on top" and so if an element needs to be removed, the most recently added element is the only element that can legally by removed
+	+ **LIFO** => Last in, First Out
+- There are only two operations that may legally be performed:
+	+ **Push**: add a new element to the top of the stack
+	+ **Pop**: remove the most recently added element
 
+```c
+typedef struct _stack
+{
+	// VALUE = int, char, whatever
+	// CAPACITY = some constant size => notice, it can't be dynamically resized
+	// top => we must keep track of the top-most element
+	VALUE array[CAPACITY];
+	int top;
+}
+stack;
+
+// declare a stack:
+stack s;
+
+// set top
+s.top = 0;
+```
+- In the general case, `push()` needs to:
+	+ accept a pointer to the stack
+	+ accept data of type VALUE to be added to the stack
+	+ add that data to the stack at the top of the stack
+	+ change the location of the top of the stack
+- `void push(stack* s, VALUE data)`
+	+ this is what the function declaration could look like
+
+```c
+stack s;
+s.top = 0;
+push(&s, 28);
+
+push(&s, 33);
+
+push(&s, 19);
+```
+- In the general case, `pop()` needs to:
+	+ accept a pointer to the stack
+	+ change the location of the top of the stack
+	+ return the value that was removed from the stack
+- `VALUE pop(stack* s);`
+
+```c
+int x = pop(&s);
+// now x is 19; top is now 2;
+
+int x = pop(&s);
+// now x is 33; top is now 1
+
+push(&s, 40);
+// top is now 2 again
+```
+
+- Linked lists are another way to implement stacks:
+
+```c
+typedef struct _stack
+{
+	VALUE val;
+	struct _stack *next;
+}
+stack;
+
+// NOTICE HOW IT COMPARES TO OUR PREVIOUS DEFINITION OF A LINKED LIST
+typedef struct sllist
+{
+	VALUE val;
+	struct sllist* next;
+}
+sllnode;
+```
+
+- just to make sure to always maintain a pointer to the head of the linked list
+- to push, dynamically allocate a new node, set its next pointer to point to the current head of the list, then move the head pointer to the newly-created node
+- to pop, traverse the linked list to its second element, free the head of the list, then move the head pointer to the (former) second element
 
 ## Queues
 
