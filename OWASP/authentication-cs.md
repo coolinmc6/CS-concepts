@@ -1,6 +1,8 @@
+[Back to all cheat sheet notes](https://github.com/coolinmc6/CS-concepts/tree/master/OWASP)
+
 # Authentication Cheat Sheet Notes
 
-[Back to all cheat sheet notes](https://github.com/coolinmc6/CS-concepts/tree/master/OWASP)
+
 
 Based on OWASP's: [Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)
 
@@ -34,3 +36,9 @@ The key concern is a **strong** password. The following criteria are **strong pa
     - All app failures are logged and reviewed
     - All password failures are logged and reviewed
     - all accounts locked are logged and reviewed
+
+
+
+
+
+[Back to all cheat sheet notes](https://github.com/coolinmc6/CS-concepts/tree/master/OWASP)
