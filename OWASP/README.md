@@ -4,6 +4,6 @@ This page is a collection of my notes from various [OWASP cheat sheets](https://
 
 |Topic|Notes|Cheat Sheet|
 |:---:|:---:|:---:|
-|Authentication||[Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)|
+|Authentication|[Authentication CS Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OWASP/authentication-cs.md)|[Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)|
 
 
