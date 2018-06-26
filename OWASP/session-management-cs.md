@@ -60,10 +60,63 @@ Based on OWASP's: [Session Management Cheat Sheet](https://www.owasp.org/index.p
 + Expire and Max-Age Attributes
 	* use non-persistent cookies for session management purposes so that the session ID does not remain on the web client cache for long periods of time, from where an attacker can obtain it
 
+### Session ID Life Cycle
 
+- Session IDs must be considered untrusted and thoroughly validated and verified
+- renew the session ID after any privelege level change (i.e. user changes from unauthenticated state to authenticated state); 
+	- here are some examples:
+		* logins (unauth -> auth)
+		* password changes
+		* permission changes
+	- session ID regeneration is mandatory to prevent session fixation attacks
+* Considerations When Using Multiple Cookies
+	- if multiple cookies for a given session, the web app must verify all cookies
 
+### Session Expiration
+- to invalidate a cookie, it is common to provide an empty value for the session ID and set "Expires" date to a date from the past.
+- Automatic Session Expiration
+	+ all sessions should implement an idle or inactvity timeout
+		* session timeout management and expiration must be enforced server-side
+	+ all sessions should implement an absolute timeout => a maximum amount of time a session can be active
+		* after which a session is closed and the user is forced to (re)authenticate again in the web application and establish a new session
+			- does FB do this? Twitter?
+	+ **Alternatively**, the web app can implement an additional renewal timeout where the session ID is automatically renewed in the middle of the user session
+	+ Manual session expiration => logout button
+	+ Web Content Caching
+		* prevent the private or sensitive data within the session to be kept in the web browser cache:
+			- "Cache-Control: no-cache,no-store" (HTTP Headers) and
+			- "Pragma: no-cache" (HTTP Headers)
 
-
+### Session Attacks Detection
+- Session ID Guessing and Brute Force Detection
+	+ two main scenarios:
+		* Guess or Brute Force a Valid Session ID => launch multiple sequential requests against the target using different session IDs from a single (or set of) IP addresses
+			- CM => set the session ID on the attacker end and try to "guess" that a session ID exists
+		* Analyze Predictability of the Session ID => launch multiple sequential requests from a single (or set of) IP addresses against the target web application to gather new valid session IDs
+			* CM => user sends multiple legitimate login requests to gather a list of session IDs to collect many session IDs for analysis
+	* To counter, the system must detect both scenarios based on the number of attempts to gather (or use) different session IDs and then alert / block the offending IP address(es)
+- Logging Sessions Life Cycle
+	+ log information regarding the full life cycle of sessions. Recommended session related events to record:
+		* creation of session ID
+		* renewal of session ID
+		* destruction of session ID
+		* as well as details about usage of session ID within login / logout operations
+		* privelege level changes within session
+		* timeout expieration
+		* invalid session activities
+		* critical business operations during the session
+	+ log details might include the following:
+		* timestamp
+		* source IP address
+		* web target resource requested
+		* HTTP headers (including User-Agent and Referer)
+		* GET and POST parameters
+		* error codes and messages
+		* username (or userID)
+		* session ID(cookies, URL, GET, POST)
+- Simultaneous Session Logons
+	+ do you want to allow multiple simultaneous logons from the same user from different client IP addresses?
+	+ 
 
 
 
