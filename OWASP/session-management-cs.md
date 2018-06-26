@@ -116,7 +116,6 @@ Based on OWASP's: [Session Management Cheat Sheet](https://www.owasp.org/index.p
 		* session ID(cookies, URL, GET, POST)
 - Simultaneous Session Logons
 	+ do you want to allow multiple simultaneous logons from the same user from different client IP addresses?
-	+ 
 
 
 
