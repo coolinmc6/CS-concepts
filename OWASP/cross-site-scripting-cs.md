@@ -9,7 +9,7 @@ Based on OWASP's: [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://ww
 - **Cross-Site Scripting (XSS)** attacks are a type of *injection* where the attacker injects a malicious script into a trusted website.
 - XSS attacks can happen when the attackers uses a web application (i.e. a social network) to send the malicious code (generaly in the form of a browser-side script) that the web app is tricked into executing
 - The end user's browser doesn't know to NOT execute the script
-- 
+
 
 ### XSS Prevention Rules
 
@@ -48,3 +48,5 @@ Based on OWASP's: [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://ww
     - GUIDELINE #9 - Run your JavaScript in a ECMAScript 5 canopy or sandbox
     - GUIDELINE #10 - Don’t eval() JSON to convert it to native JavaScript objects
 8. Use HTTPOnly cookie flag
+
+
