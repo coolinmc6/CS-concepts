@@ -6,6 +6,6 @@ This page is a collection of my notes from various [OWASP cheat sheets](https://
 |:---:|:---:|:---:|
 |Authentication|[Authentication CS Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OWASP/authentication-cs.md)|[Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)|
 |Session Management|[Session Management CS Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OWASP/session-management-cs.md)|[Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)|
-|XSS (Cross Site Scripting) Prevention|[CSS Prevention CS Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OWASP/cross-site-scripting-cs.md)|[XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)|
+|XSS (Cross Site Scripting) Prevention|[XSS Prevention CS Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OWASP/cross-site-scripting-cs.md)|[XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)|
 
 
