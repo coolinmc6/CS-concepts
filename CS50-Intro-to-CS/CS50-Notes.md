@@ -1260,9 +1260,114 @@ sllnode;
 - to pop, traverse the linked list to its second element, free the head of the list, then move the head pointer to the (former) second element
 
 ## Queues
+- A queue is a special type of structure that can be used to maintain data in an organized way
+- this data structure is commonly implemented in one of two ways: as an array or as a linked list
+- in either case, the important rule is that when data is added to the queue, it is tacked onto the end, and
+so if an element needs to be removed, the element at the fron is the only element that can be legally removed
+  - FIFO = first in, first out
+- there are only two operations that may legally by performed on a queue
+	+ enqueue: add a new element to the end of the queue
+	+ dequeue: remove oldest element from the fron to of the queue
+- array based implementation:
 
+```c
+typedef struct _queue
+{
+	VALUE array[CAPACITY];
+	int front;
+	int size;
+}
+queue;
+
+// instantiate a queue
+queue q;
+```
+  - notice, we have no way to dynamically add more elements; we have to know the size of the queue (or at least its maximum size)
+- Enqueue; in general, `enqueue()` needs to:
+	+ accept a pointer to the queue
+	+ accept data of type VALUE to be added to the queue
+	+ add that data to the queue at the end of the queue
+	+ change the size of the queue
+- `void enqueue(queue* q, VALUE data);`
+- `enqueue(&q, 28);`
+- Dequeue; in general, `dequeue()` needs to:
+	+ accept a pointer to the queue
+	+ change the location of the front of the queue
+	+ decrease the size of the queue
+	+ return the value that was removed from the queue
+
+```c
+// value is what you'll be returning. enqueue was VOID because we weren't returning anything
+VALUE dequeu(queue* q);
+
+// the first element we added was 28 so 28 is what is returned
+// so now, our front is set to index 1 and size is set to 2
+int x = dequeue(&q);
+
+// 33 is returned (the second element added)
+// front = 2; size is 1
+int x = dequeue(&q);
+
+// front = 2 and size is 2
+enqueue(&q, 40);
+```
+
+- linked-list implementation:
+
+```c
+typedef struct _queue
+{
+	VALUE val;
+	struct _queue *prev;
+	struct _queue *next;
+}
+queue;
+```
+- just to make sure to always maintain pointers to the head **and** tail of the linked list (probably global)
+- To **enqueue**:
+	+ dynamically allocate a new node
+	+ set its next pointer to NULL, set its prev pointer to the tail;
+	+ set the tail's next pointer to the new node
+	+ move the tail pointer to the newly-created node
+- `enqueue(tail, 10);`
+- to **dequeue**:
+	+ traverse the linked list to its second element (if it exists)
+	+ free the head of the list
+	+ Move the head pointer to the (former) second element
+	+ Make that node's prev pointer point to NULL 
 
 ## Data Structures
+- We've examined four different ways to store data:
+	+ arrays
+	+ linked lists
+	+ hash tables
+	+ tries
+- there are some variations on these: trees and heaps (similar to tries), stacks and queues are quite similar to arrays or linked lists
+- Arrays
+	+ insertion is bad - lots of shiting to fit an element in the middle
+	+ deleteion is bad - lots of shifting after removing an element
+	+ lookup is great - random access, constant time
+	+ relatively easy to sort
+	+ relatively small size-wise
+	+ stuck with a fixed size, no flexibility
+- Linked Lists
+	+ insertion is easy - just tack onto the front
+	+ deletion is easy - once you find the element, you just change the pointers
+	+ lookup is bad - have to rely on linear search
+	+ relatively difficult to sort - unless you're willing to compromise on super-fast inertion and instead sort as you construct
+	+ relatively small size-wise (not as small as arrays)
+- Hash Tables
+	+ Insertion is a two-step process - hash, then add
+	+ deletion is easy - once you find the element
+	+ lookup is on average better than with linked lists because you have the benefit of a real-world constant factor
+	+ not an ideal data structure if sorting is the goal - just use an array
+	+ can run the gamut of size
+- Trie
+	+ insertion is complex - a lot of dynamic memory allocation, but gets easier as you go
+	+ deletion is easy - just free a node
+	+ lookup is fast - not quite as fast as an array but almost
+	+ already sorted - sorts as you build in almost all situations
+	+ rapidly become huge, even with very little data present, not great if space is at a premium
 
 
 
@@ -1281,7 +1386,157 @@ sllnode;
 		* `hashtable[hash(word)]`
 	+ search in that linked list
 		* `strcasecmp`
-- 
+
+### Load
+
++ for each word in the dictionary text file, store it in the dictionary's data structure
+	* linked lists
+	* hash tables
+	* tries
++ hash tables
+	* an array of buckets
+	* each bucket is a linked list
+	* hash function => returns the bucket that a given key belongs to
++ a hash table is simply an array of linked lists
++ linked lists contain nodes
++ nodes => each node has a value as well as a pointer to the next node
++ when dealing with linked lists, you cannot lose track of your pointers
+
+```c
+// Linked list
+typedef struct node
+{
+	char word[LENGTH + 1];
+	struct node *next;
+}
+node;
+
+node *node1 = malloc(sizeof(node));
+node *node2 = malloc(sizeof(node));
+
+strcpy(node1->word, "Hello");
+strcpy(node2->word, "World");
+node1->next = node2;
+```
+  - the code above creates a linked list of size 2
+
+```c
+typedef struct node
+{
+	char word[LENGTH + 1];
+	struct node *next;
+}
+node;
+
+node *hashtable[50];
+```
+- make a new word
+	+ scan dictionary word by word
+	+ malloc a node * for each new word
+	+ if pointer != NULL, copy word into node
+
+```c
+while (fscanf(file, "%s", word) != EOF)
+{
+	node *new_node = malloc(sizeof(node));
+	if(new_node == NULL)
+	{
+		unload();
+		return false;
+	}
+	strcpy(new_node->word, word);
+
+}
+```
+- hash function
+	+ takes a string
+	+ returns an index
+		* index < the number of buckets
+	+ deterministic
+		* the same value needs to map to the same bucket every time
+	+ `new_node->word` has the word from the dictionary
+	+ hashing `new_node->word` will give us the index of a bucket in the hash table
+	+ insert into the linked list
+
+- tries
+	+ every node contains an array of node pointers
+		* one for every letter in the alphabet + '\''
+		* each element in the array points to another node
+			- if that node is NULL, then that letter isn't the next letter of any word in that sequence
+	* every node indicates whether it's the last character of a word
+
+```c
+typedef struct node
+{
+	bool is_word;
+	struct node *children[27];
+}
+node;
+
+node *root;
+```
+
+- for every dictionary word, iterate through the trie
+- each element in `children` corresponds to a different letter
+- check the value at `children[i]`
+	+ if NULL, malloc a new node, have `children[i]` point to it
+	+ if not NULL, move to new node and continue
++ if at end of word, set `is_word` to true
+
+### Check
+- case insensitive
+- assume strings with only alphabetical characters and/or apostrophes
+- if the word exists, it can be found in the hash table
+- which bucket would the word be in?
+	+ `hashtable[hash(word)]`
+- search in that linked list
+	+ `strcasecmp`
+- traversing linked lists:
+
+```c
+node *cursor = head;
+while(cursor != NULL)
+{
+	// do something
+	cursor = cursor->next;
+}
+```
+
+- traversing a trie
+	+ for each letter in input word
+		* go to corresponding element in children
+			- if NULL, word is mispelled
+			- if not NULL, move to next letter
+		* once at end of input word
+			- check if `is_word` is true
+
+### Unload
+- freeling linked lists:
+
+```c
+node *cursor = head;
+while (cursor != NULL)
+{
+	node *temp = cursor;
+	cursor = cursor->next;
+	free(temp);
+}
+```
+
+- unload a trie
+	+ unload from bottom to top
+	+ travel to lowest possible node
+		* free all pointers in children
+		* backtrack upwards, freeing all elements in each children array until you hit root node
+	+ recursion!
+
+- tips
+	+ pass in a smaller dictionary
+		* `./speller [dictionary] text`
+		* default: loarge
+		* also try: small
+		* make your own!
+	+ use pen and paper
 
 [back to top](#top)
 

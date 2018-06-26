@@ -41,3 +41,38 @@ Based on OWASP's: [Session Management Cheat Sheet](https://www.owasp.org/index.p
 	- see the [Transport Layer Protection Cheat Sheet](https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet) for more information
 
 ### Cookies
+- Secure Attribute
+	+ the "secure" cookie attribute instruct web browsers to only send the cookie through an encrypted HTTPS (SSL/TLS) connection
++ HttpOnly Attribute
+	* the "HttpOnly" cookie attribute instructs web browsers not to allow scripts (i.e. JavaScript or VBscript) an ability to access the cookies via the DOM `document.cookie` object
+	* this protection is **mandatory** to prevent session ID stealing through XSS attacks
+	* see [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) for more
+	* `setCookie("sessionID", "good_session_id", time()+600, "/", "example.com", FALSE,TRUE);`
+		- `session` is the name of the cookie key
+		- `good_session_id` => the value of that key
+		- `time()+600` => expires in 600 seconds or 10 minutes
+		- `example.com` => the domain
+		- Secure attribute is set to `FALSE`
+		- HttpOnly attribute is set to `TRUE`
++ SameSite Attribute
+	* SameSite allows a server to define a cookie attribute making it impossible for the browser to send this cookie along with cross-site requests
++ Domain and Path Attributes
++ Expire and Max-Age Attributes
+	* use non-persistent cookies for session management purposes so that the session ID does not remain on the web client cache for long periods of time, from where an attacker can obtain it
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
