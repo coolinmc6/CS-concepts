@@ -14,16 +14,16 @@ Based on OWASP's: [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://ww
 ### XSS Prevention Rules
 
 0. Never insert untrusted data except in allowed locations. Here are some examples:
-  - directly in a script: `<script> UNTRUSTED DATA </script>`
-  - inside an HTML comment: `<!-- UNTRUSTED DATA -->`
-  - inside an attribute name: `<div UNTRUSTED_DATA="" />`
-  - in a tag name: `<UNTRUSTED_DATA />`
-  - directly in CSS: `<style> UNTRUSTED DATA </style>`
+    - directly in a script: `<script> UNTRUSTED DATA </script>`
+    - inside an HTML comment: `<!-- UNTRUSTED DATA -->`
+    - inside an attribute name: `<div UNTRUSTED_DATA="" />`
+    - in a tag name: `<UNTRUSTED_DATA />`
+    - directly in CSS: `<style> UNTRUSTED DATA </style>`
 1. HTML escape before inserting untrusted data into HTML element content
-  - &, <, >, ", ', / are all characters that must be escaped
-  - `<div class="user-comment">ESCAPE THIS CONTENT</div>` => anything the user is inputting and then you, as a developer, are then putting into an HTML element for your users to see, MUST be escaped
+    - &, <, >, ", ', / are all characters that must be escaped
+    - `<div class="user-comment">ESCAPE THIS CONTENT</div>` => anything the user is inputting and then you, as a developer, are then putting into an HTML element for your users to see, MUST be escaped
 2. Attribute escape before inserting untrusted data into HTML common attributes
-  - exactly like the one above but for HTML attributes (i.e. href, title, name, whatever!!)
+    - exactly like the one above but for HTML attributes (i.e. href, title, name, whatever!!)
 3. JavaScript escape before inserting untrusted data into JavaScript data values
-  - `window.setInterval(' UNTRUSTED DATA ')` => you can never safely use untrusted data as input, even if you escape it
+    - `window.setInterval(' UNTRUSTED DATA ')` => you can never safely use untrusted data as input, even if you escape it
  
