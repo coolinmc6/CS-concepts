@@ -1,0 +1,2297 @@
+
+[MUSIC PLAYING]
+DAVID MALAN: All right.
+This is CS50 and this is lecture five.
+And you'll recall perhaps that in this most current week,
+you've probably been tackling a little something like this.
+And if you don't actually have this experience from childhood,
+what we're referring to in this problem set
+is these kind of glasses that aren't 3-D glasses because it's both red eyes
+or sometimes it's just a big piece of plastic.
+But with this can you actually look up and see
+what the answer is supposed to be.
+And so this is the allusion to which we're referring
+and the goal ultimately in problem set five's who done
+it is to actually figure out how to implement that kind of red filter.
+But to do that, you first have to understand
+this thing, which at first glance, admittedly, looks pretty complicated.
+But if you dived into the problem already,
+you'll probably have wrapped your mind around at least
+a few of these fields like the size of the image or the width of the image
+and the height of the image, which should be a little more reasonably
+straightforward.
+But to implement this, you've had to deal with something
+called a struct or a structure.
+And so in C, we have this feature, recall.
+And we didn't really play with this that much last time.
+But you've seen it now in forensics, or you soon will.
+And here we have the definition of a student.
+So when C was invented decades ago, they didn't foresee
+the need for a student data type.
+They had int and char and float and double.
+But we can invent our own data types much like in Scratch.
+We can make our own puzzle pieces as follows.
+Typedef to define a type, struct to say here comes a structure.
+And what is the structure known as student?
+Well in this case, I arbitrarily decided that a student would just
+have a name and a dorm and both of those would be strains.
+And you can imagine putting other things in there
+like ID numbers, phone numbers, email addresses, or whatnot
+so that you can actually combine all of this information together.
+So let's just take a quick look at how you might use code like this.
+Here is a file called struct.h.
+It's common, but not necessary to declare your structures inside
+of a file that also starts with .h so that we can share it across multiple
+programs just like with other libraries' header files.
+And here I've taken those training wheels
+off as before where, string is actually just a white lie for char star.
+But this is really the same data structure
+and it's in a file called struct.h.
+So let's take a quick look now at a program that actually uses
+this in struct0.C. So let's take a look at what we've done here.
+In struct0.C we have some header files up top.
+But we also include this header file so that we have access
+to this new custom data type.
+And then in main we do a few things.
+We first go ahead and ask the user for an integer called enrollment.
+So hopefully they'll give us a positive number.
+If we then do get back a number as expected in line 13,
+what do we do in English here?
+How would you just describe what line 13 is doing at this point in the term?
+Anyone, yeah?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, give us an array of students of size enrollment.
+So even though on line 11 and prior we didn't
+know how many students we needed, we did get on line 12
+that answer, the enrollment.
+And so on line 13 we declare an array using a variable saying,
+give me this many elements, this many students in my array to store things.
+And then we proceed, in the lines below, as follows.
+We start iterating over the enrollment from zero on up to enrollment.
+And we prompt the user on each iteration for a student's name and dorm.
+And the right hand side of those two lines of code is pretty familiar.
+You're just calling, get string.
+But on the left hand side, we do have a slightly new piece of syntax.
+We have students bracket I, which gives you the i-th students in the array.
+But what piece of syntax perhaps jumps out at you?
+Especially if you've never programmed before?
+And we've not used this symbol just yet in this context.
+What looks different?
+Yeah.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, so the .name.
+So you can probably infer that .name and .dorm is somehow accessing
+the student's name and the student's dorm.
+And that's literally all that's happening.
+This dot operator tells the computer, go inside of the student's structure
+at that i-th location and store the string that's coming
+back from get string in that variable.
+And similarly, do the same for dorm.
+So it's like taking a struct and then looking inside of it
+and going very specifically to one of the elements therein.
+We've never needed this .operator before because in the past, any array,
+any variable we've had has just been a string or an int or float.
+We haven't had anything to dive deeper into.
+So that's all that's going on there.
+We've encapsulated, so to speak, inside of a student structure, name and dorm.
+And then this last part is actually just a printing out
+of that same information.
+We're just printing out, so-and-so is in such-and-such a dorm
+by passing in those two strings using our familiar percent S.
+Now this program at the end of the day is kind of pointless
+because you prompt the user for some number of students' names and dorms,
+you print them out, and then you throw them away forever.
+And that's not all that useful of a program long term.
+And so we have in our second version of this program, struct 1.C a new trick,
+too.
+That's a teaser as well for the direction
+we're going in this problem set, next problem set,
+and beyond, where we're actually using files where files on a computer
+are just a whole bunch of bits, zeros and ones.
+Those zeroes and ones follow some pattern.
+But we have yet to see a mechanism for actually saving files.
+But here's how we can do it.
+So above this line here, 21 and above, same program.
+Just get a bunch of students from the user, per their name and dorm.
+Then here line 24 we see something that's
+a little new, though you have seen this in the forensics problem so far.
+We call a function called F open, meaning file open.
+That takes two arguments, according to its documentation.
+The name of the file you want open and then the second argument
+is how you want to open the file.
+And even if you've never seen this before,
+what might the W there represent?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, right.
+So it's read and write are two of the most common operations for a computer.
+R would be read, W would be write.
+And this kind of makes sense if the goal now is to save these students to a file
+so that the program is actually useful if you run it again and again.
+So here we have a new data type on the left.
+It's all caps, which is a bit of an anomaly, even in C.
+But file, star, file just says, hey, give me a variable of type file
+that can store the address of a file, so to speak.
+And technically, that's not the address of the file on disk.
+That's the address in RAM once you've opened the file.
+But for now, just assume that this is an abstraction for the file.
+And it's just called literally file.
+So what is line 25's purpose in life?
+Even though we've never written this code before now.
+
+Yeah, what do you think?
+AUDIENCE: If the file exists.
+DAVID MALAN: If the file exists, or more generally, if the file was successfully
+opened.
+Because there could be bunches of things that go wrong.
+One, as you've implied, the file might not exist.
+Two, maybe you don't have permission so it exists but you can't open it.
+Three, maybe there's not enough memory in the computer
+to open yet one more file.
+So any number of things could go wrong.
+And recall, what is the special sentinel value that typically represents errors
+now that we're in the world of pointers?
+Null, so N-U-L-L in all caps is sort of the opposite of having a valid address.
+It means no such address.
+So we use it to check for errors.
+So that's all line 25 is doing.
+And then the rest of this is almost identical to the previous program,
+except we're not using print F. What are we apparently using?
+F print F and take a guess as to what the F in print F stands for?
+Yeah, so file print F. So it works almost the same
+except it takes one more argument.
+The very first argument now is not a format string
+like it's been for ages now.
+It's instead a variable that references an open file and then the rest of this
+is all the same.
+So what's really cool about F print F is that you don't just
+print to the screen.
+You actually print to whatever file you've
+opened so that then, on the very last line
+here, when I call F close, that's equivalent to saving the file.
+And then the program just quits.
+And so what's neat about this in the end is
+if I go ahead and scroll up here, and let
+me go into my source five directory.
+Let me go ahead and make struct one.
+Structs.h not found.
+What did I do?
+Well, I just screwed up before class and misnamed this file
+so that didn't just happen.
+So now I've compiled the program.
+All right, so now let me go ahead and run this ./struct1 enrollment will be
+three.
+And we'll say that it'll be Maria who is in Cabot House and Brian who
+is in Winthrop.
+And say David was, say, in Mather.
+Enter and nothing seems to happen.
+But if I type LS now and look inside this directory,
+notice that I have a file called students.csv deliberately named
+because if you've ever used Excel or Numbers,
+a very common file format is what's called the CSV, comma separated values
+format.
+And this is sort of like a very simplistic database.
+If I open this you'll see that indeed, the contents of this file
+are separated by commas.
+And if I were to actually open this file up in Excel, each of these columns
+would open up visually in exactly that.
+So what I did with my printdef, if I go back to structs1.c,
+notice as I consciously included that comma there,
+to create this sort of faux database format.
+And just for good measure, let me see if I
+go to download from the IDE's file manager
+and I go ahead and open up students.csv.
+And then if the program cooperates here, we have Microsoft Excel.
+And now I've made myself a tiny little spreadsheet.
+Now using c-code.
+Now we're going to find pretty quickly that this is not
+all that useful to make CSV files.
+Because the more and more rows we add to these files, the slower and slower
+it's going to get to search them.
+And so before long, as we transition next week and be onto web programming,
+we're actually going to replace spreadsheets or CSVs like this
+and actually replace them with something more powerful, namely databases.
+So that's a teaser then of what's to come.
+But where did we begin this conversation?
+It all kind of keeps coming back to what's
+inside of our computer, which we can continue abstracting away.
+You don't have to understand how this hardware works.
+But we previously had said that you can at least think
+about chopping up your computer's memory into a grid
+so that you can just number of the bytes.
+So that you have specific locations otherwise
+known as addresses or pointers.
+Last time we clarified that not all memory is
+treated equal inside of the computer.
+Rather, different chunks of memory are used differently.
+So the top portion, so to speak, but there is no notion of top in reality.
+This is just an artist's rendition.
+So the top of your computer's memory might
+be the heap, whereby you store certain types of values
+and then down here is the so-called stack where
+you store other types of values.
+And if we zoom out there's actually different layers still of memory.
+So let's actually tease apart what's going on here.
+If, when you run a program, you have access
+to a gigabyte of RAM or two gigabytes, and indeed, that's
+what your Mac or PC does.
+No matter how much RAM you have, the computer
+typically gives you the illusion of having access to all of it.
+And so this might be two gigabytes, then, of memory.
+Well, one of the first things that happens
+is that the zeros and ones that compose your program, whether it's
+called A.out or Caesar or Vigenere or Structs One, those zeros and ones
+are loaded way up top here in your computer's memory.
+So the text segment in memory is a weird name
+for the zeros and ones of your actual program.
+It's not ASCII text.
+It's like literally zeros and ones of your compiled program.
+Below that are what are generally called initialized data or uninitialized data.
+And this essentially just means any global variables
+you have in your program are stored here or here.
+If you gave them values at the top of your program,
+they're initialized by definition.
+And if you didn't, they're uninitialized.
+So the compiler just kind of lays those out a little bit differently.
+At the very bottom are something called environment variables,
+which we don't use too much but you use them
+in a few weeks for web programming.
+You'll often store things like user names and passwords or other values
+that you don't want to save in your code.
+But you want the Mac or PC or server to have somehow access to.
+But these are the ones we'll talk about the most, stack and heap.
+And we saw a couple of examples of each of these, though, briefly.
+What did we use the stack for or claim it's used for last time?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Say again?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Int min void, and more generally,
+functions when they are called.
+Main is, of course, the go to one for all programs' beginnings.
+But it might call another function like swap.
+And swap itself might call something else, maybe printdef gets called.
+So every time you call a function, it gets a slice of or a frame of memory.
+And they go up and up and up as those functions get called.
+And this was ultimately illuminating, at least theoretically,
+as to why this program was broken.
+The program we looked at last time, the swap and no swap programs,
+we claim that this implementation was wrong.
+And yet I think when Kate came up and we did the example with switching
+the Gatorade flavors, this is pretty much
+an interpretation of that into code.
+And it's correct in one sense and it's incorrect in another.
+In what sense was this code actually correct?
+In the no swap program.
+Because we did walk through it briefly with the debugger.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: OK, we needed temporary container or variable in which
+to store one of the values or one of the Gatorade flavors.
+And by the time we got to this third and final line
+in this function, what could you say about A and B?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, they had in fact been swapped.
+And I saw that, I think, by plugging in, I think I struggled with the debugger
+so I used E print def at the last minute just
+to see what had happened after that very third line.
+So it works.
+This function does swap A and B. But it did not swap what?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: X and Y, which were the variables in main.
+And so recall the story we told last time,
+was that if we focus only on your computer stack,
+that sort of bottom portion of memory, when main is called,
+it gets a chunk of memory down here at the bottom
+because it's the very first function to be called.
+And it had variables, recall, called X and Y whose values were one and two.
+When main called swap, the other function we just saw,
+it had values called A, B, and also temp that initially were one and two.
+And eventually became two and one.
+But that picture kind of answers the whole question.
+The reason X and Y didn't change is because you literally
+change in that red version, just A and B.
+So we solved this problem, recall, last time with what new feature of C?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Pointers, so addresses.
+Rather than just hand the function, the values you want to swap,
+give the function a road map, so to speak, to those values
+so that the function can go to the values you actually care about
+and move them wherever they are.
+And it's a strange looking syntax at first.
+It looks like multiplication all over the place.
+But it had two different uses.
+If you have the star or asterisk up here and a data type like int next to it,
+this is saying, hey computer.
+Give me a variable called A. But that's not going to store an int.
+It's going to store what?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, the memory address of an int and just as B
+is going to store the address of another integer.
+So those are kind of placeholders for the addresses.
+So down the road is the Science Center.
+So if the address of the Science Center is 1 Oxford Street, Cambridge,
+Mass 02138, that is it's postal address and it uniquely identifies that
+building.
+Similarly inside of a computer do values have unique addresses.
+They're just much simpler.
+They're numbers, they don't have streets and zip codes and all of that.
+But it's the same exact idea.
+So here we still have a variable temp of type int.
+So give me a temporary variable just like Kate had
+the extra cup that was initially empty.
+*A, though, without a data type to the left of it, was like saying what?
+
+*A in this context is a sort of different English sentence than this
+one.
+This means give me a pointer to an int or declare for me a variable
+that will store the address of an int.
+But this says, go to that address.
+So it means A is in address, *A means go to that address so you can get
+at the value, which probably in the story, is one.
+*A means the same thing.
+Again, go to that address.
+And then, by the way, go to that address B.
+Whatever that value is, put it where this finger is already pointing.
+And then *B means go to that address and put whatever was in the temporary cup
+of Gatorade, or in this case, the value one.
+So pointers, though kind of a very convoluted way
+of fixing this solve the problem fundamentally, because now
+rather than passing one and two, we instead passed in here the address of X
+and the address of Y that allowed the computer
+to then go to those locations in memory and actually
+do what it is we wanted it to do.
+So long story short, this is how the computer stack is used.
+When you call a function, it gets a new slice of memory on top
+of whatever function called it.
+As soon as that function is done executing,
+this memory effectively goes away.
+It's technically still there, because it's hardware.
+It's not going to physically disappear.
+But now whatever next function main calls, maybe printdef, maybe something
+else, it will reuse this memory in any number of ways
+that it wants for its own local values and parameters.
+So given that definition, the fact that the stack, kind
+of like trays in the cafeteria grow up and down
+and up and down as a program calls functions and those functions
+return, where do garbage values actually come from?
+
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Old things that were in that memory.
+So I kind of made this sweeping claim in the past
+that you shouldn't trust variables if you yourself
+haven't put values in them, because they have so-called garbage values.
+But that actually has a very precise meaning.
+That means if you have called a function and it
+needs a variable that just happens to be here, and this is like a minute
+into your program's running, a whole bunch of different functions
+might have used and unused, used and unused that portion of memory.
+So they're just going to have zeros and ones lingering there in some pattern.
+The computer could be really defensive and it could just change
+these all to zeros bits all the time.
+And that could have been a reasonable design decision,
+but long story short, C does not do that.
+It would have just been time consuming, especially years ago
+when computers were slower.
+The language was younger.
+And it just wasn't compelling to do that.
+So you just get garbage values, which I have typically
+just written as question marks.
+But that's why.
+There are garbage values there because they're your own previous values,
+or those of some functions.
+So the heap, meanwhile, was fundamentally different.
+So the heap is this upper portion of memory
+that is in some sense conceptually above the stack.
+And it's up here.
+And that's different in the sense that it's more for long term storage.
+The stack is for short term storage, just
+to use locally when a function is executing.
+But suppose your program is to run for a while,
+or suppose you want a function to allocate memory that does stick around
+and does not just immediately become garbage values.
+In fact, think about GetString.
+GetString is a function we wrote and its purpose in life
+is to get a string from the user, which is a whole bunch of characters.
+And consider this.
+If GetString is called and therefore gets a slice of memory on the stack,
+and I type in Maria's name, M-A-R-I-A and then that gets a secret /0.
+Where is the M-A-R-I-A and /0 stored?
+Can it be, by this definition, stored on the stack?
+Why?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Exactly.
+So if we allocated space on the stack, which we could do with an array,
+and then return the address of that string,
+that would be valid in some sense, because you
+would have allocated the memory.
+And I'll go ahead and draw it like this.
+If we had a function, GetString being called and GetString's
+being called by main, that might mean that GetString has this chunk of memory
+here.
+And if Maria or I go ahead and type in her name,
+that's like allocating space for M-A-R-I-A /0.
+And you can think of this as just being a whole bunch of bytes in that frame.
+So they do exist and they literally are stored in memory.
+And I could return the address of this first byte, whatever this is.
+Maybe this is byte 10 or 100 or whatnot.
+And I could return that address to main as GetString's return value.
+But as soon as I do that, yeah, exactly.
+The memory doesn't technically go anywhere.
+But it's no longer trustworthy.
+All of that is now garbage value.
+So you might get lucky.
+And if you try to print GetString's return value you might see Maria
+but maybe briefly, because the next time you call a line of code
+or somehow that memory's reused, Maria's name
+might get overwritten with some other values
+because her name becomes, by definition, a garbage value.
+And you don't know when it's actually going to get reused.
+So that's not safe.
+So this is why the heap exists.
+If you need to keep your memory around for a while, like GetString is supposed
+to do, turns out you can allocate it just elsewhere that won't disappear
+until you yourself free it.
+And so that's when we introduced last time a couple of new functions,
+malloc for memory allocation and it turns out
+there's an opposite of it, free, which you'll
+need to use for future problem sets dealing with memory management
+in order to undo the allocation here.
+Otherwise you end up having what's called a memory leak.
+And the computer might slow down, run out of memory,
+because you're not giving it back.
+And as an aside, it turns out there's a couple of cousins
+of malloc, calloc and realloc.
+Calloc is kind of cool in that the C means clear.
+So calloc is identical to malloc, but it zeros the entire chunk of memory
+for you.
+So if you just want to initialize to have no garbage values whatsoever,
+you can use calloc instead of doing it yourself with a four loop or something
+like that.
+Realloc, we're going to see, is a more powerful function
+that allows you to take a chunk of memory and somehow grow it.
+But we'll see what that actually means in a moment.
+But with this power comes great responsibility.
+And we saw that things can go horribly wrong for binkie
+when you misuse memory addresses.
+And recall that we looked briefly at this program by way of Nick's video
+from Stanford.
+And let's see what these lines of code actually represent here.
+So here and here I'm declaring two variables, X and Y,
+that are going to store what, generally speaking?
+Addresses of integers.
+So that's all that's happening there.
+This now, was a new line of code last time.
+Where it's saying, call malloc, so allocate some amount of memory.
+How much memory do you want?
+Whatever the size of an int is.
+Odds are it's going to be four, maybe eight, some power of two
+or some multiple of two here, or a multiple of four.
+So here we get back what?
+A chunk of memory or specifically, its address and we
+store that in X. Meanwhile this line says, go to that address
+and put the special number 42 there.
+This next line blindly says, go to the address in Y
+and put the unlucky number 13 there.
+But that's where binkie had an accident because what
+was inside of Y at that moment in time?
+
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Memory it wasn't allowed to touch.
+And why?
+Be more precise.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: So close.
+That's going explain the symptom ultimately but?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Exactly.
+I didn't ask for any memory whatsoever.
+So by default, even though this looks funky,
+int*y just means give me space for an address.
+So that means, give me four or eight bytes of memory in the computer's RAM.
+But what is inside of a variable by default, have we claimed?
+Just garbage values.
+So there's going to be a number there, and numbers are our addresses.
+So it's going to look like there's an address there.
+So it is technically correct to say, go there.
+But it's like following a map where you have no idea where you're going.
+You might sort of walk off the edge of wherever you are.
+And that's when bad things happen.
+And so the visualization that Nick put together with claymation was this.
+If you have this and it turns out it doesn't
+matter if the star is on the left or on the right here.
+But we have conventionally put it over onto the right side,
+next to the variable.
+When you do int*X and int*Y, that's like saying,
+give me a chunk of memory or clay for each of these variables.
+And he just kind of circled the little arrowhead there on the string
+because there's memory for it.
+It's just not pointing anywhere specific.
+It's a garbage value at this moment in time.
+The next chapter in this story was this.
+Allocate space for an int, drawn in white clay here.
+And Nick, because of the assignment, said X, which is again is a pointer,
+is now going to point to that chunk of memory.
+So it's no longer a garbage value.
+It points somewhere specific.
+That is why Nick was then able to say, go there.
+Follow the arrow, and put the number 42 there.
+But the next line of code, this one went horribly wrong
+because Y was not pointing anywhere.
+Nick tried to say, go there and put 13 but there is nowhere so
+the computer crashes.
+A segmentation fault, meaning that you touch the segment of memory
+that you should not have because you tried to go somewhere
+where it was just some garbage value.
+And the fix, recall, might be this, or a solution.
+If we instead kind of rewind and fix binkie.
+And say Y equals X, that's not allocating extra space.
+That's just saying, have Y point at the same chunk of memory as X.
+Because again, X and Y are just addresses.
+So if the address is 100 in memory, now X is 100, Y is 100.
+They're both pointing at the same chunk of white clay.
+So if he then did *Y, gets 13, that says, go there.
+Update the number.
+And now 42 became 13.
+Very similar in spirit, in fact, to our capitalization example,
+when we pointed to strings last time, at the same chunk of memory.
+So any questions on the stack or as depicted here, by binkie, the heap?
+Malloc allocates memory from the heap.
+But anytime you declare local variables or arrays
+inside of a function, that ends up on the stack.
+And thus far malloc is the only tool, or calloc or realloc,
+that gives us access to this new portion of memory depicted in white clay
+here and sort of depicted in our diagram up above.
+Any questions?
+Yeah.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Good question.
+So keep in mind that X and Y are both the same data types.
+They're both pointers to addresses.
+So as such, if you're going to set one equal to the other,
+you have to just store the value that's in one inside of the other.
+Otherwise it would be trying to put an integer
+inside of a pointer, which isn't quite correct even though they're
+technically both numbers.
+So this is just saying, whatever address is in X,
+put that same address in Y it says nothing about going to that address.
+It's like making a photocopy of a map but not actually following
+that map yet.
+Until this line, which then says, go follow the copy of the map.
+And it turns out it leads you to the same location.
+Yeah?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: So if you return, in C you can only return one value.
+So you're kind of in a bad spot because you ideally want to return two values,
+right?
+Both A and B you want to return B and A. There
+are ways you can work around that and kind of sort of return two values
+and see.
+But in short, it's much easier said than done.
+Python will actually make that much easier.
+But the short of it in C is you can't return multiple values.
+And that ties our hands in this case.
+OK, so odds are, related to all of this, you've
+heard about this website, which is enormously useful when you're
+trying to learn some new language, when you're out in the real world
+trying to solve some problem because this
+is this wonderful community of people who post questions and answers
+and ideally link to canonical references so you can kind of understand
+why some answer is the way it is.
+But this actually has a very technical meaning, Stack Overflow.
+And stack, of course, is now a familiar concept.
+And you can imagine something like this picture eventually
+going very wrong if you call so many functions that you just kind of run out
+of memory.
+Or not even run out per se.
+What are you going to hit eventually if you keep calling function
+after function after function?
+The heap.
+And then bad things are going to happen.
+If your stack frames and your local variables
+are so numerous that you start overwriting the heap memory,
+now values that you allocated with malloc might themselves get clobbered.
+So this is not the best design decision but it is the reality.
+And it's mitigated only by using a compiler that
+might help you notice this or by actually using
+more memory than you actually need.
+Now, Stack Overflow actually has a very technical meaning here,
+as does heap overflow.
+Stack Overflow means you overflow the stack.
+You just call so many darn functions that you just touch memory you
+shouldn't.
+Heap overflow would be the opposite.
+You keep calling malloc and malloc and malloc
+and the heap overflows the stack.
+Because for better or for worse, the stack is growing this way
+and the heap is growing this way.
+And eventually they're going to strike each other.
+So this is a more general way of saying buffer overflows.
+A buffer it's just a chunk of memory that stores data or values.
+We people in the real world might have heard
+of this in the context of video, YouTube, or various video players.
+If you've ever seen the expression buffering, dot dot dot.
+It's the most infuriating thing.
+Something's about to happen in the movie or show you're watching.
+And the damn thing start buffering, buffering, buffering.
+What does that mean?
+Well, the video player, YouTube or something else,
+has a chunk of memory, which you can think of as an array.
+And loaded into that array are the zeros and ones
+that compose the movie or TV show you're watching.
+And those were downloaded over the internet.
+And what happens is, hopefully your internet speed is faster
+than the movie's own playback.
+So that even though you might be at the minute 10 in the video,
+hopefully your computer has downloaded minute 10 through 11
+so that you have this built up buffer of bytes
+that you have a whole minute where you can watch,
+even if your internet connection goes out.
+But when your video is buffering, it means you have this array of memory
+and you've kind of looked at or watched all of the bytes in it.
+And the buffer is now empty.
+But the opposite can happen, too.
+If you try downloading more bytes then you have memory for,
+you might try putting minutes of the video someplace they
+don't belong in your computer.
+Or if you call too many functions or if you call malloc too many times,
+you might overflow the chunk of memory that's been allocated.
+So buffers are all over the place.
+And indeed, a string as we know it is just a buffer.
+It's an array of memory and hopefully you
+will only put as many characters in that string
+as can fit in that chunk of memory.
+So what kinds of things can go wrong?
+This is a bit of a contrived example, but it
+comes with a couple of visuals just to paint
+a picture of how adversaries can hack into systems
+that are written in languages like C. So here's a quick program.
+We're going to include string.h.
+And down here we have int main that takes command line arguments.
+Notice this function does not do any error checking at all.
+It's pretty stupid.
+It just calls a function foo and passes an argv[1].
+So the idea here is that this is a program
+that if you take a command line argument, a word after the program's
+name, just gets blindly passed into the foo program.
+OK.
+So next, what does foo do?
+It accepts as input a string, a.k.a. char* and we're just calling it bar.
+And then it allocates an array on the stack called C of size 12.
+And then even if you've never seen this function before,
+you can maybe kind of infer from its name, mem copy, like memory copy.
+So it turns out this is going to copy into this memory whatever is
+in this memory up to this many bytes.
+So if I type in Maria as the command line argument, M-A-R-I-A is five.
+So that means the length I typed in is going to be five.
+And this is going to copy five bytes from bar into C that's it.
+Now it's meant to be just a monster.
+This program is pretty useless at the end of the day.
+But it's kind of distilled a thread into the fewest lines of code.
+What does this actually look like or what's happening?
+We've called the function.
+We've allocated 12 bytes.
+We've copied those five bytes into those 12 bytes.
+So all is well in this story.
+
+But what actually happens in memory?
+So here's a picture of the stack kind of zoomed in and nicely colorized.
+So stack is going this way.
+Heap is growing this way.
+And this is just showing you technically how things are laid out on the stack.
+I keep kind of simplifying the world by just drawing things
+as X and Y and A and B. But they actually follow a precise order.
+So specifically, if we have a local variable
+called bar, which we did for this function,
+it goes right there at the bottom.
+If you then declare an array called C, it goes right up there on top.
+And these are sized proportional.
+This is four bytes.
+This is going to be 12 bytes.
+So it all is kind of proportional size.
+And then it turns out, and we won't go into too much detail,
+but if you like this stuff, CS 61 and other classes will explore it,
+it turns out another thing that has always been tucked away on the stack
+secretly is what's called a return address.
+So when main calls swap, it's like handing the keys to the car
+off to someone else.
+Like swap, go do your thing.
+But main kind of has to tell swap or any function it calls,
+how to get back to its chunk of memory so that execution can resume with main
+as soon as swap is done executing.
+And it's not its stack memory, per se.
+Recall that top portion of memory that I described as the text segment?
+All the zeros and ones that compose your program?
+It turns out that main, when it calls swap or some other function,
+it tucks its own return address, the address of the appropriate zeros
+and ones in that text segment, into four bytes here, or maybe eight bytes,
+the address to which swap should hand the keys back to you, so to speak.
+Otherwise it's like main handing the keys off to another function
+and then it never hears from it again so main's other lines of code
+never get executed.
+So long story short, there needs to be an address or a map tucked away
+on the stack so that swap can hand control back to main.
+But what happens here when you actually use this memory?
+Well, it turns out that if we just number the bytes on the stack, and that
+was a size 12, the first one is zero, and the last one is 11.
+So zero through 11 gives us 12 total.
+So if we type in something like Maria or maybe more generally, hello, H-E-L-L-O,
+which is the same length, that's using six bytes technically,
+because the /0 and all is well.
+Fits comfortably in C and we've got room to breathe.
+But what if we don't type in Maria or hello?
+What if we type in a very long sentence that's more than 12 characters?
+Where are they going to end up?
+If you type in a longer string at the command line in argv[1],
+notice the code is flawed.
+You're going to check the length of the word that the user typed in,
+copy all of its bytes from bar into C. But what
+if the length of the string you typed in is 13?
+What are you going to do?
+You're going to copy 13 bytes from bar into C,
+thereby filling all of these 12 bytes plus one
+more that you shouldn't be touching.
+And if the string is even longer than 13,
+if the adversary really typed a long sentence or phrase or word or whatnot,
+you're going to really exceed the boundaries
+of that buffer or that array.
+So what does this look Like Well, if you type in a much longer word,
+like A-A-A-A-A-A-A, you could end up overwriting these 12 bytes,
+also these four bytes, also these green bytes, whatever they are,
+and most importantly, even the red bytes that I described as the return address.
+Now A-A-A-A-A really isn't going to cause anyone any trouble
+because it's just a sequence of random ASCII characters.
+But characters at the end of the day are just numbers,
+and numbers are just bits, and programs are just bits.
+So the threat here is that if you're a pretty sophisticated adversary, someone
+who really knows programming, you could technically
+write a program that does something really bad like delete
+all the files on a hard drive.
+Or send spam to everyone in your contacts.
+Or anything like that because at the end of the day
+the program that he or she has just written is just zeros and ones.
+If you then convert that program zeros and ones to the corresponding,
+even if weird-looking ASCII values, you could technically type a program
+at the command line in argv[1] just by typing out the funky characters
+on the keys that are not going to make sense to a human reading it.
+But those ASCII characters in the context of a program
+are going to be interpreted as code.
+And if you're really good, and frankly, it's
+not so much that you're really good.
+If by a lot of trial and error, you happen
+to overwrite the return address in a program,
+you can trick the computer into not returning
+back to main, but to jumping to the very input you passed into the program.
+So A here implies attack, like attack code.
+So if you're really clever, you can pass in an appropriate pattern of zeros
+and ones, convert it to ASCII so the human can type them in at the prompt,
+overwrite this return address, and trick the computer program
+to return from this function not to main, but to like, this byte up here.
+And maybe this byte coupled with all of these others
+means delete all the files on this user's hard drive,
+send spam to everyone in their contacts.
+This is called a buffer overflow exploit,
+and it's incredibly shockingly common even these days.
+C is not commonly used for a lot of programs but it still is everywhere.
+And there's other languages, too, like C++ that lend itself to this.
+And even though this is still a little arcane
+and you don't need to worry too much about the addresses on the screen,
+the fundamental threat here is that if you do not
+check the boundaries of your arrays and the amount of memory you've allocated
+and you touch memory you should not, very bad things can happen.
+You're effectively giving control to anyone
+on the internet who can use your program because he or she can be clever enough
+to inject their own zeros and ones into your program for execution.
+OK.
+So dear God, this is scary in a computer science sense.
+So what can we do to defend against this beyond just not writing bugs,
+which is never going to happen, right?
+Even the most advanced, best programmers still
+make bugs, especially as the software gets more and more complicated.
+We have eprintf and we have help50 and we have debug50
+but there's other tools, too, like Valgrind
+which happens to be a tool for detecting memory leaks in a program
+and other memory-related issues.
+So let me actually go ahead and open this program, memory.c.
+And it looks like this.
+And let's see if we can't tease apart what is buggy about this program.
+So here's the program here.
+
+So, include standard lib.h, function f, function main, main calls f
+and returns 0.
+Nothing really interesting going on there.
+So what's in f?
+F on the right hand side allocates space for 10 integers, I think.
+Malloc returns the address of that chunk of memory and stores it in X
+and then line 8 is the bug, I think.
+What's wrong with line 8?
+
+Let me go here first.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Exactly, because we start counting at zero
+and because we're asking the computer for space for 10 ints,
+we get them back.
+But that's going to be accessible via [0] through, as you say, [9].
+So [10] is like writing one int past the buffer, a.k.a.
+A buffer overflow.
+Now it might be hard to see this, especially when the program isn't
+as relatively short as this but is buried in a dozen lines, 100
+lines, thousands of lines of code.
+But tools can help.
+So if I go ahead and make this program with make memory.
+And then I go ahead and execute Valgrind ./memory enter,
+the one downside of this program is that its output is just completely
+overwhelming.
+But let's see if we can't tease apart some recognizable terms.
+So all of this on the left is a bit of a distraction.
+This is just copyright information.
+So the interesting stuff seems to happen here.
+I see invalid right of size 4.
+Not quite sure what all of this means, but I
+do see that it's somehow related to uh-oh, line 8 of memory.c line
+13, line eight, line 13, a lot of bugs in the same places, it seems.
+And then here, address such and such as zero bytes after a block of sys
+40 alloc, it's a little hard to wrap my mind around this.
+So as always, let's at least initially just run this through help50
+and see if it can help tease this apart.
+So we see the same output.
+It recognizes something familiar in yellow here.
+Invalid right of size four and it highlights the lines.
+And our TF-like feedback is, looks like you're
+trying to modify four bytes of memory that isn't yours, question mark?
+Did you try to store something beyond the bounds of an array?
+Take a closer look at line 8 of memory.c.
+So that's kind of a mouthful but it's just
+because we have practiced reading stuff that's pretty arcane like this.
+So we've extracted all of the salient details like line eight of memory.c.
+So line eight of memory.c, as we noted, is already the dangerous line.
+So what might it mean to have an invalid right of size four?
+Well, it turns out an int in the IEDE is how many bytes?
+Four, or 32 bits.
+So invalid right of size four just means that this int here, zero, is an int,
+it's four bytes, it's just invalidly being written, as you say,
+to the wrong location.
+So this is Valgrind's pretty terse way of communicating that idea.
+So here we have then an explanation.
+So how do I fix this?
+Well, if my intent was just to update the last area there,
+let me go ahead and do make memory enter, ./valgrind ./memory enter.
+And now this is a good thing except we've made some progress.
+Let me scroll up to fit more on the screen.
+So I got rid of that message, invalid right of size four,
+but this does not sound good either.
+40 bytes in one block are definitely lost in lost record one of one,
+all right?
+So I need a little help with that.
+So let me do help50 again until I get familiar with the syntax.
+And it's highlighted that chunk of output.
+Looks like your program leaked 40 bytes of memory.
+Did you forget to free memory that you allocated via malloc?
+Take a closer look at line seven of memory.c.
+So let's do exactly that.
+So line 7 of memory.c, OK, here's where I malloc the memory.
+And per help50's own feedback, what have I apparently not done?
+Freed it.
+And it turns out freeing is actually pretty straightforward
+so long as you remember it do it.
+You just call free, passing in the same pointer.
+You don't have to remember how long it is.
+It's up to the operating system to remember how long it is.
+But now if I do make memory.
+And now I do again Valgrind./memory enter, heap summary,
+all heap blocks were freed.
+No leaks are possible.
+I see nothing particularly worrisome.
+And the program is bug free now.
+So Valgrind is another tool in your toolkit
+that doesn't help you find logical bugs per se.
+It helps you find memory-related errors, which might be logical bugs.
+But it helps you hone in on them and see them in a way that you as a human
+might not otherwise, especially if it's buried in many, many lines of code.
+Now you'll notice, too, real briefly, in Valgrin's output
+in these several examples, there are all of these funky numbers.
+So if I go back to the original version here just a moment ago,
+where it was in fact buggy in a couple of ways.
+And I rerun make and I rerun Valgrind, you'll
+see a whole bunch of things like this.
+At OX such and such, at OX such and such, OX, what did OX denote last time?
+So hexadecimal, so this is just a succinct
+if weird-looking way of representing numbers, generally memory addresses.
+And so this very specifically is saying that line 13 of memory.c
+happens to be using memory at this location.
+It's not particularly useful to us the programmers.
+But that's why you see it.
+And Valgrind is arguably a more advanced tool,
+which is to say that memory addresses in tools like this and even in debuggers
+tends to be written using hexadecimal notation like that.
+Of course, you've seen hexadecimal converted.
+Like these are the first three bytes in a JPEG,
+which are typically thought of using hexadecimal like this.
+But even though this looks new, it's the exact same idea.
+And I thought I'd tease perhaps with a joke
+that only a computer scientist can understand.
+OK, so that's a good one that goes around each year.
+So that of course is alluding to just these addresses.
+And now let me propose one other debugging technique and explain like,
+what the hell is going on here on stage today, too.
+So you have of course debug50, which is a tool for debugging and walking
+through code.
+And silly though this is, there is actually
+this thing in the world of programming, rubber duck debugging.
+This is, in the absence of having a TF or a CA to bounce ideas off of,
+this is in the absence of having a roommate around or roommate around
+who wants to talk to you about your code.
+It's recommended that if you have some bug in your program,
+that you keep something like this on your desk.
+And in the absence of roommates and friends
+and hopefully doors closed, you talk to the rubber duck.
+And I feel silly even saying this but there's a Wikipedia article
+on this it's a real thing.
+The idea here is that if you've ever been in office hours
+or you've been chatting with a TFer friend
+and just like talking about your code and talking about what
+it is you think your code is doing, just very often that act
+of saying something and hearing yourself say it can help reinforce one,
+what your code is in fact doing.
+Or if you realize verbally, wait a minute.
+What I just said does not seem to line up with the code,
+finally that light bulb goes off.
+And it doesn't have to be a duck.
+I mean, you can talk to the wall but that's a little stranger.
+So at least this is a personification of having someone like a colleague
+to talk to.
+So at the end of today or during break by all means,
+grab yourself a rubber duck the debugger and keep it on your shelf.
+It doesn't have to quite be this large.
+But this is a genuine debugging technique.
+Like, in the absence of understanding something,
+don't necessarily turn only to CS50 discourse or to office hours
+or to sections or the like.
+Literally try talking yourself through it,
+even if it feels a little bit silly.
+And if it does really feel silly, just look at him
+and talk to yourself in your head perhaps.
+But that kind of enunciation of what your code is doing or should be doing
+will hopefully help all the more light bulbs go off.
+And eventually you can just keep them on your shelf
+and take off that training wheel as well.
+Let's go ahead and take our five minute break here.
+Grab a duck if you'd like and we'll come back with more.
+All right.
+So we're back and we keep thinking about memory.
+Is this generally laid out as having addresses,
+but of course we've clarified that a little bit in that we have
+more of a canvas at our disposal now.
+But even then we keep talking about having things back
+to back to back in memory.
+But that simply needn't be the case.
+Like, what we have now with pointers and with malloc
+and these kinds of functions is the ability to get memory from anywhere
+we want and somehow stitch it together or connect these things.
+But how do we actually do that with the ingredients we now have?
+And why might we want to?
+So here is how we keep representing something like an array.
+An array, again, is just a contiguous chunk of memory
+where you store things literally back to back to back.
+But suppose that I've put six things into this array, six numbers, one, two,
+three, four, five, six.
+What happens if I try to put seven into this array?
+
+What do I have to think about or worry about?
+
+Touching memory that I'm not allowed to touch.
+So I'd better not put it over here.
+But what if seven must go in this array?
+Well, I don't have too many options.
+Like, if I fill the space I have to either overwrite some value or put it
+somewhere it shouldn't be, and that should never
+be an option because the program could or will crash.
+And so I could alternatively just allocate more memory.
+So how do I do that?
+Well, if I've allocated this array initially to be a size six,
+I could encode, just allocate a new array of size seven and then do what?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, add all the numbers and seven.
+So I can take this array, I can give myself another one elsewhere in memory,
+copy the values from old to new, then maybe free the old.
+And then move on with my life because now I have enough memory.
+Now, that fixes the problem.
+And if we implemented it in code correctly,
+it would be by nature correct, assuming there's enough memory in the computer.
+But why is that arguably bad design?
+AUDIENCE: It's a waste of space.
+DAVID MALAN: It's a waste of space how?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, even though I don't keep both around in the story
+I'm telling, it's temporarily pretty inefficient in that I'm
+using twice as much memory as I actually need only to then kind of downscale.
+What else?
+Yeah.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, if I want to change the size of the array again,
+whether bigger or even smaller perhaps, if I remove items from the list, then
+I just have to keep allocating new memory, which is wasteful
+and more importantly, it's not just space inefficient.
+In what other sense is inefficient?
+Time, why?
+Where is the time coming from?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: So that's an asymptotic notation.
+This is copying something from one array to another would be in big O of what?
+
+They go of side, yeah.
+So if we just genericize size as n it's like big O of N.
+It's a linear time operation, which isn't horrible, right?
+N squared is bad.
+Linear has never really been bad but we already know that log n is better,
+constant time is best.
+And so just wasting any amount of time doesn't feel like optimal design.
+And that all is a function of arrays being
+a fixed size and contiguous in memory, back to back to back.
+In fact, arguably there's one other issue that could occur.
+It's not so much if you have a very small array.
+But what if you have a huge amount of memory available
+but it's only in size five or six increments?
+Like, for whatever reasons your computer's
+been using some of this memory, this memory, this memory, this memory,
+and if you add up all the available memory there's a lot of free space
+but they're always separated by memory that's in use.
+So maybe this memory is free, then there's a bite that's in use.
+This memory is free, there's a bite in use.
+So your memory is quote unquote very fragmented.
+So you have lots of available memory but it's not contiguous.
+You cannot, in this model, allocate an array of size seven if you don't have
+that memory available contiguously.
+So not as big of a concern given enough memory,
+but at least something that could arise.
+So let's introduce the solution.
+Something here called a linked list.
+And the name kind of describes what it is.
+It's still a list of numbers but it's linked by way of these arrows.
+And we've used arrows before.
+What have we used arrows to represent in pictures past?
+Yeah, so pointers.
+So now that we have the expressiveness of pointers, you can kind of digitally
+stitch your data structures together if you spend a little bit more memory.
+So we've not really solved the problem you identified,
+which was the space use.
+But if you're tolerant of that and if you've
+got enough memory at your disposal and can
+afford to spend it, why don't we store for every number
+not just the number but also space for a pointer?
+So each of the boxes I've drawn here now doesn't just
+have a box for the number itself n.
+It's got really two boxes together, one for n and one for something
+we'll call next, which is going to be a pointer to
+or equivalently the address of the next node, as we'll call it,
+the next box in this list.
+Now even though we've drawn it here very prettily from left to right,
+technically these boxes could be anywhere in memory,
+specifically in the heap, we're going to see.
+But they don't have to be back to back.
+And so the fact that there are these gaps in between the nodes
+deliberately paints a picture that these things don't have
+to be back to back to back any more.
+They can be anywhere.
+And now suppose I've got these five numbers, nine through 34.
+Suppose I want to add another number.
+Where do I put it?
+I don't seem to have room.
+But based on this picture, how much you infer we're going to engineer this.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Yeah, so why don't we just allocate space for another
+and it's not going to fit on the board here but who cares?
+We can put it here.
+Put the new number in it and then just add a line, an arrow from it to that.
+And so this then is going to be what we call a linked list
+and it gives us dynamism.
+It gives us the ability to grow or shrink our data structure, addressing
+your concern, not necessarily yours.
+It's still a little space wasteful, but we gain benefits for both of you,
+your concerns time is a lot better now because we don't
+have to waste time copying the values.
+We just add to the values.
+And if we want to grow or subtract it we only do as much work
+as we're trying to add or subtract.
+We don't have to worry about fixing everything.
+But there is some complexity here.
+And given that we have a whole bunch of these,
+which would make problems at five a little easier,
+if you haven't quite finished who done it.
+Could we get for just one demo today six volunteers?
+Six volunteers?
+All right.
+Come on down, right in front here.
+All right.
+Well actually, come on up.
+Come on up and have a two and three over there, four.
+No one over here today.
+OK, OK, five.
+OK, six.
+OK, six, six.
+Come on up.
+All right.
+We'll save this till the very end.
+But let me give you guys in the meantime, these numbers.
+And if you don't mind holding the numbers
+out I want you to go over to the left there
+and just order yourselves just as the picture on the screen OK, you'll be 17.
+Let's see, let's see, nine.
+I might have given out too many numbers.
+OK, let me free that and give you nine instead, if I may.
+And give you, let's see.
+You have 17?
+OK, so 17.
+And yeah, I'll have you go ahead and flip yourselves if you don't mind.
+22, and then 26.
+And what do we got?
+20, 34.
+34.
+OK, and you guys will be slightly special.
+So who wants to be literally first?
+OK, so here first.
+And who wants to be temporary?
+OK, you'll be temporary, all right.
+Come on over here.
+OK, come on over here and if you guys could step a little closer.
+So we have 9, 17, 22, 26, 34, and give yourselves like a foot in between.
+And if you guys could use your left arms to represent the pointers to visualize
+who is linked to whom.
+OK, and why don't you just point, yes, very deliberately down.
+So what's your name?
+NAZLI: Nazli.
+DAVID MALAN: Nazli.
+So Nazli's left hand will be a null pointer.
+It's not pointing at anyone.
+So literally just pointed down to the ground, like ground electrically.
+OK.
+So now we just have to have some first node.
+So what's your name?
+OLIVIA: Olivia.
+DAVID MALAN: Olivia is a little special here in that her paper has a word
+and it's not just a number.
+She represents a distinct variable called first.
+Because that one catch with the linked list
+is that you don't remember it by way of the address of a contiguous
+chunk of memory.
+You remember a linked list by way of the address of the first node in the linked
+list.
+And what's your name?
+ACHMED: Achmed.
+DAVID MALAN: Achmed.
+So Achmed here happens to be the very first node in the list right now.
+So Olivia's left arm is going to be pointing
+to Achmed to represent that he is the first node in the list.
+OK, and what's your name?
+JESS: Jess.
+DAVID MALAN: Jess.
+We're going to use Jess in just a moment to complete some operations.
+So suppose that we actually want to insert some value into this list,
+like the number 55.
+All right, so the number 55 is going to require a little bit of cleverness
+here.
+And so I need some place to store this.
+I need to malloc.
+So OK, you've been volunteered.
+What's your name?
+STELLA: Stella.
+DAVID MALAN: Stella, come on up.
+So malloc Stella.
+And we will store the number 55 in Stella's node.
+And right now if you could just kind of point your left hand anywhere.
+It's kind of a garbage value.
+OK, thank you.
+And now what's your name again?
+JESS: Jess.
+DAVID MALAN: Jess.
+OK, so Jess is going to help us find the right space here.
+So we can obviously see where 55 belongs if we're keeping this sorted.
+But again, computers don't have that luxury.
+Moreover, we no longer have random access.
+We can't just jump to [0], [1], [2] because there are these gaps between
+them.
+And just to make this more clear, can every other of you
+step forward or back so that it just looks a little weird?
+So you can no longer index into this data structure
+because again, it's not an array.
+It's not back to back.
+These things could be anywhere in memory and it's only the pointers
+that are linking everything together.
+So Jess now is going to initially point at the very same thing
+that Olivia is pointing at, the same address or Achmed.
+All right, so now we have a bit of redundancy.
+But suppose we want to insert 55.
+What kind of logic, what's the pseudocode here for Jess
+to find the location for Stella?
+What should Jess do?
+Yeah.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: OK, keeps going until she finds the null pointer,
+or more specifically, till she finds the null pointer or the right location
+for this number if we want to keep it sorted.
+So let's do that.
+So you're pointing at Achmed.
+The number nine is not greater than 55.
+So Stella belongs after Achmed.
+So what are you going to do?
+Good, you're going to point at Maria.
+So you know to point at Maria why?
+JESS: Because nine is less than 55.
+DAVID MALAN: Nine is less than 55 but also, Achmed isn't just story nine.
+Right, he has this next pointer that's telling
+Jess where the next value is to look.
+So his left hand is the substitute for what would have been just ++ the world
+of an array.
+So you go ahead and physically walk and let's just walk through this.
+So now we're pointing here at 17.
+It's not greater than.
+We point next at Arunev.
+OK, that's a 22.
+Still not the right value.
+We keep going.
+What's your name?
+Jeung Wan?
+OK, that's not the right number because he's holding 26.
+And now we catch you again?
+Nazli.
+Still no good and now go ahead and follow her left hand.
+OK, so now we know that this has got to be the right space because we haven't
+found numerically the right space.
+So if we could borrow you, Stella, all the way over here.
+Well, you're not technically physically moving in memory
+but this will just make the story better.
+OK, so yes, we're re-alloc-ing sort of.
+So what are you going to do now with Stella
+now that you found the right location?
+Leave her here, OK.
+But she's just kind of orphaned now.
+She's pointing at nowhere and no one's pointing at her.
+It's kind of sad.
+And this is actually perfect.
+Memory leak.
+OK, so let's fix.
+Who has the point at whom?
+OK, good.
+And now what should Stella point at?
+Since now she is the end of the list and she's just
+pointing to some garbage value.
+And she's pointing, to be clear, at some garbage value because when you call
+malloc you just get garbage values.
+We overrode one of those garbage values with 55 for n,
+but the pointer has not yet been overwritten.
+So what you want to do, Jess?
+
+To whom?
+That's OK.
+It's close.
+What should her value be if there's no one to her left?
+Should be null.
+OK, and how did we represent null before?
+Yeah, exactly.
+Null, so now we have a list and now just to fix things, your pointer,
+so Jess is kind of temporary.
+We don't really care what her value is.
+But who's important over here?
+What's your name again?
+Olivia was first and now do we have a list that is still linked?
+We do.
+And now, it of course took a little while to walk through this.
+And frankly I kind of told a lie.
+I haven't really made this faster because what
+was the running time of this algorithm?
+It was still a log of n.
+But that's because what?
+I was trying to maintain what property?
+Sorted.
+So suppose I relax that constraint.
+Suppose that I didn't care about being sorted order.
+Can I do better than 0 of n in order to have inserted Stella?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: OK, Constan time, where can I put her then?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Exactly.
+So if we don't care about sorted order, I
+could have saved myself a huge amount of time
+and we could have inserted Stella here, updated Olivia's hands, and updated
+Stella's hands to point at Achmed.
+And then we're done.
+Constant time.
+And here's an example of why big 0 of one doesn't mean one step.
+That's constant time because it's like moving Olivia's hand and Stella's hand
+but not Achmed.
+So that's at least two steps but it's still always two steps.
+So if we could get a round of applause for our volunteers here?
+[CHEERING] You can keep both your numbers and these if you'd like.
+Thank you so much.
+May let this help you P set five.
+Oh, sorry.
+All right, thank you.
+So that's of course just one operation.
+There could have been other numbers.
+Like, if we were trying to insert five in sorted order,
+we would have gotten our constant time or maybe our omega of one
+because in the best case, the number might end up at the beginning.
+20, had we inserted it with our humans, might
+have been a little more involved because we kind of have to walk the list
+as we did with Jess.
+But then she's kind of got to point at the person behind her
+and the person in front of her because she has to update more hands.
+Which is to say, that doing insertions or even deletions
+requires a bit of re-stitching.
+It's like kind of fixing clothes here if you're
+trying to maintain a contiguous thread through all of these data structures.
+But at the end of the day, even though it uses pointers,
+it really just boils down to getting this logic right.
+And in fact, let me do an example here of some code of how we might do this.
+I'm going to go ahead and open up list 0.c
+and take a look at how this here works.
+So in list 0.c we have the following code.
+We first, in main, get a positive number from the user.
+So I'm going to wave my hands at this because this is kind of old school now.
+We've been using a do while loop to get a positive number from the user.
+And I'm calling it capacity.
+So this is an example of getting it in from the user, calling it capacity.
+Capacity meaning the maximum possible size for a data structure.
+That would be a term of art there.
+Here now is where, per week two the class,
+I allocate an array for ints this many ints capacity.
+So that, too, is hopefully familiar.
+There's no pointers yet.
+There's nothing too fancy.
+I'm just allocating an array of size based on what the human just typed in.
+But here's where it gets a little interesting.
+The purpose of this program is to just prompt the user for that many numbers
+again and again and again.
+So I can type in 1, 2, 3 or 5, 17, 20, 22, and so forth.
+And just build up an array of numbers and memory,
+but I'm going to trip over the problem we identified a little bit ago.
+So here we go.
+I initialize size to zero because initially there's
+nothing in the structure.
+While size is less than my capacity, so while the current size
+is less than the max, so to speak, do the following.
+First I'm going to get a number from the user.
+And the goal is to now insert this number into this list.
+But now I'm going to do a quick sanity check.
+Let me check and make sure this number is or isn't in the list already,
+because I don't want to have duplicates.
+Why?
+Just because.
+I want this to be a very clean list, no duplicates.
+And so this loop of code here, maybe from week one, week two, week three,
+is just an example of iterating through an array, looking for the number,
+and if so, remembering that I found it with a Boolean
+so that I have an answer found or not found in a Boolean variable.
+OK.
+So that's all that code is doing.
+Still no magic.
+So now is where the interesting part of the story happens.
+So if the number was not found in the list already, here is how per week two,
+we add a number to the end of an array.
+Because if the size is initially zero, numbers [0]
+is where the first number should go.
+If size's initial is one at this point, numbers [1]
+is where the new number should go.
+And then I should increment size.
+But there's a problem here in that once I print out these numbers
+and the program ends, I can only have inputted as many numbers
+as are available, as I have capacity for.
+So it's kind of constrained.
+So what if I want to do a little better than this?
+Enlist 1.c which does now introduce new material, or at least an application
+of the topics this week and last?
+Here in line nine is technically how I can allocate
+an array before I know the size of it.
+So an array, recall, is just a chunk of memory
+identified by some word, like numbers or students or whatnot.
+But technically we've seen that there's kind of this equivalence, where
+if an array is just the chunk of memory, you can technically refer to an array
+by an address, the address of its first byte just like a string.
+So this on line nine is a little new.
+But it's kind of that idea.
+Give me a pointer called numbers but initialize it to null.
+There's no space for the number.
+But this pointer therefore doesn't point to any chunk of memory.
+It would be like Olivia standing up here awkwardly with no one
+to point at because we've only allocated space for the first pointer,
+not for everyone else on the stage.
+So capacity is by default zero.
+So here the rest of the program is pretty similar.
+I go ahead and infinitely prompt the user for a number.
+I check for errors.
+It turns out if you read the documentation
+for get int it will return a special constant called int
+max if the user stops for writing input.
+Here I'm just checking with a loop in a Boolean,
+whether or not this number is in the list, same as before.
+But here's where I start to use some new functionality.
+If the number was not found already in the list, and the size of the list
+already equals its capacity, that is if it is filled,
+what do I have to do conceptually now?
+If I've got an array whose purpose in life, as we proposed earlier,
+is just to grow it?
+
+I need to add space for it.
+So I need to add space, as we were proposing.
+Even though this is kind of lame in that it's a little inefficient,
+here's how we do it.
+I can simply call real alloc, passing in the array that whose memory
+I want to reallocate.
+And I just tell realloc how much space I now want.
+So here, this is the size of the int, four bytes.
+And this is how many bytes I want.
+So whatever the current size is, realloc give me one more byte.
+And then realloc gets assigned to numbers
+and I check if it's null or not null.
+And I'm keeping it a little simple.
+We could add some additional error checking here, but what does realloc
+do?
+Realloc is pretty cool because if you pass to realloc,
+a pointer to a chunk of memory that's like of this size, realloc
+will look in your computer's memory and if it
+sees a bigger chunk of memory over here, it
+will handle the copying of everything over to it for you.
+And then return to the address of the new chunk of memory
+and free the old for you.
+So does the switcheroo.
+It's still linear time but this is how you would use it
+without having to alloc and free and use a four loop like we described before.
+And then you can go ahead and put the number in the list as before.
+So the only new thing here, even though we're going through it quickly,
+is that this is how you call realloc.
+You pass in a pointer that's previously pointing
+to a chunk of memory or even null.
+That's OK.
+If you pass it in a pointer that's pointing null,
+it will give you back the address of just one byte and then the next time
+two bytes, three bytes, and four bytes.
+But with linked lists things get a little more interesting.
+And the syntax is going to be a little funky but let's see.
+Here it turns out is how we can implement each of our human volunteers
+in code.
+Each of them I called a node and node is a term of art in CS.
+It refers to some data structure that contains some information.
+Each of them was holding a number, which we called an int.
+And then each of them, this is kind of funky,
+had a left hand called next that was meant to point to someone
+who looked just like them structurally.
+So the idea here is that we don't want to just have another structure
+inside of a structure, otherwise you would
+get this sort of infinite Russian doll kind of thing going on.
+You instead want to say, each of these structures
+has a pointer to someone else who looks like them structurally, too.
+And that's how we get the left arm metaphor implemented in code.
+So that just defines a node, one of our volunteers.
+Meanwhile though, here's how we would implement Olivia in one line of code.
+So Olivia was herself a pointer to a node.
+She didn't have a number, right?
+Her sign just said first.
+She was not holding a number.
+So we don't need a whole structure for Olivia.
+We just need a pointer to one such node structure.
+But initially she was just kind of standing here so we'll just
+say she was null initially.
+So the rest of this code is presumably about malloc-ing someone like Stella
+from the audience, updating Olivia, using Jess to actually update pointers
+temporarily.
+So let's see what this looks like in code.
+So while true, I'm just going to prompt the user for numbers like before.
+As before, I'm going to check for errors in the same way.
+Here's a little different.
+Here's the block of code wherein I just check if my current linked list already
+has the number I'm trying to insert.
+But remember, we took away the expressiveness of square brackets.
+Can't do that anymore.
+I have to now do this with pointers.
+So here we go.
+I, with my four loop, initialize a pointer, Jess,
+to point at the same thing Olivia was pointing at, numbers.
+So again, Jess was also just a pointer.
+She was not holding a number.
+She was holding PTR, so she was just one pointer
+pointing at the same thing as Olivia.
+Here we're saying, so long as Jess is not equal to null,
+so as long as Jess doesn't walk off the edge of the stage,
+go ahead and do the following.
+What do I want to do?
+And this syntax is new.
+We saw at the beginning of today the dot operator,
+which says take a data structure like students
+and go into it with the dot operator.
+Get their name and their dorm.
+That was because the first demo today did not use pointers.
+It just used structures.
+Now we're using structures and pointers.
+And so the syntax changes just a tiny bit.
+When you have a pointer that is a pointer to a structure
+and you want to follow that pointer and go to that structure,
+the one piece of syntax in C that maybe actually maps to reality or concept
+is this arrow operator, which means follow the left hand,
+look at the structure, and get at that number.
+And so if the volunteer's number equals the number that Jess was looking for,
+go ahead and say found is true.
+Otherwise update Jess or pointer to equal
+whatever her left hand is pointing at.
+So if Jess was temporarily pointing here,
+she would then update herself by pointing there.
+And so that's all this code is doing.
+Jess starts to point at whatever her left hand was pointing at.
+She moves physically on the stage.
+All right, so now is where things get a little ugly.
+And we'll do this with a hand-wave because I think this one is better
+done at a slower pace on one's own.
+And we'll come over these kinds of things in section and beyond.
+Here's how I allocate space for a new node.
+When I said malloc Stella, it's this line of code here, 45.
+Malloc space for the size of a node and store it in the person
+that Stella embodied.
+Otherwise, if there is not enough memory, if something goes wrong,
+return one.
+Meanwhile, here's how we add the number to the list.
+So this is exactly what Jess ended up acting out.
+First we handed Stella her number, which is line 52 here.
+We technically told her to point at a garbage value,
+so I've improved the code since.
+So line 53 would be like telling Stella, point here, not here.
+So that's just cleaning up that omission last time.
+And then here we have the same kind of code
+again, a four loop that looks kind of funky
+but it's just like updating the hand as you walk through the list.
+And here's where the interesting part happens.
+At the very end of our story, Jess kind of manipulated our volunteer's arms.
+So if not pointer next, which is a cryptic way of saying,
+if pointer next equals equals null.
+So if Jess has found the end of the list,
+go ahead and update whoever she is pointing at's
+left hand to point to Stella, the new node.
+Then break out because we're done.
+So syntactically, this is hard and problem
+set five will afford us opportunities to walk through very similar code.
+But for now, just realize that all we're doing
+is instead of just using super simple arithmetic, plus one, plus one,
+plus one, we're just kind of following these arrows, following these arrows.
+And the kind of syntax we'll use for that
+is just this, which is not very readable at first glance.
+But that's why I grasp onto, if you are a more visual person,
+the kinds of hand manipulation and arm changes
+that we were doing here physically with our volunteers.
+And then we, again, print up [INAUDIBLE]..
+The last thing here I'll note, and you'll
+do this in problem set five, is here's how you might
+free a whole length list of numbers.
+I just kind of congratulated our volunteers and everyone
+left the stage, thereby being freed.
+But if we wanted to do this more methodically, we could use a four loop
+but here I chose to do a while loop, because it's
+a little more succinct design wise.
+Here was our pointer, temporary pointer pointing at numbers.
+And here I can say while pointer is not null because if it's null
+my work is done.
+Here I go ahead and say, update this value next to equal
+whoever's next in the list.
+Free whoever's currently in the list.
+And then update the next pointer.
+So again, don't worry too much about the lower level details here.
+But just take away for today that we do now have a way of implementing,
+in code, the higher level intuition that derived
+from this kind of data structure.
+But don't fret yet about the code itself.
+But we now have the ability to stitch data structures together like this.
+Upside of which is now we get dynamism, right?
+We're no longer stuck painting our ourselves
+into the proverbial corner with arrays by not allocating enough memory.
+Or conversely, wasting memory by allocating way too much just so we
+don't have to deal with the problem.
+But we pay a price with the linked list.
+We get dynamism and can more efficiently add a node, subtract a node,
+and we just have to in constant time, update those pointers.
+But we spend more memory for all these darn pointers.
+And frankly, the code is more complex.
+So recall from our first or second week, human time, programmer time
+is a valuable resource.
+And making something harder and more time consuming to implement
+might not be a price you want to pay.
+And so even I was just chatting with a colleague
+yesterday about how in graduate school I used to cut corners,
+especially late at night when writing code.
+And I would write sometimes deliberately really bad code
+that might take like eight hours to analyze
+some data set for some research project I was working on because you know what?
+I realized it was faster for me to write bad code, poorly designed, that
+takes eight hours because in those eight hours
+I could just go to sleep, frankly.
+Now I would say that was only because my advisor was not grading me
+on correctness and design and style.
+But it is a manifestation of a very actual resource
+that I don't recommend you cut that particular corner for now,
+since one of the goals of being in a class is to get better at design.
+But at the end of the day and in the real world,
+even CS50 staff and I are constantly making decisions.
+Well, yeah, we could improve this feature of help50
+but it's going to take a week to do it.
+Or we can just throw in some extra line of code and get it done now.
+And it's a trade off.
+And this is what makes code good and bad.
+And when you start to cut these corners in the real world,
+you start to accumulate what the world would call technical debt.
+And debt tends not to be such a good thing.
+And that speaks to the price you're paying in the long term
+because it might take me and the staff longer this summer
+now to go back in and clean all that up.
+And God forbid, overnight frankly, and this
+happened more often than I should admit, my code was buggy and bailed out
+at like 2:00 AM I wake up eight hours later thinking, my data's ready.
+No.
+I should have done it right the first time so
+I could rerun the code again and again.
+So what else do we get now from this ability
+to have pointers in data structures?
+So there's this picture here from Mather's Dining Hall.
+The cap represent the notion of actual trays.
+And we've been using the stack in a very low level
+arcane way to talk about memory management, which
+isn't all that useful to us for solving problems.
+But the data structure is.
+It turns out there is a data structure in computer science called a stack.
+And your computer, Mac or PC, are constantly
+using it to manage functions and memory, but we can use it, too,
+for various applications.
+We can implement a data structure within I have two operations.
+They're conventionally called push and pop.
+Though it's like add and subtract.
+You can call it anything you want but most programmers would
+call it push and pop.
+Push is like adding a tray to the stack and pop is like taking one off.
+But just as the name implies with the stack,
+what's this characteristic of a stack is that it is an example of a LIFO data
+structure, last in first out, L-I-F-O.
+Now what does that mean?
+Well, if one of the staff from the dining hall comes by with a new tray
+that's just been cleaned and he or she puts it on the top of the stack,
+which one is a normal human being going to grab first?
+The last one in, right?
+It'd be strange and kind of difficult to get down on your knees
+and pull out the bottom one, even though that would be more fair, right?
+Like that little tray down there has been waiting the longest to be used.
+But it's under the weight of the whole stack, literally.
+But that, nonetheless, is how a stack would work.
+And you can implement the stack now in a couple of ways.
+And here's where the world gets interesting in programming,
+in that there is this distinction between design
+of data structures and low level implementation details.
+A stack is as I've described it, a LIFO data structure.
+Push and pop, last in, first out.
+That's it.
+How you implement that could be any number of ways.
+For instance, I could implement a stack as a C data type, custom one,
+that has an array of numbers for this capacity where capacity
+is some big constant like 100, 1,000, however many trays I want
+to store so long as I keep track of the size
+of how many trays are in it so that I can always make sure its size less than
+or equal to the capacity.
+Just to make sure I don't try to cram too many trays in there.
+But what's a downside of this implementation
+of Mather House's stack of trays?
+
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Limited space, exactly.
+I have consciously hard coded capacity to be some fixed value.
+So if we buy a new tray or a whole box of trays arrive,
+might not fit there, right?
+Once I exhaust this remaining space, I need to make a new pile
+or I need to store them elsewhere.
+I'm just out of space.
+So maybe this is a good design decision in that it reflects reality.
+Or maybe it's stupid because now I can't store even more trays
+when they come in via shipment.
+So I could solve that.
+We know from our brief example a moment ago,
+you could just make your array dynamic.
+Don't preallocate it to be of size capacity.
+Just declare it to be a pointer that will eventually
+point to maybe space for one tray or 100 trays
+or 1,000 trays or maybe 1,001 trays if we realloc the space again and again.
+And when you start writing code that involves other people, whether it's
+for some school project or a personal project or just in the real world,
+this is where life gets more interesting,
+too, because so long as you and I, if my colleague kind of decide, OK.
+I'm going to expose push and pop as the operations.
+I will implement push and pop.
+You don't have to worry about the low level implementation
+details in my own design decisions.
+You just have to read my documentation and not
+care how I've implemented it because I have abstracted that away for you
+and given you just an API.
+Push and pop would be an API, application programming interface.
+All you need to know is that you can trust
+that I will implement push and pop.
+And you might dislike it ultimately, if I limit your space,
+but to understand that you need to read the documentation
+to know what features my implementation are providing.
+Now this of course is the ridiculousness that ensues every year or so, whereby
+people line up to buy an iPhone.
+Now, why would it be a bad thing if Apple used a stack when people
+arrive at 3:00 AM for their iPhones?
+Yeah.
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Exactly.
+The person who came last would get their phone first,
+which is fantastic for that person.
+But it's really unfair to everyone else.
+So Apple of course, like most stores, if they even have this problem,
+have queues or lines whereby it's a FIFO data structure, first in, first out.
+Were the first person in line hopefully gets his or her iPhone first.
+So how can you implement those operations or that API?
+Might call it nq and dq, but add, subtract, whatever.
+But these are the terms of art.
+And we might implement it as follows.
+A queue might just need a little bit more information than capacity and size
+alone.
+You have to remember who's in front, potentially,
+just so that when that person gets out of line,
+you don't have to move all of your data in the array
+just like the humans would walk forward.
+That's a waste of time.
+Every time someone's ready to buy their phone,
+why does n-1 people have to take a step forward?
+Why not just bring the phone to them and save that inefficient use of time?
+Or we could do it like this, more of a dynamic data structure.
+And we won't do the code here.
+But we've seen, for instance, the example in our list zero, one,
+and two code, how you could start with a fixed size array,
+make it dynamic with malloc and realloc, and how you might further
+make it dynamic with a linked list, albeit with trade offs of time
+and space.
+There's this great short video I thought I'd share here, wherein in Jack
+learns the facts about queues and stacks which distinguishes these two data
+structures in a way that actually paints an even more clear picture of how
+they're distinct.
+If we can dim the lights for 60 seconds or so.
+
+[VIDEO PLAYBACK]
+- Once upon a time there was a guy named Jack.
+When it came to making friends, Jack did not have the knack.
+So Jack went to talk to the most popular guy he knew.
+He went up to Lu and asked, what do I do?
+Lu saw that his friend was really distressed.
+Well, Lu began, just look how you're dressed.
+Don't you have any clothes with a different look?
+Yes, said Jack.
+I sure do.
+Come to my house and I'll show them to you.
+So they went off to Jack's and Jack showed Lu the box
+where he kept all his shirts and his pants and his socks.
+Lu said, I see you have all your clothes in a pile.
+Why don't you wear some others once in awhile?
+Jack said, well, when I remove clothes and socks,
+I wash them and put them away in the box.
+Then comes the next morning and up I hop.
+I go to the box and get my clothes off the top.
+Lu quickly realized the problem with Jack.
+He kept clothes, CDs, and books in a stack.
+When he reached for something to read or to wear,
+he chose the top book or underwear.
+Then when he was done he would put it right back.
+Back it would go, on top of the stack.
+I know the solution, said a triumphant Lu.
+You need to learn to start using a queue.
+Lu took Jack's clothes and hung them in a closet.
+And when he had emptied the box, he just tossed it.
+Then he said, now Jack, at the end of day, put your clothes on the left
+when you put them away.
+Then tomorrow morning when you see the sun
+shine, get your clothes from the right, from the end of the line.
+Don't you see, said Lu, it will be so nice.
+You'll wear everything once before you wear something twice.
+And with everything in queues in his closet and shelf,
+Jack started to feel quite sure of himself all thanks
+to Lou and his wonderful queue.
+[END PLAYBACK]
+DAVID MALAN: So that isn't to say that queues are all that
+and stacks are a bad data structure.
+They actually each have their own applications.
+And in fact, one common use for stacks beyond memory management,
+as we discuss in a couple of weeks when we start exploring HTML and web
+programming, you'll see that HTML itself, this
+is the language in which web pages are written.
+That you'll soon be able to write if not already.
+This is a language that actually has a nested hierarchy to it.
+Who, where by a browser, might actually use a stack to analyze the HTML
+that composes a web page to determine, for instance, if it is correct or not.
+But there's so many other tools that we can now add to your toolkit.
+And even though we'll look at each of these just briefly, each of them
+derives from these very two simple principles, the ability
+to come up with custom data structures inside of which are pointers,
+or the ability to stitch one thing to another.
+So here's an example of what a computer scientist would call a tree.
+The node here we've drawn as circles just because.
+But the nodes in a tree are much like a family tree, where
+each node has zero or more children or descendants, maybe
+a parent or other ancestors.
+And so we'll call things like the first node
+at the very top in a data structure called the tree, the root of the tree,
+albeit growing downward like this like a family tree.
+Anything at the very bottom of the tree that only has arrows going into it
+will be called children or leaves of the tree.
+And so this might be a way to lay out data in a useful way.
+In fact, if you think back to when we had things like numbers
+like this, thus far any time we dealt with numbers or words or Mike Smiths,
+we would just order them from left to right in an array
+and then search the array either in big O of end time linearly from left
+to right.
+But we did better using what?
+
+Binary search, but for binary search it needed to be an array
+and it needed to be sorted.
+And the problem I never dealt with was we never
+actually added another page to the phone book.
+We never actually tried to add more numbers to our array.
+And yet today, we've kind of identify these very glaring issues with arrays,
+which is that you're kind of painted into a corner.
+If you allocate only so much space, you use it all up and then darn it,
+you want to add more to the array.
+So how can we maybe still lay out data in sorted order, still
+leverage something like logarithmic time and divide
+and conquer, but get today's benefit of the dynamism whereby
+we can grow the data structure and shrink it very incrementally,
+without having to all of a sudden reallocate the whole structure?
+Well, instead of laying out these numbers, which are conveniently
+numbered as multiples of 11 here, 22, 33, 55,
+what if we laid them out like this in memory?
+We won't look at the code for this, but think of each of these circles
+as a structure, a data structure, inside of which there's
+an int n, how many pointers apparently?
+
+Seven total on the screen.
+But how about within each node, like this one here?
+There's a number n, 55.
+And what else?
+How many pointers?
+Just two.
+Two maximally, in fact, because the leaves, it would seem,
+have zero by definition.
+And technically, if I hadn't added 22, maybe there could just be one child.
+This is what we call a binary tree because every node has
+at most two children, 0, 1, or 2.
+And it's technically a binary search tree because of a special property.
+It's very searchable because if you look at any node, its left child is smaller.
+And if you look at any node, its right child is bigger.
+And that's a recursive definition, so to speak.
+You can look at any node in the tree and that definition is true.
+Even the leaves, because it's sort of a vacuous statement
+to say it's greater than its left child if there is no left child.
+It's sort of trivially true.
+So what's nice about this data structure?
+Well, suppose I want to search for the number 22.
+Like our linked list, and like Olivia being the special first pointer,
+a binary tree in a computer's memory would just
+have one special pointer, called root or first or whatever you want to call it.
+And if you want to look for 22 just like Olivia and Jess were,
+you might look here.
+And say, hmm, 55 is greater than 22.
+So which way do I go?
+Left obviously.
+And here, you know, if we were doing this visually
+we could snip off that whole subtree.
+And you would see half of the problem be torn away like the phone book.
+22 versus 33, of course, this is greater.
+So we go here and we find it.
+And long story short, that was not linear
+because we weren't searching all of the nodes.
+And if conceptually we were chopping the tree in half,
+in half, in half every time we went left or right,
+what should be the running time of search on a binary search tree?
+Log base 2 of n, or just logarithmic as we've seen.
+Now it's not necessarily always as prettily balanced.
+This is very deliberately chosen.
+You can get perverse situations where it just kind of devolves
+into a long linked list.
+But it still is a binary search tree.
+It was just poorly built. But at least if we keep a balance like this,
+we can gain some benefits.
+And here's how we would implement your proposed integer and two nodes.
+Instead of just calling it next, I'm going
+to call it more semantically usefully left and right.
+And notice that struct node is just a pointer called left.
+Struct node is a pointer called right.
+And that's how we implement these.
+And what do you think the leaves have as their values for left and right?
+The leaves of the tree had no children, by definition, so what's
+the value of left and right?
+Null.
+So they're just sort of pointing down at the floor as zero, null, values.
+So we're not going to write the code for this now,
+but we can leverage weak zero's ideas.
+Divide and conquer, binary search.
+We can leverage last week and this week's ideas of structures
+and dynamic memory and technically the heap in order
+to start to build up data structures like this, that now give us dynamism
+that can grow and shrink as needed.
+And just so you've seen the code, here might
+be an implementation of a function for binary search tree
+that, given the roots of the tree, finds for you true or false,
+whether or not something is in it.
+So I want to search for a number n in this tree.
+So this here is, again, a pointer to the root
+just like Olivia was a pointer to the first node in the linked list.
+So if the tree is null, return false because it's
+kind of a stupid question to ask.
+If there's no tree being passed in, it's clearly not there.
+So return false.
+That's our special case to ensure that we don't dive too deeply.
+But here's a very cool application of a past idea.
+If n is less than the n at the current node in the tree,
+and remember the arrow just says, go there and look at n,
+we know we want to look at the left hand side of the tree.
+So do we have an algorithm to search a tree for a specific value?
+Just so happens that tree is now smaller because it's
+this half of the tree on the left.
+We do.
+We have a function called search that takes a number as input
+and takes a tree as a pointer.
+That doesn't have to be the whole tree.
+It can be a sub-tree because again, a tree is kind of recursively defined,
+because every left child and right child itself might have children.
+So it's a smaller tree but it's still a tree.
+So I can answer this question.
+If n is less than the current node's own n value,
+I can just return the answer to calling search on the same number,
+but passing in just the left half of the tree.
+So this is like the tree version of tearing the phone book in half
+and searching only the left half.
+And you can perhaps guess, if you're following along at this point,
+if n is greater than the current node, we're
+just going to search to the right.
+And that's three cases.
+What's the fourth possible case?
+Yeah, if n equals the current node.
+And so in that case I'm just going to trivially return true.
+And this is kind of beautiful.
+It's not from one perspective.
+It's not obvious at first glance, how this works.
+And it's not comfortable necessarily if you're not used recursion that much.
+But what's beautiful about this, especially
+if we get rid of the stupid curly braces and a lot of stuff
+it's not really intellectually interesting,
+you are reducing this problem to really just these lines of code.
+Check for null, return false.
+Check if it's less than, just recurse on the left.
+Check if it's greater than, recurse on the right.
+Otherwise you found it.
+It's literally the same idea or spirit as our divide and conquer
+approach for the phone book, just implemented now
+using trees or nodes linked together in a tree.
+Yeah?
+AUDIENCE: [INAUDIBLE]
+DAVID MALAN: Tree arrow n, so tree, recall, is a pointer to a node.
+So that, just like Olivia was a pointer to a node in a linked list,
+this would be like Olivia standing here and instead
+of pointing at a line of students, sort of pointing at a tree of students
+that fans out this way.
+So tree, we could call it anything we want.
+I just called it tree, represents that.
+And meanwhile, tree left would be like if Olivia was pointing at a node here.
+Actually, if Olivia is pointing at the root of the tree here,
+tree left would be go look at the left half of the tree
+or the right half of the tree.
+If again, our volunteers were laid out on stage like a fan,
+like a tree instead of a list.
+So we've seen a whole bunch of algorithms that might
+have any number of these running times.
+And up until now kind of the best running time
+really has been this for the fanciest of algorithms.
+But we have seen constant time here and there.
+And even today if we want to insert into a linked list
+and we don't really care about the order,
+we can just plug the new value right there after Olivia and before Achmed
+and get our constant time.
+But wouldn't it be nice if more operations were constant timed?
+One step, two step, three stepped or some finite number?
+And it turns out we can achieve this with a bit of thought.
+And we can leverage another sort of familiar idea as follows.
+So like here, for instance, is some unusually large playing cards,
+which actually do exist if you just Google jumbo playing cards
+and look for them on Amazon.
+Suppose I wanted to sort this deck of cards.
+I could go through the deck one at a time
+and order them both by their suite, like clubs and hearts
+and so forth, and also by their numbers.
+But odds are if you're like me, you're going to probably try
+to make the problem a little simpler.
+And if you see the king of spades here, I put him over here.
+Nine of spades, I'm going to put that there.
+10 of spades coincidentally.
+I'm going to put that over here.
+Then I'm going to do what with the hearts, probably?
+You know, probably I'm not going to go through one at a time.
+I'm going to kind of bucketize each of the cards.
+So here's the ace of clubs, so I'm going to make a third pile.
+Here's a couple of diamonds.
+So that's my fourth pile.
+And then I'm just going to repeat this, because it's a nice simple algorithm.
+It's going to make my life a little easier in just a moment
+once everything is in the right pile.
+But this is a general notion of what we'll call hashing.
+And I'm not going to finish it because surprise, surprise,
+we're going to get 13 cards in each pile.
+But this is a more fundamental notion of hashing.
+You take as input something from your list of inputs.
+You look at it and you make a decision based on it.
+And in this case, my hash value is going to be zero, one, two, three,
+two because it's going to go into the hearts pile.
+And what is a hash function?
+It's just going to be a function in code or in my brain that
+just makes a decision based on output and outputs a hash value, which
+in this case is going to be that pile, that pile, that pile, that pile,
+or if we want to be more precise, zero, one, two, or three.
+If those four piles are implemented it's like four arrays
+or some kind of stacks, really.
+I seem to be making a stack of cards.
+Now it's not done.
+If I want to sort these things later, I'm
+still going to have to sort each of the piles of 13.
+But I've kind of made the problem a little easier for myself
+in that I've spread it out over four equivalent problems.
+But the key ingredient here is that notion of hashing.
+And honestly, if you've ever watched a TA or professor deal with these things
+at the end of some class that has blue books, if a whole bunch of students
+at the end of the hour come down and start handing in their blue books
+it's a complete mess.
+And if the TFs or professor wants to organize these,
+you might make a whole bunch of piles.
+All the L last names will go there.
+E will go there.
+F will go there.
+And maybe in this case you'll alphabetize as you go, thereby
+making this problem easier, too.
+That is a hash function.
+You take as input a student's name, you look
+at the first letter of his or her last name,
+and you decide whether it goes in bucket zero, one,
+or maybe 25 if you're indeed hashing based on the English alphabet.
+So hashing is something we've all done, even if we've never
+slapped that name on it before.
+So how might we leverage this kind of ingredient
+and get ourselves closer to the holy grail of data structures, which
+would be constant time for everything?
+Like none of this linear, none of this logarithmic time.
+So suppose we have an array or a table, we'll call it, like this.
+I'm going to call this a hash table because I want to leverage
+the idea of this hash function.
+And suppose that what I want to store in here are just things like names.
+And I want to go ahead and store the name
+Alice, because she turned in her exam first.
+So here I might have [0] through [25] or in general, n-1.
+So there's 26 buckets total.
+Where might I be inclined to put Alice?
+
+I might just hash her to zero because Alice,
+we'll use her first name, not last, because she never
+seems to have a last name.
+So first name, Alice, brackets zero, she goes there.
+Then Bob comes up, turns in his exam.
+Where does he go?
+[1] and then maybe Brendan comes over.
+Damn it.
+No room for Brendan's exam.
+Why?
+Because he hashes to the same value.
+And this can happen.
+Like, you might hash to the same value.
+And here it was not a big deal.
+I kept getting diamond, diamond, diamond.
+That's fine because this data structure grows.
+But this is an array, it would seem.
+And I could write Alice here, I could write Bob here,
+but Brendan should be written there too.
+But I don't want to give Bob his exam back just to accept Brendan's.
+So where could I put Brendan?
+Maybe I'll kind of cheat and just put him here because there's room, right?
+This is all free in this story so far.
+But then Charlie comes forward.
+What do we do with Charlie?
+Now Brendan is where Charlie should be.
+So now I've just kind of made a mess but I have so much free space
+and odds are I'm not going to have a student, no offense, whose name starts
+with a Z or an X or and some of the statistically less likely ones.
+So why don't we use those spaces?
+And we could, but this is an example algorithmically
+of linear probing, where you linearly top to bottom just kind of probe
+the data structure looking for space and just drop
+the values in the first available.
+And initially it's nice and clean and nice and efficient
+because if I want to look for Alice's exam later, boom,
+she's on the top of the pile.
+Bob, boom, second in the pile.
+But then Charlie, not quite where he should be.
+So eventually with this approach of linear probing
+it's space efficient in that you pack everyone into your data structure.
+But it eventually devolves into something linear.
+If Alice came and given her exam last, by nature of space,
+she might end up at the bottom of the pile
+and that does not make her easy to find later.
+So what if we instead change the data structure
+and use elements from today and past?
+Let's use an array here of pointers drawn vertically just because.
+And then why don't we string students' names off the right of this?
+So this is an excerpt from a text that explores exactly this data structure.
+It's called a hash table, not with linear probing,
+but with separate chaining, whereby your data structure, your hash table,
+is technically an array.
+This time it's upsized 31, because the book's example was
+about day of the month for birthdays.
+And so the data structure has not just an array, though, but what other data
+structure combined with it?
+It's a kind of linked list.
+So what's nice here is that S Adams, so Adams, starting with A in our story.
+Now they're using birthdays if you read this in the context.
+But suppose that Adams is the only one with birthday
+on the second of some month.
+Well, he or she might end up here.
+And that's no big deal if someone else has the same birthday in this example,
+because we can either walk the list as we did with Jess
+and just string him or her at the end of this data structure.
+Or we can just kind of insert them at the very beginning
+and just use some constant time changes to peoples' left hand to fit them in.
+The point is though, the data structure no longer is an array only.
+It's an array of 31 buckets, four piles, 26 piles, 31 piles.
+But each of those piles can grow vertically,
+so to speak, or in this case laterally because we're
+implementing the idea of these data structures
+now by using an actual linked list.
+So why is this actually better or worse?
+Well one, is there any limit now on how many students can turn in their exams
+or have birthdays?
+No because we just keep growing it wider and wider and wider.
+Why is this then a good thing?
+Well now if I want to look someone up, if I know their name starts
+with A or in the birthday example, I know
+their birthday is on the second of the month,
+I know deterministically, no matter what,
+what bucket they will be in in the array.
+Now, they might be in a long string of people with similar names or birthdays.
+But they're going to be there, deterministically, predictably,
+again and again.
+And the beautiful thing is if my hash function is well-implemented, uniform
+so to speak statistically, then it would be nice if almost all of these chains
+are roughly the same length.
+It would be pretty lame if this chain were really huge
+and then every other chain were shorter because that's just
+an opportunity for better design.
+So in real terms, a hash table, when implemented like this,
+should decrease in this concrete case, by a factor of like 31,
+how long it takes to find someone.
+So the time is one divided by 31 because if all the chains are roughly
+the same length, you have chopped up your data set into four piles, 26
+piles, 31 piles, each of which is one fourth or 126th
+or 131st the size of the whole data set.
+Now asymptotically, per couple of weeks ago,
+that is algorithmically irrelevant.
+That's big O of the same thing, so to speak.
+But in real terms, having it taking a quarter of as much time,
+126th the amount of time, 131st the real time
+is literally going to save us times on our watches.
+Like that in real human times will save time.
+And in fact, what you'll see in problem set five, in which you implement
+your first spell checker, you'll see that that's
+what we're trying to optimize for.
+In fact, as a quick teaser before we look at our final data structure here,
+you'll be challenged as part of this problem set optionally,
+if you'd like to opt in, to compete on the big board.
+Once your code is working per check 50, you
+can actually run a separate command with check 50 to post it to the leader board
+here.
+And right now, damn it, Brian is beaning both Doug and me
+because his implementation of the spell checker
+takes only 4.81 seconds and only 7.4 kilobytes versus my 82 megabytes
+of memory implementing a spell check over the whole lot of words.
+But how do you decide how to minimize space or minimize time
+and how do you mitigate some of the trade-offs?
+Well, let's look at one final data structure to consider.
+This is perhaps the most sophisticated and it takes up more space
+and so it's hard to paint on the screen.
+But suppose we did this.
+Suppose we were trying to store in our data structure people's names.
+We could do this with an array of a lot of strings.
+And we could do linear search and Brian or Doug
+or I could just use linear search big O of n and find any one you want.
+That's not so great.
+We could somehow use binary search if we used a tree or an array
+but kept the names sorted.
+We know we can do better.
+Just as we found Mike Smith pretty quickly in week zero.
+But what if we could find names in constant time?
+Whereby no matter how many words are in the tree, no matter
+how many words are in the dictionary more generally,
+still takes me the same amount of time to find anyone?
+And it doesn't get longer and longer the more names we add?
+So here is a type of tree goofily called a trie, T-R-I-E,
+which is an excerpt from retrieval, which is weird because it's retrieval
+and retrival but this is a trie, T-R-I-E.
+Each of the nodes in a trie, essentially, are an array themselves.
+Technically they're a structure with a little more inside of them.
+And you'll see this in the walk through that Zamyla put together.
+But each of the nodes in the trie are an array.
+Each of those arrays elements is a pointer to another such array.
+And the way you store words in a trie is not with characters,
+but implicitly with pointers.
+So if we want to put someone's name like Maxwell in here,
+we hash into this trie using the first letter of Maxwell's name, which
+is of course m.
+And that's going to be the 13th element in the array in my 26-element array
+here.
+I'm going to change that originally null pointer
+to be a pointer to another node.
+And then I'm going to hash on the second letter of Maxwell's name, which is A,
+and I'm going to allocate a pointer to another array.
+And then repeat that process for every letter in his name.
+So if I hash on his first letter, second letter, third letter, every time
+I do that it leads me to a new array.
+What's not shown here is that each of these arrays is size 26.
+It would just be atrocious to see on the screen.
+So it does use a bunch of memory.
+But the end of this, there's a special symbol drawn here is a delta symbol,
+but it can be anything, that just means Maxwell stops here.
+There's a word here.
+So how many steps does it take to find any name in the tree?
+Well, to find Maxwell it's M-A-X-W-E-L-L. So that's seven steps.
+For Maria it'd be M-A-R-I-A. That would be five steps.
+So it's still dependent on the number of letters in the name.
+But if there is a billion names in this dictionary,
+per this definition, how many more steps does it take to find Maxwell?
+M-A-X-W-E-L-L.
+How about if there's four billion names in the dictionary?
+How long does it take to find Maxwell?
+M-A-X-W-E-L-L. it's invariant.
+And if we assume that no human name is going to be super long,
+it's effectively constant whether it's 10 characters, maybe 30 characters
+or whatnot.
+That's effectively constant, which means a trie gives you constant time look up
+or big O of one, which means it's in theory the fastest of data structures.
+But of course you pay a price with more memory.
+And I know we're one minute over but let me tease you with this final look.
+And you'll see this data structure's implementation with Zamyla.
+But we begin to do transitionally now, especially if you're
+a little worried, especially as we're coming on the midpoint of the semester,
+like oh my god.
+Things are getting more and more sophisticated.
+We're kind of at the peak of a hill here because after problem set
+five do we transition to HTML and CSS and Python and JavaScript and web
+programming more generally.
+And next week, how the internet works.
+[VIDEO PLAYBACK]
+[MUSIC PLAYING]
+
+- He came with a message, with a protocol all his own.
+
+[MUSIC PLAYING]
+
+He came to a world of cruel firewalls, uncuring routers, and dangers
+from worse than death.
+He's fast.
+He's strong.
+He's TCPIP.
+And he's got your address.
+
+Warriors of the net.
+[END PLAYBACK]
+DAVID MALAN: All right.
+All that and more next week.
+We'll see you then.

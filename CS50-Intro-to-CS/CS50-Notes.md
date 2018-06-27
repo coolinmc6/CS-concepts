@@ -1144,7 +1144,7 @@ unsigned int hash(char* str)
 - Resolving collisions: *linear probing*
 - In this method, if we have a collision, we try to place the data in the next consecutive element in the array (wrapping around to the beginning if necessary) until we find a vacancy
 - that way, if we don't find what we're looking for in the first location, at least hopefully the element is somewhere nearby
-- Linear probing is subject to a problem called **clustering**. One there's a miss, two adjacent cells will contain data making it more likely in the future that the cluster will grow
+- Linear probing is subject to a problem called **clustering**. Once there's a miss, two adjacent cells will contain data making it more likely in the future that the cluster will grow
 - Even if we switch to another probing technique, we're still imited. We can only store as much as we have locations in our array
 - Resolving collisions: **Chaining**
 - What if instead of each element of the array holding just one of piece of data, it held multiple pieces of data
@@ -1372,12 +1372,13 @@ queue;
 
 
 ## Speller
-- TODO
+- speller.c
 	+ calls `load` on the dictionary file
 		* dictionary contains valid words, one per line
 	+ calls `check` on each word in the text file and prints all misspelled words
 	+ calls `size` to determine the number of words in dictionary
 	+ calls `unload` to free up memory
+- our job is to implement those four functions: load, check, size, unload
 - `check`
 	+ case-insensitivity
 	+ assume strings with only alphabetical characters and/or apostrophes
@@ -1537,6 +1538,10 @@ while (cursor != NULL)
 		* also try: small
 		* make your own!
 	+ use pen and paper
+
+### Notes
+
+
 
 [back to top](#top)
 
