@@ -60,13 +60,6 @@
 # Next Steps
 - go through and take notes on EACH of the shorts. I need to understand these concepts. Use the relevant
 C-language ones to build your C-Notes.
-- Shorts:
-	+ Week 0
-	+ Week 1: Complete
-	+ Week 1 (cont): Complete
-	+ Week 2: Complete
-	+ Week 3: Complete
-
 
 # Week 0
 
@@ -1546,7 +1539,78 @@ while (cursor != NULL)
 [back to top](#top)
 
 # Week 5
-- lecture 6
+
+
+### Lecture 6
+
+- web server is just a piece of software whose purpose to serve web pages
+- server-client relationship
+- the client is our browser
+- so many websites are prefixed with 'www' is to identify as part of the World Wide Web
+- **http** => this is the protocol
+- HTTP is a protocol is a set of conventions for how computers talk to each other
+	+ like a handshake between two people
+- `curl http://harvard.edu`
+- `curl -I http://harvard.edu` => show only headers
+- use the Network tab in Developer Tools to see the order of the files that you are getting back when you open a file
+- Dynamic Host Configuration Protocol (DHCP)
+- Domain Name System (DNS)
+	+ translates domain names into IP addresses
+- a server really is just a program despite how we think about them as being physical things
+- TCP = Transmission Control Protocol
+- TCP ports:
+	+ 22 SSH
+	+ 53 DNS
+	+ 80 HTTP
+	+ 443 HTTPS
+	+ 587 SMTP
+- when a server sends data, it sends it in packets
+- TCP has data sent in packets and so if a packet is dropped, another one is sent
+- `http-server -p 8080`
+	+ sets up web server in CS50 IDE
+
+### Internet Primer
+- IP Address
+	+ in order for your machine to uniquely identify itself on the Internet, it needs an address
+		* so you can send and receive information
+	+ **the addressing scheme used by competuers is known as IP addressing**
+	+ as originally developed, IP addressing would allocate a unique 32-bit address to each device trying to connect to the internet
+	+ instead of these representing addresses as hexadecimals, they used the normal decimals (8 bits)
+	+ w.x.y.z where each one is in the range [0, 255]
+	+ if each address is 32 bits, there are roughly 4 billion addresses to give out
+		* so there is a problem: we don't have enough IP addresses
+	+ we've been slowly phasing out IPv4 to IPv6
+		* 128-bit addresses
+	+ s:t:u:v:w:x:w:y:z
+		* 8 separated chunks
+		* each of these is represented by 1 to 4 hexadecimal digits in the range [0,ffff]
+		* 1234:5678:90ab:cdef:fedc:ba09:8765:4321
+		* 2001:4860:4860:0:0:0:0:8844 (Google) can also be represented as 2001:4860:4860::8844
+- DHCP
+	+ somewhere between your computer and the Internet at large exists a Dynamic Host Configuration Protocol (DHCP) server, whose role is to assign IP addresses
+	+ pre-DHCP, the task of assigning IP addresses fell to a system administrator who would need to manually assign IP addresses
+- DNS
+	+ the Domain Name System exists to help us translate IP addresses to more memorable names that are human-comprehensible
+	+ DNS is somewhat like the yellow pages of the web
+	+ there is really no DNS record of the entire internet
+	+ large DNS servers are more like aggregators, collecting smaller sets of DNS information and pooling them together, updating frequently
+- Access Points
+	+ generally, it could be the home or work network that you connect
+	+ one of the ways we've dealth with the IPv4 addressing problem is to start assigning multiple people to the same IP address
+	+ the IP address is assigned to a router, whose job it is to act as a traffic cop that allows data requests from all of the devices on a local network (your home, business, etc.) processed through a single IP
+	+ Modern home networks combine a router, modem, a switch and other technologies into a single device
+	+ Modern business networks or large-scale wide-area networks (WANs) still frequently have these as separate devices to allow the size of their network to scale more easily
+- the internet is really just a set of protocols: it's a set of rules that allows all of these networks to talk to each other
+
+### IP
+
+### TCP
+
+### HTTP
+
+### HTML
+
+### CSS
 
 [back to top](#top)
 
