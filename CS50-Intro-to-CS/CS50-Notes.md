@@ -1653,7 +1653,28 @@ while (cursor != NULL)
 ```http
 GET /cats.html HTTP/1.1
 Host: cats.com
+
+
+HTTP/1.1 404 Not found
+Content-type: text/html
 ```
+- a line of the form
+- `method request-target http-version`
+- `GET request-target HTTP/1.1`
+- the host name (domain name of the server) is also included as a separate line of the overall HTTP request
+- taken together, the host name and the request target from the request line specify a resource being sought
+- based on whether the resource exists, a number of status codes could result:
+- a status code is part of the response
+
+|class|code|Text|Comments|
+|:---:|:---:|:---:|:---|
+|Success|200|OK||
+|Redirection|301|Moved Permanently||
+||302|Found|Page is now at a new location temporarily|
+|Client Error|401|Unauthorized|Page typically requires login credentials|
+||403|Forbidden|Server will not allow this request|
+||404|Not Found|Server cannot find what was asked for|
+|Server Error|500|Internal Server Error|Generic server failure in responding to the otherwise-valid request|
 
 ### HTML
 
