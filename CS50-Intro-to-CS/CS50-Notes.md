@@ -1676,14 +1676,43 @@ Content-type: text/html
 ||404|Not Found|Server cannot find what was asked for|
 |Server Error|500|Internal Server Error|Generic server failure in responding to the otherwise-valid request|
 
-### HTML
-
-### CSS
-
 [back to top](#top)
 
 # Week 6
-- lectures 7 & 8
+
+## Lecture 7
+
+- "dynamic programming" was invented by Richard Bellman to "sound cool" to management, ensuring that there would continue to be funding for his research
+- dynamic programming is simply the concept of saving computed results for reuse later, much like a lookup table
+- a simple example is instead of `for(let i = 0; i < string.length; i++) {` we define the string length first, `const length = string.length;` and then use that in the for loop so that we don't have to keep "asking the same question" over and over again
+- Rod Cutting
+
+## Lecture 8
+
+```py
+def main():
+	print("hello, world")
+
+if __name__ == "__main__":
+	main()
+```
+
+- Python code will not run if indentation is not correct
+
+```py
+while True:
+	print("hello, world")
+```
+
+- if you don't logically need parens, you don't have to type them
+- True and False are capitalized
+
+```py
+for i in range(50):
+	print("hello, world")
+```
+
+
 
 [back to top](#top)
 
