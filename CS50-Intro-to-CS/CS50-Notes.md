@@ -1604,9 +1604,56 @@ while (cursor != NULL)
 
 ### IP
 
+- IP = Internet Protocol
+- The Internet is really an interconnected network comprised of smaller networks woven together and agreeing to communicate together
+- IP is how these networks know how to talk to another
+- Every network is not connected to every other network
+- This is where routers come back into play
+- Networks instead are connected to a limited number of routers which know which networks that you want
+- These networks are not directly connected to each other and rely on routers to distribute communications
+- This setup dramatically reduces the cost of network infrstructure on a large scale
+- Another crucial part of IP is splitting data into **packets**
+- The larger the chunk of data, the more costly it is to send the data - hence the reason for packets
+- IP is known as a *connectionless protocol*: there is not necessarily a defined path from the send to the receiver, and vice versa
+- this means that packets can be re-routed around a "traffic jam" and follow the most optimal path
+- IP does not guarantee delivery, we'll talk about that more in TCP
+
 ### TCP
 
+- TCP = Transmission Control Protocol
+- If IP is the protocol for sending information from one machine to the next, TCP can be thought of as directing the transmitted packet to the correct program on the machine
+- Given how important it is to know BOTH **where** the receiver is and **what** the packet is for, TCP and IP are almost an inseparable pair: TCP/IP is seen very frequently
+- Each program/utility/service on a machine is assigned a *port number*. Coupled with an IP address, we can now uniquely identify a specific program on a specific machine
+- The other thing that TCP is crucial for is guaranteeing delivery of packets, which IP alone doesn't do
+- TCP does this by stating how many packets should be expected and in what order
+- TCP ports:
+	+ 21 - FTP (file transfer protocol)
+	+ 25 - SMTP (email)
+	+ 53 - DNS (Domain Name Server)
+	+ 80 - HTTP (web browsing)
+	+ 443 - HTTPS (secure web browsing)
+- Steps of TCP/IP process
+	+ TCP breaks data into smaller chunks and communicates those packets to the computer's network
+	+ IP routes the individual packet from sender to receiver; this info is part of the IP layer surrounding the packet
+	+ When destination computer gets packet, TCP looks at header to see which program it belongs to
+- if at any point along the way a packet is dropped, TCP would use additional information to request that the sender pass along an extra packet
+- After packets arrive, TCP ensures they are organized in the correct order and then reassembled
+
 ### HTTP
+
+- It is frequently the case that the application itself has a system of rules for how to interpret the data that was sent
+- HTTP is one example of an **application layer protocol**, which specifically dictates the format by which clients request web pages from a server and the format via which servers return information to clients
+- Other application layer protocols include:
+	+ FTP - File Transfer Protocol
+	+ SMTP - Simple Mail Transfer Protocol
+	+ DDS - Data Distribution Service
+	+ RDP - Remote Desktop Protocol
+	+ XMPP - Extensible Message and Presence Protocol
+
+```http
+GET /cats.html HTTP/1.1
+Host: cats.com
+```
 
 ### HTML
 
