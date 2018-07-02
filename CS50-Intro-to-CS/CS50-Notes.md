@@ -1712,6 +1712,18 @@ for i in range(50):
 	print("hello, world")
 ```
 
+```py
+if x < y:
+	print("x is less than y")
+elif x > y:
+	print("x is greater than y")
+else:
+	print("x is equal to y")
+```
+
+- we have been used to: Source Code => Compiler => Machine Code (in C)
+- With Python, it's different:
+- Python: Source Code => Interpreter
 
 
 [back to top](#top)
