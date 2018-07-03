@@ -1724,7 +1724,211 @@ else:
 - we have been used to: Source Code => Compiler => Machine Code (in C)
 - With Python, it's different:
 - Python: Source Code => Interpreter
+	- Source Code => compiler => byte code => interpreter
+- Python data types
+	+ bool
+	+ float
+	+ int
+	+ str
+	+ ...
+- you get so much more out of the box with Python
+- Python is both the name of language and the name of the program to interpret it
+- `hello.py` => `.py` is the file extension
+- `python hello.py` => runs the program
+- `from cs50 import get_string`
 
+```python
+from cs50 import get_string
+
+s = get_string("name: ")
+print("hello, {s}")
+```
+
+- the main function in python:
+
+```python
+from cs50 import get_int
+
+def main():
+	i = get_int("integer: ")
+	print(f"hello, {i}")
+
+# THIS IS REQUIRED IF YOU USE "main"
+if __name__ == "__main__":
+	main()
+```
+
+- conditionals:
+
+```python
+
+if x < y:
+	print("x is less than y")
+elif x > y:
+	print("x is greater than y")
+else:
+	print("x and y are equal")
+
+```
+
+- comments; these triple quotes can be used to write documentation automatically
+- it's best practice to write comments right on the inside of the function definition
+
+```python
+
+def square(n):
+	"""Return square of n"""
+	return n**2
+```
+
+- the following program prompts the user for a positive integer
+
+```python
+# "from cs50 import *" => imports everything but this is bad practice because you don't 
+#   know all that you're importing
+from cs50 import get_int
+
+def main():
+	i = get_positive_int("positive integer")
+	print(i)
+
+def get_positive_int(prompt):
+	while True:
+		n = get_int(prompt)
+		if n >= 1:
+			break
+	return n
+
+if __name__ == "__main__":
+	main()
+```
+  - the `main()` function is not required => it's common to simply not have that at all
+
+- Accepting arguments in python:
+
+```python
+import sys
+
+if len(sys.argv) == 2:
+	print(f"hello, {sys.argv[1]}")
+
+```
+
+- iterate through python arguments
+
+```python
+import sys
+
+for s in sys.argv:
+	print(s)
+```
+
+- print each character in the arguments received
+
+```python
+import sys
+
+for s in sys.argv:
+	for c in s:
+		print(c)
+```
+
+- iterate over each letter in the person's full name and return their initials
+
+```python
+from cs50 import get_string
+
+s = get_string("name: ")
+initials = ""
+for c in s:
+	if c.isupper():
+		initials += c
+print(initials)
+```
+
+- go through a list of names and see if the name the user gives is in the phone book
+
+```python
+import sys
+from cs50 import get_string
+
+book = [
+	"Chen", 
+	"Name2",
+	"Name3",
+	"McNamara",
+	"Smith"
+]
+
+name = get_string("Name: ")
+if name in book:
+	print(f"The name, {name}, is in the book!")
+```
+
+- there are no pointers in Python. The code below will swap the values of x and y
+
+```python
+x = 1
+y = 2
+
+print(f"x is {x}, y is {y}")
+x,y = y,x
+print(f"x is {x}, y is {y}")
+```
+
+- Python classes, iterating through a list
+
+```python
+
+# main file
+from cs50 import get_string
+from student import Student
+
+students = []
+
+for i in range(3):
+	name = get_string("Name: ")
+	dorm = get_string("Dorm: ")
+	s = Student(name, dorm)
+	students.append(s)
+
+for student in students:
+	print(f"{student.name} lives in {student.dorm}")
+
+# Student.py
+class Student:
+	def __init__(self, name, dorm):
+		self.name = name
+		self.dorm = dorm
+```
+
+- Python dictionary function
+
+```python
+class Dictionary
+	def __init__(self):
+		self.words = set()
+	
+	def check(self, word):
+		if word.lower() in self.words:
+			return True
+		else:
+			return False
+
+	def load(self, dictionary):
+		file = open(dictionary, "r")
+		for line in file:
+			self.words.add(line.rstrip("\n"))
+		file.close()
+		return True
+
+	def size(load):
+		return len(self.words)
+
+	def unload(self):
+		return True
+
+```
 
 [back to top](#top)
 
