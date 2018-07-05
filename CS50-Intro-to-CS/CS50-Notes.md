@@ -2056,7 +2056,7 @@ else:
 	# code block 2
 ```
 
-    - ternary:
+   - ternary:
 
 ```python
 letters_only = True if input().isalpha() else False
