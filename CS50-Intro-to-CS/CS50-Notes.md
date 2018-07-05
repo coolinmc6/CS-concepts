@@ -1934,6 +1934,138 @@ class Dictionary
 
 # Week 7
 
+### Lecture 9
+
+- a web server is a program that listens for HTTP requests, and responds to those requests
+**REQUEST:**
+
+```http
+GET / HTTP/1.1
+Host: www.facebook.com
+...
+```
+
+**RESPONSE:**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+...
+```
+
+- Python's web server:
+
+```python
+# Implements a web server
+
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+
+# HTTPRequestHandler class
+class HTTPServer_RequestHandler(BaseHTTPRequestHandler):
+
+    # GET
+    def do_GET(self):
+
+        # send response status code
+        self.send_response(200)
+
+        # send headers
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+
+        # write message
+        self.wfile.write(bytes("hello, world", "utf8"))
+
+
+# configure server
+port = 8080
+server_address = ("0.0.0.0", port) # => tuple which is like an ordered pair
+httpd = HTTPServer(server_address, HTTPServer_RequestHandler)
+
+# run server
+httpd.serve_forever()
+```
+
+- FLask web app
+
+```python
+from flask import Flask, render_template
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/zuck")
+def zuck():
+    return render_template("zuck.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+```
+
+- make a folder called tempates and create files for `zuck.html` and `login.html`
+- `flask run` to run the web app in our current directory
+
+```python
+{% extends "layout.html" %}
+
+{% block body %}
+You must provide your name and dorm!
+{% endblock %}
+```
+
+- the curly braces and percent sign are part of a templating language, allowing us to share the same structure amongst multiple pages
+- JINJA is a templating language => it is essentially python but it's not
+
+### Python
+
+- Python was released in 1991
+- useful for making complex C operations much simpler (string manipulation, networking)
+- Python is heavily inspired by C
+- the `.py` file extension is used
+- Python is not a compiled language, it is interpreted
+- CS50 uses Python 3, not Python 2
+- Variables
+	+ no type specifier
+	+ declared by initialization only
+	+ `x = 54`
+	+ Python statements don't end with semicolons
+	+ double quotes or single quotes can be used
+- Conditionals
+	+ `or` instead of `||`
+	+ `and` instead of `&&`
+	+ `elif` instead of `else if`
+	+ `not` instead of `!`
+	+ notice the lack of parens AND conditions end with colons
+
+```python
+if x > y and z == 15:
+	# code block 1
+else:
+	# code block 2
+```
+
+    - ternary:
+
+```python
+letters_only = True if input().isalpha() else False
+```
+
+- Loops
+	+ two varieties: `while` and `for`
+
+```python
+counter = 0
+while counter < 100:
+	print(counter)
+	counter += 1
+```
+
+
+### Flask
+
 [back to top](#top)
 
 # Week 8
