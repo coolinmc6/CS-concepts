@@ -36,6 +36,9 @@
 
 # Homework
 
+All homeworks completed in the [CS50 IDE](https://cs50.io/).
+
+
 |Week|Homework|Submitted|See the code|
 |:---:|:---|:---:|:---|
 |0|*none*|*n/a*||
@@ -47,11 +50,15 @@
 |3|Whodunit|yes|[whodunit.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/whodunit.c)|
 ||Resize|yes|[resize.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/resize.c)|
 ||Recover|yes|[recover.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset4/recover.c)|
-|4|Speller|no|[speller/dictionary.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset5/speller/dictionary.c)|
+|4|Speller|no|[dictionary.c](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset5/speller/dictionary.c)|
 |5|*none*|*n/a*||
 |6|*none*|*n/a*||
-|7<br>**pset 6**|Sentimental|||
-|7<br>**pset 6**|Similarities|||
+|7|Hello|||
+||Mario|yes||
+||Cash|||
+||Caesar|||
+||Vigenere|||
+||Similarities|||
 |8|Finance|||
 |9|Mashup|||
 |10|*none*|*n/a*||
@@ -1689,7 +1696,7 @@ Content-type: text/html
 
 ## Lecture 8
 
-```py
+```python
 def main():
 	print("hello, world")
 
@@ -1699,7 +1706,7 @@ if __name__ == "__main__":
 
 - Python code will not run if indentation is not correct
 
-```py
+```python
 while True:
 	print("hello, world")
 ```
@@ -1707,12 +1714,12 @@ while True:
 - if you don't logically need parens, you don't have to type them
 - True and False are capitalized
 
-```py
+```python
 for i in range(50):
 	print("hello, world")
 ```
 
-```py
+```python
 if x < y:
 	print("x is less than y")
 elif x > y:
@@ -2201,6 +2208,64 @@ jane.print()	# Jane - 11
 
 
 ### Flask
+
+- Web frameworks makes web app programming even easier in Python, abstracting away the minutia of Python's syntax and providing helper functions
+- Django, Pyramid and Flask
+- CS50 uses Flask because it is lightweight and feature-rich
+- HTML only websites are not dynamic
+- Websites thare are pure HTML are completely static
+- Incorporating Python into our code makes our sites dynamic and more flexible
+- generally we use `application.py`
+
+```python
+# import Flask
+from flask import Flask
+
+# initiate Flask aplication
+app = Flask(__name__)
+```
+
+- we use decorators in Flask to associate a function with a URL:
+
+```python
+@app.route("/")
+def index():
+	return "You are at the index page!"
+
+@app.route("/sample")
+def sample():
+	return "You are on the sample page!"
+```
+
+- run the app in our IDE
+
+```sh
+export FLASK_APP=application.py
+export FLASK_DEBUG=1
+flask run
+```
+
+- Data can be passed in via URLs, akin to useing HTTP GET
+
+```python
+@app.route("/show/<number>")
+def show(number):
+	return "You passed in {}".format(number)
+```
+
+- Data can be passed in via HTML forms, as with HTTP POST, but we need to indicate that Flask should respond to HTTP POST requests explicitly
+- we can also vary the behavior of our app depending on the type of HTTP request we receive
+- Flask modules:
+	+ `url_for()`
+	+ `redirect()`
+	+ `session()`
+	+ `render_template()`
+
+### Homework Walkthroughs
+
+[Problem Set 6](https://docs.cs50.net/2018/x/psets/6/pset6.html)
+
+
 
 [back to top](#top)
 
