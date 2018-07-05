@@ -2057,11 +2057,147 @@ letters_only = True if input().isalpha() else False
 	+ two varieties: `while` and `for`
 
 ```python
+# while loop
 counter = 0
 while counter < 100:
 	print(counter)
 	counter += 1
+
+# for loop
+for x in range(100):
+	print(x)
+
+# for loop, count by 2
+for x in range(0, 100, 2):
+	print(x)
 ```
+
+- Lists (Arrays in C)
+	+ more appropriately known as **lists** in Python.
+	+ Not fixed, they can grow or shrink as needed
+
+```python
+nums = [1,2,3,4]
+
+# 0 - 499; range excludes the final number
+nums = [x for x in range(500)]
+
+# these are the same
+nums = list()
+nums = []
+
+# append
+nums.append(5)
+
+# insert into array at a position
+# at position 4, insert the number 6
+nums.insert(4,6)
+```
+
+- Tuples
+	+ a type is an ordered, immutable set of data => great for associating collections of data
+	+ Here is a list of tuples:
+
+```python
+presidents = [
+	("George Washington", 1789),
+	("John Adams", 1797),
+	("Thomas Jefferson", 1801),
+	("James Madison", 1809)
+]
+
+# iterate through list
+for prez, year in presidents:
+	print("In {1}, {0} took office".form(prez, year))
+```
+
+- Dictionaries
+	+ associate indexes with words or phrases (keys)
+
+```python
+pizzas = {
+	"cheese": 9, 
+	"pepperoni": 10,
+	"vegetable": 11, 
+	"buffalo chicken": 12
+}
+
+# change an existing key
+pizzas["cheese"] = 8
+
+# access the value at a particular key
+if pizza["vegetable"] < 12:
+	print('cheap!!')
+
+# add a new key to the dictionary
+pizzas["bacon"] = 14
+
+# Loops for dictionary
+
+## prints all the keys
+for pie in pizzas:
+	print(pie)
+
+## prints prices
+for pie, price in pizzas.items():
+	print(price) 
+
+for pie, price in pizzas.items():
+	print("A whole {} pizza costs ${}".format(pie, price))
+	print("A whole " + pie + " pizza costs $" + str(price))
+```
+
+- Functions
+	+ all functions are introduced with the keyword `def`
+	+ we don't need to include a `main` function
+
+```python
+def square(x):
+	return x**2
+
+```
+
+- Objects
+	+ Python is an object-oriented language
+	+ C structure contain a number of *fields*, which we might also call *properties*
+	+ Objects can also have methods, or functions that are inherent to the object, and mean nothing outside of it
+	+ `object.method()`
+	+ You can define a type of object using the `class` keyword
+	+ Classes require an initialization function, also known as a *constructor*, which sets the starting values of the properties of the object
+	+ defining each method of an object, `self` should be its first parameter, which stipulates on what object the method is called
+
+```python
+class Student():
+
+	def __init__(self, name, id):
+		self.name = name
+		self.id = id
+
+	def changeID(self, id):
+		self.id = id
+
+	def print(self):
+		print("{} - {}".format(self.name, self.id))
+
+
+# Using the class
+jane = Student("Jane", 10)
+jane.print()	# Jane - 10
+jane.changeID(11)
+jane.print()	# Jane - 11
+```
+
+- Style
+	+ good style is crucial in Python
+	+ tabs and indentation matter in this language
+	+ no more curly braces to delineate blocks
+- Including files
+	+ `import cs50` => import the CS50 module
+	+ `import cs50.get_int()`
+	+ `import cs50.get_float()`
+- Python Syntax
+	+ python programs can be prewritten in `.py` files
+	+ to run a file: `python <file>`
 
 
 ### Flask
