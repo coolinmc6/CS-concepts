@@ -2273,6 +2273,14 @@ def show(number):
 
 # Week 8
 
+## Lecture 10
+
+```python
+from cs50 import eprint
+```
+
+
+
 [back to top](#top)
 
 # Week 9
