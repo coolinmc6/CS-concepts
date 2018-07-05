@@ -1944,6 +1944,8 @@ class Dictionary
 ### Lecture 9
 
 - a web server is a program that listens for HTTP requests, and responds to those requests
+
+
 **REQUEST:**
 
 ```http
