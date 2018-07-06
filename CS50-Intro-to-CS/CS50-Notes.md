@@ -56,8 +56,7 @@ All homeworks completed in the [CS50 IDE](https://cs50.io/).
 |7|Hello||[hello.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/hello.py)|
 ||Mario|yes|[mario.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/mario.py)|
 ||Cash|yes|[cash.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/cash.py)|
-||Caesar|||
-||Vigenere|||
+||Caesar|yes|[caesar.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/caesar.py)|
 ||Similarities|||
 |8|Finance|||
 |9|Mashup|||
