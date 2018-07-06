@@ -55,7 +55,7 @@ All homeworks completed in the [CS50 IDE](https://cs50.io/).
 |6|*none*|*n/a*||
 |7|Hello|||
 ||Mario|yes||
-||Cash|||
+||Cash|yes||
 ||Caesar|||
 ||Vigenere|||
 ||Similarities|||
