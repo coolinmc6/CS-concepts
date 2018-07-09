@@ -2266,6 +2266,97 @@ def show(number):
 
 [Problem Set 6](https://docs.cs50.net/2018/x/psets/6/pset6.html)
 
+#### Similarities
+
+**TODO**
+
+- implement the algorithms in `helpers.py` => `lines()`, `sentences()`, and `substrings()`
+- take two files and figure out how similar they are to each other
+- Similarities Task
+	+ `lines` => compare files based on number of lines in common
+	+ `sentences` => compare files based on number of sentences in common
+	+ `substrings` => compare files based on number of substrings of length n in common
+	+ index.html => display a form where the user can select two files and how to compare them
+- `lines`
+	+ ToDo
+		+ take in string inputs `a` and `b`
+		+ split each string into lines
+		+ compute a list of all lines that appear in both a and b
+		+ return the list
+	+ Splitting into lines
+		* break line by `\n` and put into a list
+	+ Find Lines in Common
+		* Data structures to consider
+			- list
+			- set
+			- something else
+			- https://docs.python.org/3/tutorial/datastructures.html
+		* make sure you are avoid duplicate lines
+- `sentences`
+	+ ToDo
+		* take in string inputs `a` and `b`
+		* split each into sentences
+		* compute list of all sentences appearing in both a and b
+		* return the list
+	+ `sent_tokenize` => sentence tokenize
+	+ we need to import the function:
+		* `from nltk.tokenize import sent_tokenize`
+	+ Be careful to avoid duplicates
+	+ return a list of sentences in common
+- `substrings`
+	+ ToDo
+		* take in string inputs `a` and `b` and `n` (length of substring to compare)
+		* Split each string into all substrings of length n
+		* Compute list of all substrings appearing in both a and b
+		* Return the list
+	+ Example: n = 3
+		* "Hello" => ["Hel", "ell", "llo"]
+	+ Example: n = 2
+		* "Hello" => ["He", "el", "ll", "lo"]
+	+ Extract substrings from each of the strings
+		* s[i:j] returns the substring of s from index i to (but not including) index j
+		* may want to write a helper function
+- `index.html`
+	+ ToDo
+		* inside the body block, add a form
+		* form sens correctly encoded POST request to /compare
+		* let user choose file1, file2, algorithm, length
+
+```python
+{% extends "layout.html" %}
+
+{% block body %}
+	<!-- HTML HERE -->
+{% endblock %}
+```
+
+  - we are going to need a form tag
+
+```html
+<form action="/compare"
+		enctype="multipart/form-data"
+		method="post">
+	<!-- INPUT FIELDS HERE -->
+
+
+	<button type="submit">Compare</button>
+</form>
+```
+  - each input needs to have a name attribute: file1, file2, algorithm, length
+  - each input needs a type: file, radio button, checkbox, number, etc.
+  - For algorithm, give each input tag a value attribute
+  	+ lines, sentences, substrings
+
+**Testing**
+
+- You can test your code by running a web app `flask run` and visiting the page OR:
+
+```sh
+./compare --lines FILE1 FILE2
+./compare --sentences FILE1 FILE2
+./compare --substrings 1 FILE1 FILE2
+./compare --substrings 2 FILE1 FILE2
+```
 
 
 [back to top](#top)
