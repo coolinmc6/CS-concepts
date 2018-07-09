@@ -2358,6 +2358,11 @@ def show(number):
 ./compare --substrings 2 FILE1 FILE2
 ```
 
+**Next Steps**
+
+- finish `sentences` => what is going on? What does tokenize break everything into? How can you compare the lists? Would it not be exactly like the second half of `lines`?
+- start and finish substrings
+	+ I'll need to create a helper function
 
 [back to top](#top)
 
