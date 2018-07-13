@@ -2508,6 +2508,19 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 # Week 9
 
+### JavaScript
+- derived from C syntax
+- JavaScript runs client-side, on the user's machine, not server side like Python, PHP, etc.
+- JavaScript functions can be anonymous and can be bound to HTML DOM elements
+- arrays can be mixed types
+- JavaScript can behave as an object-oriented programming language
+
+### DOM
+- 
+
+
+### AJAX
+
 [back to top](#top)
 
 # Week 10
