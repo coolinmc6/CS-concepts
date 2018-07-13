@@ -2368,11 +2368,139 @@ def show(number):
 
 # Week 8
 
-## Lecture 10
+### Lecture 10
 
 ```python
 from cs50 import eprint
 ```
+
+- Here's a little program that uses SQLite:
+
+```python
+from cs50 import SQL
+
+db = SQL("sqlite:///lecture.db")
+
+# Query database for all albums
+rows = db.execute("SELECT * FROM Album")
+
+# For each album in database
+for row in rows:
+
+    # Print title of album
+    print(row["Title"])
+```
+
+- We can also pass variables into the command we want to execute:
+
+```python
+rows = db.execute("SELECT * FROM Album WHERE Title = :t", t=sys.argv[1])
+```
+
+### Flask
+
+**Same short as from Week 7; see above**
+
+### MVC
+- MVC is a programming paradigm that is very commonly-used for web design
+- It is used to abstract away certain details from the user
+	+ the primary motivation for this is data security
+- MVC = Model-View-Controller
+	+ Model (database) => this is where your data lives for your site
+	+ View => these are the pages the user sees
+	+ Controller => the *business logic* of the site. Users submit information to the controller, which decides what to do with the information
+	+ notice that there is always a buffer between the user and the database. The user submits data which then is handled by the controller and they view data from the view
+- Linux permission notes
+
+### SQL
+- SQL = Structured Query Language
+- ENUM => can store a limited set of values => maybe can only hold one of three values (i.e. "red", "green", or "blue")
+- CHAR => fixed length string: CHAR(10) always going to be 10
+- VARCHAR => VARCHAR(99) => stores up to 99 characters
+- should have a primary key
+	+ every row in a table should be able to be uniquely and quickly identified
+	+ you can also have a joint primary key
+- INSERT, SELECT, UPDATE, DELETE
+
+### Homework
+- Implement a number of function: register, quote, buy, index, sell, history
+
+**application.py**
+
+- Form submisison:
+
+```html
+<input type="text" name="name" />
+```
+
+```python
+request.form.get("name")
+```
+
+- `db.execute`
+
+```python
+rows = db.execute("SELECT cash FROM users WHERE id = :id", id=session["user_id"])
+```
+  - this code always returns an array: `rows[0]['cash']`
+
+**register**
+
+- display form
+	+ borrow from login.html
+	+ add password confirmation field
+	+ send via POST request
+
+
+```html
+<input type="text" name="name" />
+```
+
+```python
+request.form.get("name")
+```
+
+- valid passwords
+	+ make sure fields aren't left blank
+		* if so, use `apology`
+		* `return apology("Missing username!")`
+	+ make sure password and confirmation match
+		* if not, use `apology`
+	+ Encrypt their password using: `pwd_context.encrypt`
+- add user to database
+
+```python
+db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=hash)
+```
+
+- log them in
+	+ once they register successfully, log them in
+	+ store their id in session: `session["user_id"] = user_id`
+
+**quote**
+
+- display form
+	+ `quote.html`
+	+ input for user to look up stock
+- retrieve stock quote
+	+ `quote = lookup("AAPL")`
+	+ returns a dict with name, price and symbol
+- display stock quote
+
+
+**buy**
+
+
+**index**
+
+
+**sell**
+
+
+**history**
+
+
+**personal touch**
 
 
 
