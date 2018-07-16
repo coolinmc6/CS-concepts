@@ -2422,7 +2422,7 @@ rows = db.execute("SELECT * FROM Album WHERE Title = :t", t=sys.argv[1])
 	+ you can also have a joint primary key
 - INSERT, SELECT, UPDATE, DELETE
 
-### Homework
+### Homework: Finance
 - Implement a number of function: register, quote, buy, index, sell, history
 
 **application.py**
