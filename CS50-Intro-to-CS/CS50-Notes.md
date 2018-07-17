@@ -2516,10 +2516,80 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 - JavaScript can behave as an object-oriented programming language
 
 ### DOM
-- 
+- the document object is one way of employing this paradigm, whereby that object organizes the entire contents of a web page
+- by organizing an entire page into a JavaScript object, we can manipulate the page's elements programmatically
+- `console.dir(document)`
+
+|DOM Property|Description|
+|:---:|:---|
+|innerHTML|Holds the HTML inside of a set of HTML tags|
+|noedName|The name of an HTML element or element's attribute|
+|id|the "id" attribute of an HTML element|
+|parentNode|a reference to the node one level up in the DOM|
+|childNodes|An array of references to the nodes one level down in the DOM|
+|attributes|An array of attributes of an HTML element|
+
+
+
+|DOM Method|Description|
+|:---:|:---|
+|getElementById(id)|gets the element with given ID below this point in the DOM|
+|getElementsByTagName(tag)|gets are elements with given tag below this point in the DOM|
+|appendChild(node)|Add the given node to the DOM below this point|
+|removeChild(node)|Remove the specified child node from the DOM|
+
+- if we start from document, we can get to any piece of our web page that we choose, through careful use of DOM properties and methods - this is where jQuery comes in
+- jQuery is a populer, open-source library released in 2006 to simplify client-side scripting (i.e. DOM manipulations)
 
 
 ### AJAX
+- AJAX = Asynconchronous JavaScript and XML
+- Allows us to not update the entire page to update information on the screen
+- To do this, we must create an `XMLHttpRequest`
+- `var xhttp = new XMLHttpRequest`
+- After obtaining your new object, you need to define its `onreadystatechange` behavior
++ there are 5 different state => 0 - 4; 0 is request not initialize, 4 is finished
++ status property will hopefully by 200 (OK)
++ Then just make your asynchronous using the open method to define the request and the send() method to actually send it
++ More common to see AJAX requests in jQuery
+
+
+### Mashup Walkthrough
+
+- read and understand the distribution code
+- mashup.db
+	+ decide the appropriate database scheme
+	+ import US.txt into table `places`
+	+ 
+- application.py
+	+ `articles`
+		* `geo` is submitted to /articlces as a GET parameter
+		* output JSON array of objects
+			- each object is an article for geo
+		- request.args.get("geo")
+			+ check for missing argument
+			+ RuntimeError
+		- lookup
+		- jsonify
+- scripts.js
+	+ modify `suggestion` so that it displays matches
+	+ `addMarker`
+		* instantiate marker
+		* listen for clicks on marker
+		* get articles for place
+		* build list of links to articles
+		* remember marker
+	+ instantiate marker
+		+ google.maps.marker
+	+ listen for clicks on marker
+		* google.maps.event.addListener
+	+ get articles for place
+		* $.getJSON
+	+ removeMarker
+		* remove all markers from the map and delete them
+		* Google Maps API
+
+
 
 [back to top](#top)
 
