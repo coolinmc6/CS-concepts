@@ -2508,6 +2508,41 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 # Week 9
 
+### Lecture 11
+
+- Iterate through your registrants:
+
+```python
+{% for registrant in registrants %}
+    <option value="{{ registrant.id }}"/>{{ registrant.name }} from {{ registrant.dorm }}</option>
+{% endfor %}
+```
+
+- JSON:
+
+```json
+{
+    "name": "Netflix, Inc.",
+    "price": 199.32,
+    "symbol": "NFLX"
+}
+```
+
+- the `autofocus` attribute on an `<input  />` tag brings that input into focus when you load the page
+
+- jQuery's `getJSON`:
+
+```javascript
+function quote()
+{
+    $.getJSON("/quote", {symbol: $("#symbol").val()}, function(data) {
+        alert(data.price);
+    });
+}
+```
+
+
+
 ### JavaScript
 - derived from C syntax
 - JavaScript runs client-side, on the user's machine, not server side like Python, PHP, etc.
