@@ -59,7 +59,7 @@ All homeworks completed in the [CS50 IDE](https://cs50.io/).
 ||Caesar|yes|[caesar.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/caesar.py)|
 ||Similarities|yes|[helpers.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/similarities/helpers.py)|
 |8|Finance|||
-|9|Mashup|||
+|9|Mashup|complete|[see the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS/pset8/mashup)|
 |10|*none*|*n/a*||
 |11|Final Project|||
 
