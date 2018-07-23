@@ -2636,8 +2636,22 @@ function quote()
 
 # Week 10
 
+**NO WORK OR LECTURES**
+
+
 [back to top](#top)
 
 # Week 11
 
+### Lecture 12
+
+- no notes
+
+
 [back to top](#top)
+
+
+
+
+
+
