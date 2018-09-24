@@ -2423,7 +2423,16 @@ rows = db.execute("SELECT * FROM Album WHERE Title = :t", t=sys.argv[1])
 - INSERT, SELECT, UPDATE, DELETE
 
 ### Homework: Finance
-- Implement a number of function: register, quote, buy, index, sell, history
+
+- [Problem Set 7: C$50 Finance](https://docs.cs50.net/2018/x/psets/7/pset7.html)
+- Actual problem set description: [C$50 Finance](https://docs.cs50.net/2018/x/psets/7/finance/finance.html)
+
+#### Getting Started
+1. follow the instructions [here](https://docs.cs50.net/2018/x/psets/7/finance/finance.html#distribution) to download everything and start working with the file
+2. Read through the [file breakdown](https://docs.cs50.net/2018/x/psets/7/finance/finance.html#understanding) to get an understanding of the app does
+3. Take some notes on how I would do it in PHP / JavaScript
+
+- Implement a number of functions: register, quote, buy, index, sell, history
 
 **application.py**
 
@@ -2490,19 +2499,69 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 **buy**
 
+- Basic items:
+	- We want to display a form for the user to pick the stock and number of shares to buy
+	- Add the stock to the user's portfolio
+	- update cash
+* Display Form
+	- ask for symbol and number of shares
+	- check if valid input
+* Add stock to user's portfolio
+	- Can the user afford the stock?
+		+ `SELECT cash FROM users WHERE id = 1`
+	- Buying more of the same stock
+		+ `INSERT INTO ...`
+* new SQL Table
+	- who bought what at what price and when?
+	- use apropriate SQLite types
+	- define UNIQUE indexes on any fields that should be unique
+	- define (non-UNIQUE) indexes on any fields that you may search
+* Update cash
+	- a user's cash is stored in the users table
+	- `UPDATE users SET cash = cash - 50 WHERE id = 1`
 
 **index**
 
+- Display
+	+ HTML table with user's portfolio
+		* stocks owneded
+		* shared of each
+		* current price
+		* total value
+	+ User's current cash balance
+	+ Grand total of cash and stocks' total value
+- Jinja documentation
+
+```python
+{% for stock in stocks %}
+	<p>{{stock.name}}</p>
+{% endfor %}
+```
+
+  - which variables do you need to pass to `index.html`?
 
 **sell**
 
+- Remove stock from user's portfolio
+	+ DELETE FROM....
+	+ log sale as a negative quantity
+- update cash
 
 **history**
 
+- this will depend on my implementation of buy and sell
+- this is a chronology of user's interactions:
+	+ whether a stock was bought or sold
+	+ stock's symbol, the purchase or sale price
+	+ number of shares bought or sold
+	+ date and time at which the transaction occurred
 
 **personal touch**
 
-
+- implement an additional feature:
+	+ password change
+	+ add cash
+	+ buy / sell via index page
 
 [back to top](#top)
 
