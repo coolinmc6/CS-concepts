@@ -23,5 +23,14 @@
 | :---: | :---|
 | **int** | 32 bits worth of information (8 bits in a byte); -2 ^ 31 to 2 ^ 31 |
 | *unsigned* **int** |- removes the negative values and doubles the number of potential values you can have<br>- upper bound is around 4 billion |
-| **int** |  |
-| **int** |  |
+| **char** | - characters take up one byte of memory |
+| **floating point** | - floating point numbers take up 32 bits |
+| **double** | - are like floating point numbers but have double the space; 64 bits |
+| **void** | - *void* is not a data type but it does exist.<br> - a function with a *void* return type doesn't return a value <br> `printf` is an example of a function that doesn't return anything|
+
+- C doesn't have a built-in Boolean or String data type (unlike other programming languages) but the CS50 instructors have created a library with those types
+- here are some simple variable declarations:
+
+```c
+int number; char letter;
+```
