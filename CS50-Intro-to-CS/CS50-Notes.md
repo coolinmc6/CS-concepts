@@ -2718,7 +2718,3 @@ function quote()
 [back to top](#top)
 
 
-
-
-
-
