@@ -2567,7 +2567,13 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 - To start developing, log into the CS50 IDE and go to `/pset7/finance/` and do `flask run`
 - It will start the web server and allow me to access it here: [http://ide50-coolinmc61.cs50.io:8080/login](http://ide50-coolinmc61.cs50.io:8080/login)
-- 
+
+**Where I am now**
+
+- Register is complete
+- I figured out how to populate a variable from a POST request. I now need to render that info attractively in `quoted.html`
+- Do that and then move on
+
 
 
 
