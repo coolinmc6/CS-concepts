@@ -2563,6 +2563,14 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 	+ add cash
 	+ buy / sell via index page
 
+#### Homework Notes
+
+- To start developing, log into the CS50 IDE and go to `/pset7/finance/` and do `flask run`
+- It will start the web server and allow me to access it here: [http://ide50-coolinmc61.cs50.io:8080/login](http://ide50-coolinmc61.cs50.io:8080/login)
+- 
+
+
+
 [back to top](#top)
 
 # Week 9
