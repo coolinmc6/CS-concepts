@@ -2568,11 +2568,22 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 - To start developing, log into the CS50 IDE and go to `/pset7/finance/` and do `flask run`
 - It will start the web server and allow me to access it here: [http://ide50-coolinmc61.cs50.io:8080/login](http://ide50-coolinmc61.cs50.io:8080/login)
 
+- **Implementing Buy**
+	+ ~~Need an input field (type=text, name="symbol") where you are entering a symbol~~
+	+ ~~Need an input field (type=number; positive, step=1) to enter number of shares~~
+	+ POST goes to /buy
+		* Lookup stock price and get the prices
+		* Get their amount of cash
+		* Compare the two - can they afford it?
+	+ Database
+		* add table to store transaction: transactionID, timestamp, symbol, price per share, # of shares, total cost, userID
+
+
 **Where I am now**
 
-- Register is complete
-- I figured out how to populate a variable from a POST request. I now need to render that info attractively in `quoted.html`
-- Do that and then move on
+- buy is now complete
+- I am now working to update the index page to bring in the prices, # of shares, etc. I just need to print it in an attractive way (I should get the user's cash as well)
+- To get started, open up IDE and then hop right into the home.html file to start cleaning up the user's current holdings
 
 
 

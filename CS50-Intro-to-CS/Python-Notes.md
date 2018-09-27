@@ -58,6 +58,32 @@ from werkzeug.security import check_password_hash, generate_password_hash
 passHash = generate_password_hash(password,method='pbkdf2:sha256', salt_length=8)
 ```
 
+- Creating a dictionary and print values from dictionaries
+
+```python
+# pretty similar to JavaScript
+obj = {
+    'symbol': stock['symbol'],  # notice that I can't use dot notation (at least not in my IDE)
+    'price': price,
+    'shares': stock['shares'],
+    'value': price * stock['shares']
+}
+```
+
+- Log items to console
+
+```python
+# import at the top of file
+import logging
+
+# you can log a list
+logging.warning(raw) # [{'symbol': 'AAPL', 'shares': 2}, {'symbol': 'MSFT', 'shares': 3}]
+
+# ...or just a number
+logging.warning(cash) # 49,550.34
+
+```
+
 ### SQL
 
 #### INSERT
