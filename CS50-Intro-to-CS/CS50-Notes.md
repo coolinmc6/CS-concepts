@@ -2581,9 +2581,8 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 **Where I am now**
 
-- buy is now complete
-- I am now working to update the index page to bring in the prices, # of shares, etc. I just need to print it in an attractive way (I should get the user's cash as well)
-- To get started, open up IDE and then hop right into the home.html file to start cleaning up the user's current holdings
+- I am 95% of the way there: the last part is to add my own special "touch". I can do that by just allowing a user to add cash.
+- Do that from the home.html page. I can have an "Add Cash" with input and simply add cash and redirect back to the home page
 
 
 
