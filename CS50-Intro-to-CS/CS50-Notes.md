@@ -2581,8 +2581,8 @@ db.execute("INSERT INTO users(username, hash) VALUES(:username, :hash)", usernam
 
 **Where I am now**
 
-- I am 95% of the way there: the last part is to add my own special "touch". I can do that by just allowing a user to add cash.
-- Do that from the home.html page. I can have an "Add Cash" with input and simply add cash and redirect back to the home page
+- I am now just going through and tweaking the minor items to check that the app passes
+- Run `check50 cs50/2018/x/finance` in the IDE to check it
 
 
 
