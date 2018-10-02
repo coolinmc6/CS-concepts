@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <h1>Your Portfolio</h1>
+    {#  print(holdings) #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in holdings: %}
+                {% if stock['shares'] > 0: %}
+                <tr>
+                    <td>{% print(stock['name']) %}</td>
+                    <td>{% print(stock['symbol']) %}</td>
+                    <td>{% print(stock['shares']) %}</td>
+                    <td>{% print(stock['price']) %}</td>
+                    <td>{% print(stock['value']) %}</td>
+                    <td></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+
+            <tr>
+                <td colspan="4" style="text-align: right; padding-right: 1rem;"><strong>Cash</strong></td>
+                <td>${% print(cash) %}</td>
+                <td></td>
+            </tr>
+
+        </tbody>
+    </table>
+{% endblock %}

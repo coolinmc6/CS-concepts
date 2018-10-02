@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <h1>Your Transaction History</h1>
+    {#  print(transactions) #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Action</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Cash Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tran in transactions %}
+
+                <tr>
+                    <td>{% print(tran['transactionID']) %}</td>
+                    <td>{% print(tran['timestamp']) %}</td>
+                    <td>{% print('SELL' if tran['shareQuantity'] < 0 else 'BUY') %}</td>
+                    <td>{% print(tran['symbol']) %}</td>
+                    <td>{% print(tran['shareQuantity']) %}</td>
+                    <td>{% print(tran['sharePrice']) %}</td>
+                    <td>{% print(tran['totalCost'] if tran['shareQuantity'] < 0 else (tran['totalCost'] * -1)) %}</td>
+                </tr>
+
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

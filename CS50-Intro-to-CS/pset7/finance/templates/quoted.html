@@ -1,0 +1,31 @@
+<div>
+    {% extends "layout.html" %}
+
+    {% block title %}
+        Log In
+    {% endblock %}
+
+    {% block main %}
+        {% print(hash) %}
+        <div class="container">
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{% print(hash['symbol']) %}</td>
+                    <td>{% print(hash['name']) %}</td>
+                    <td>{% print(hash['price']) %}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+    {% endblock %}
+
+</div>
