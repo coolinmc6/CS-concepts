@@ -12,7 +12,7 @@ explore a number of different computer science concepts.
 
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
-| **CS50 Introduction to Computer Science** | <br>HarvardX<br>edX | [Course Link](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/) |[CS50 Notes](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md) <br> [See the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS)|
+| **CS50 Introduction to Computer Science** | <br>HarvardX<br>edX | [Course Link](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/) |[CS50 Notes](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md) <br> [See the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS) <br> [Problem Sets](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#homework)|
 
 
 ## Targeted Computer Science Courses
