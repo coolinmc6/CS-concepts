@@ -58,10 +58,10 @@ All homeworks completed in the [CS50 IDE](https://cs50.io/).
 ||Cash|yes|[cash.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/cash.py)|
 ||Caesar|yes|[caesar.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/sentimental/caesar.py)|
 ||Similarities|yes|[helpers.py](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/pset6/similarities/helpers.py)|
-|8|Finance|||
+|8|Finance|yes|[see the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS/pset7/finance)|
 |9|Mashup|complete|[see the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS/pset8/mashup)|
 |10|*none*|*n/a*||
-|11|Final Project|||
+|11|Final Project|n/a|[Code Assist](https://coolinmc6.github.io/code-assist/)|
 
 # Next Steps
 - go through and take notes on EACH of the shorts. I need to understand these concepts. Use the relevant
