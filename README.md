@@ -9,8 +9,8 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><strong><a href="https://github.com/coolinmc6/analytics">Analytics</a></strong></td>
-			<td><em><a href="https://github.com/coolinmc6/CS-concepts">Computer Science</a></em></td>
+			<td><a href="https://github.com/coolinmc6/analytics">Analytics</a></td>
+			<td><strong><em><a href="https://github.com/coolinmc6/CS-concepts">Computer Science</a></em></strong></td>
 			<td><a href="https://github.com/coolinmc6/design-ux-ui#product-design--development">Product Development</a></td>
 			<td><a href="https://github.com/coolinmc6/design-ux-ui">UX / UI Design</a></td>
 		</tr>	
