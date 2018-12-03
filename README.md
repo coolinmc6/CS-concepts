@@ -1,3 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th colspan="4" style="text-align: center;"><strong>Subjects of Study</strong></th>
+		</tr>
+		<tr>
+			<td colspan="4">The links below are to the parent GitHub repos of completed courses, resources, my own notes, links to articles, etc. about the topics shown below. They are designed to be my "go-to" place for teaching myself the given subject.</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong><a href="https://github.com/coolinmc6/analytics">Analytics</a></strong></td>
+			<td><em><a href="https://github.com/coolinmc6/CS-concepts">Computer Science</a></em></td>
+			<td><a href="https://github.com/coolinmc6/design-ux-ui#product-design--development">Product Development</a></td>
+			<td><a href="https://github.com/coolinmc6/design-ux-ui">UX / UI Design</a></td>
+		</tr>	
+	</tbody>
+</table>
+
+<a name="top"></a>
+
 # Computer Science Concepts
 
 This repo will aggregate my work in various computer science courses and 
