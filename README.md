@@ -13,7 +13,13 @@
 			<td><strong><em><a href="https://github.com/coolinmc6/CS-concepts">Computer Science</a></em></strong></td>
 			<td><a href="https://github.com/coolinmc6/design-ux-ui#product-design--development">Product Development</a></td>
 			<td><a href="https://github.com/coolinmc6/design-ux-ui">UX / UI Design</a></td>
-		</tr>	
+		</tr>
+		<tr>
+			<td><strong><em><a href="https://github.com/coolinmc6/front-end-dev">Front End Development</a></em></strong></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>		
 	</tbody>
 </table>
 
