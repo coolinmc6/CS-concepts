@@ -15,7 +15,7 @@
 			<td><a href="https://github.com/coolinmc6/design-ux-ui">UX / UI Design</a></td>
 		</tr>
 		<tr>
-			<td><strong><em><a href="https://github.com/coolinmc6/front-end-dev">Front End Development</a></em></strong></td>
+			<td><a href="https://github.com/coolinmc6/front-end-dev">Front End Development</a></td>
 			<td></td>
 			<td></td>
 			<td></td>
