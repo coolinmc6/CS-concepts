@@ -30,6 +30,12 @@
 This repo will aggregate my work in various computer science courses and 
 explore a number of different computer science concepts.
 
+
+### Table of Contents
+
+- [Computer Science Courses]()
+- [Data Structures]()
+
 ## Completed Computer Science Courses
 
 
