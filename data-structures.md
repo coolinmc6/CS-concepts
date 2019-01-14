@@ -58,7 +58,7 @@ class Stack {
     }
 }
 
-const stack = new Stack();  // create a new Stack
+const stack = new Stack();  	// create a new Stack
 stack.push("apples"); 		// add an item to the stack
 stack.push('oranges');
 stack.push('grapefruits');

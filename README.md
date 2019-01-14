@@ -33,8 +33,8 @@ explore a number of different computer science concepts.
 
 ### Table of Contents
 
-- [Computer Science Courses]()
-- [Data Structures]()
+- [Computer Science Courses](https://github.com/coolinmc6/CS-concepts#completed-computer-science-courses)
+- [Data Structures](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md)
 
 ## Completed Computer Science Courses
 
