@@ -229,8 +229,10 @@ class Queue {
 - General
     + [Medium: Data Structures in JavaScript](https://medium.com/siliconwat/data-structures-in-javascript-1b9aed0ea17c)
 - Stack
+    + [trekhleb/javascript-algorithms: Stack](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/stack)
 - Queue
     + Queue Implementation: [GeeksforGeeks](https://www.geeksforgeeks.org/implementation-queue-javascript/)
+    + [trekhleb/javascript-algorithms: Queue](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/queue)
 - Linked List
 - Tree
 - Graph
