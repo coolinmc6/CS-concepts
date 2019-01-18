@@ -145,7 +145,7 @@ class Stack {
 
 | Queue       | Array Equivalent |
 | ------------|:-----------------:|
-| Add to Queue| `array.unshift()`  |
+| Add to Queue| `array.unshift(data)`  |
 | Remove from queue| `array.pop()` |
 
 - whenever we make a Queue class, we essentially initialize an array and block the other methods besides
@@ -241,7 +241,13 @@ class Queue {
 
 **What is the difference between a *Stack* and a *Queue*?**
 
-A **stack** and a **queue** are very similar. They are both lists or containers of items like an array. They differ in the order that they are added and removed from the list / container. **Stacks** are LIFO (Last-in-First-out) meaning that the last item that was added to the stack is the first item that's taken out. Think of it stacking books in a box. If you stack 10 books on top of each other, you can't immediately grab the first one you put in - you have to remove the first 9 books you placed on top of it. **Queues** are FIFO (First-in-First-out) meaning that the first item added to the queue is the first item removed. Queues are like lines at a store (or anywhere, really); they are "fair". If you are the first person you, you are the first people to be helped / checked out / etc.
+A **stack** and a **queue** are very similar. They are both lists or containers of items like an array. They differ in the order that they are added and removed from the list / container. 
+
+
+**Stacks** are LIFO (Last-in-First-out) meaning that the last item that was added to the stack is the first item that's taken out. Think of it stacking books in a box. If you stack 10 books on top of each other, you can't immediately grab the first one you put in - you have to remove the first 9 books you placed on top of it. 
+
+
+**Queues** are FIFO (First-in-First-out) meaning that the first item added to the queue is the first item removed. Queues are like lines at a store (or anywhere, really); they are "fair". If you are the first person in line, you are the first people to be helped / checked out / etc.
 
 
 Both stacks and queues typically have only two methods: one to add an item and one to remove an item. Here is a comparison of the two data structures:
@@ -250,6 +256,7 @@ Both stacks and queues typically have only two methods: one to add an item and o
 ||**Stack**|**Queue**|
 |:---:|:---:|:---:|
 |**Order**|LIFO|FIFO|
+|**JavaScript Constructor**|`this.items = []`|`this.items = []`|
 |**Add an item**|`stack.push("apples")`<br>adds item to the front of the stack|`queue.enqueue("apples")`<br>adds item to the back of the queue|
 |**Remove an item**|`stack.pop()`<br>removes the most recently added item|`queue.dequeue()`<br>removes the first item in the queue|
 
