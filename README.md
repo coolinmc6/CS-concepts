@@ -61,6 +61,8 @@ explore a number of different computer science concepts.
 - Insertion Sort
 - Bubble Sort
 - Quick Sort
+- Algorithms Resources:
+	+ [https://github.com/trekhleb/javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
 
 ## Data Structure Interfaces
 
