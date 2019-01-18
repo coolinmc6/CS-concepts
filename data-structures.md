@@ -1,4 +1,5 @@
 [Back](https://github.com/coolinmc6/CS-concepts/blob/master/README.md)
+<a name="top"></a>
 
 # Data Structures
 
@@ -10,6 +11,8 @@
 - [Tree](#tree)
 - [Graph](#graph)
 - [Hash Table](#hash-table)
+- [Resources & Links](#resources-and-links)
+- [Questions and Answers]()
 
 
 ## Stack
@@ -130,19 +133,135 @@ class Stack {
 
 - an interesting part about the above implementation is the "Underflow" error for pop. The first implementation didn't have that.
 
+[back to top](#top)
 
 ## Queue
 
-Queue Implementation: [GeeksforGeeks](https://www.geeksforgeeks.org/implementation-queue-javascript/)
+- A queue can be seen as a container of records; the data enters in one part (front/top) and then exits another part (back/bottom)
+- Think of a queue like a line at a store. If you are the first one in the line, you'll be the first to checkout. Queues are "fair" while stacks, if implemented as lines at a store, are "unfair"
+- adding a record = enqueuing
+- removing a record = dequeuing
+- Queues follow FIFO => First In, First Out
+
+| Queue       | Array Equivalent |
+| ------------|:-----------------:|
+| Add to Queue| `array.unshift()`  |
+| Remove from queue| `array.pop()` |
+
+- whenever we make a Queue class, we essentially initialize an array and block the other methods besides
+unshift ("add") and pop ("remove");
+- This first implementation adds everything to the front and removes items from the back:
+
+```js
+class Queue {
+    constructor() {
+        this.items = [];
+    }
+
+    enqueue(data) {
+        return this.items.unshift(data);
+    }
+
+    dequeue() {
+        return this.items.pop();
+    }
+}
+```
+
+- This second implementation adds everything to the back and removes them from the front:
+
+```js
+class Queue {
+   constructor() {
+      this.items = []
+   }
+
+   enqueue(element) {
+       return this.items.push(element)
+   }
+
+   dequeue() {
+       if(this.isEmpty()) {
+           return "No elements in queue";
+       }
+       return this.items.shift();
+   }
+    
+   // if queue is empty, returns true
+   isEmpty() {
+       return this.items.length == 0;
+   }
+
+   front() {
+       if(this.isEmpty()) {
+           return "No elements in queue";
+       }
+       return this.items[0];
+   }
+}
+```
+
+[back to top](#top)
 
 ## Linked List
 
 
+[back to top](#top)
+
 ## Tree
 
+
+[back to top](#top)
 
 ## Graph
 
 
+[back to top](#top)
+
 ## Hash Table
+
+
+[back to top](#top)
+
+
+## Resources and Links
+
+- General
+    + [Medium: Data Structures in JavaScript](https://medium.com/siliconwat/data-structures-in-javascript-1b9aed0ea17c)
+- Stack
+- Queue
+    + Queue Implementation: [GeeksforGeeks](https://www.geeksforgeeks.org/implementation-queue-javascript/)
+- Linked List
+- Tree
+- Graph
+- Hash Table
+
+
+## Questions and Answers
+
+**What is the difference between a *Stack* and a *Queue*?**
+
+A **stack** and a **queue** are very similar. They are both lists or containers of items like an array. They differ in the order that they are added and removed from the list / container. **Stacks** are LIFO (Last-in-First-out) meaning that the last item that was added to the stack is the first item that's taken out. Think of it stacking books in a box. If you stack 10 books on top of each other, you can't immediately grab the first one you put in - you have to remove the first 9 books you placed on top of it. **Queues** are FIFO (First-in-First-out) meaning that the first item added to the queue is the first item removed. Queues are like lines at a store (or anywhere, really); they are "fair". If you are the first person you, you are the first people to be helped / checked out / etc.
+
+
+Both stacks and queues typically have only two methods: one to add an item and one to remove an item. Here is a comparison of the two data structures:
+
+
+||**Stack**|**Queue**|
+|:---:|:---:|:---:|
+|**Order**|LIFO|FIFO|
+|**Add an item**|`stack.push("apples")`<br>adds item to the front of the stack|`queue.enqueue("apples")`<br>adds item to the back of the queue|
+|**Remove an item**|`stack.pop()`<br>removes the most recently added item|`queue.dequeue()`<br>removes the first item in the queue|
+
+
+
+
+
+
+
+
+
+
+
+
 
