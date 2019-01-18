@@ -12,7 +12,7 @@
 - [Graph](#graph)
 - [Hash Table](#hash-table)
 - [Resources & Links](#resources-and-links)
-- [Questions and Answers]()
+- [Questions and Answers](#questions-and-answers)
 
 
 ## Stack
