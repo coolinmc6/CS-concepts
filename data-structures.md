@@ -2,6 +2,16 @@
 
 # Data Structures
 
+### Table of Contents
+
+- [Stack](#stack)
+- [Queue](#queue)
+- [Linked List](#linked-list)
+- [Tree](#tree)
+- [Graph](#graph)
+- [Hash Table](#hash-table)
+
+
 ## Stack
 
 - A stack is pretty similar to a queue in that it is an ordered list of items (like an array)
@@ -135,3 +145,4 @@ Queue Implementation: [GeeksforGeeks](https://www.geeksforgeeks.org/implementati
 
 
 ## Hash Table
+
