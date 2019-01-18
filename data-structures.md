@@ -22,7 +22,8 @@
 - There are two main methods on the Stack data structure: **push** and **pop**
 	+ **push**: add a record to the top of the stack
 	+ **pop**: Remove the "top" record in the stack
-	+ *Another method that you could be asked to create is the "peek()" method which shows the top item on the stack*
+	+ *Another method that you could be asked to create is the "peek()" method which shows the top item on the stack* 
+- See a [Stack illustrated](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures-illustrated.md#stack)
 - Here's an example of an implementation of a Stack:
 
 ```js
@@ -149,7 +150,8 @@ class Stack {
 | Remove from queue| `array.pop()` |
 
 - whenever we make a Queue class, we essentially initialize an array and block the other methods besides
-unshift ("add") and pop ("remove");
+unshift ("add") and pop ("remove")
+- See a [Queue illustrated](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures-illustrated.md#queue)
 - This first implementation adds everything to the front and removes items from the back:
 
 ```js
