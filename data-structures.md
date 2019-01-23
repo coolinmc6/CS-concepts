@@ -207,6 +207,15 @@ class Queue {
 
 ## Linked List
 
+- A linked list is an ordered collection of data, with each element containing a link to its successor. 
+- Here are some key terms to know:
+    + **Node:** an element in the linked list which contains the data and the reference node
+    + **Head:** The first node
+    + **Tail:** the last node
+    + **Data:** the data that we want to save
+    + **Reference:** the reference to the next node
++ Linked lists have *constant time* insertions and deletions because we can just change the pointers
+    * Arrays require *linear time* because items must be shifted over when adding or deleting items
 
 [back to top](#top)
 
