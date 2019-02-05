@@ -207,15 +207,238 @@ class Queue {
 
 ## Linked List
 
-- A linked list is an ordered collection of data, with each element containing a link to its successor. 
+- A linked list is an ordered collection of data, with each element containing a link to its successor.
+
+> Although a linked list is similar to an array, it is not restricted to a declared number of elements. Additionally, unlike an array which stores data contiguously in memory or on disk, a linked list can easily insert or remove elements without reallocation or reorganization of the entire structure because the data items need not be stored contiguously
+ 
 - Here are some key terms to know:
-    + **Node:** an element in the linked list which contains the data and the reference node
-    + **Head:** The first node
-    + **Tail:** the last node
-    + **Data:** the data that we want to save
-    + **Reference:** the reference to the next node
+  - **Node:** an element in the linked list which contains the data and the reference node
+  - **Head:** The first node
+  - **Tail:** the last node
+  - **Data:** the data that we want to save
+  - **Reference:** the reference to the next node
 + Linked lists have *constant time* insertions and deletions because we can just change the pointers
-    * Arrays require *linear time* because items must be shifted over when adding or deleting items
+  * Arrays require *linear time* because items must be shifted over when adding or deleting items
++ Linked lists don't have *random access*. We must access nodes sequentially starting from the first one. Therefore, searching for an element is slow
++ There are number of ways to implement linked lists, they all have a number of different methods. The implementation below is from my [AlgoCasts](https://github.com/coolinmc6/AlgoCasts/blob/master/exercises/linkedlist/index.js) repo:
+
+```js
+class Node {
+    constructor(data, next = null) {
+        this.data = data;
+        this.next = next;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    // To insert something in the beginning, I need to do two things:
+    //   - create a node
+    //   - set it to the head WITHOUT deleting everything.
+    // so how do I shift everything down? 
+    // set the "next" for the new Node to the current this.head
+    insertFirst(data) {
+        this.head = new Node(data, this.head);
+    }
+
+    // Returns the size of the linked list
+    // I use a while loop to
+    size() {
+        let counter = 0;
+        let node = this.head;
+
+        while(node) {
+            counter++;
+            node = node.next;
+        }
+        return counter;
+    }
+
+    getFirst() {
+        return this.head;
+//             return this.getAt(0); => I can use this later after I implement getAt()
+    }
+
+    getLast() {
+        let node = this.head;
+        let last = null;
+        while(node) {
+            if(node.next == null) { last = node};
+            node = node.next;
+        }
+        return last;
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    removeFirst() {
+        if(!this.head) {
+            return;
+        }
+        this.head = this.head.next;
+    }
+
+    removeLast() {
+
+        // if no head, then just return
+        if(!this.head) {
+            return;
+        }
+
+        // if no head.next, then there's one element; removing last is just clearing the list
+        if(!this.head.next) {
+            this.head = null;
+            return;
+        }
+
+        // Now that we can handle cases for lists of lengths 0 and 1, we can handle everything else
+
+        let previous = this.head;
+        let node = this.head.next;
+
+        while (node.next){
+            previous = node;
+            node = node.next;
+        }
+
+        previous.next = null;
+    }
+
+    insertLast(data) {
+        if(!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+
+        let last = this.getLast();
+        if(last) {
+            last.next = new Node(data);
+        }
+    }
+
+    // Given an index, return the node at that index
+    getAt(index) {
+        let counter = 0;
+        let node = this.head;
+
+        // This does the work; while the node exists, look at counter....
+        // ...if counter matches desired index, return that node...
+        // ...if not, increment the counter and move node to the next node
+        // if there is no next node, while loop breaks and we return null
+
+        while(node) {
+            if(counter === index) {
+                return node;
+            }
+
+            counter++;
+            node = node.next;
+        }
+
+        return null;
+    }
+
+    removeAt(index) {
+        if(!this.head) {
+            return;
+        }
+
+        if(index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        const previous = this.getAt(index - 1);
+        if(!previous || !previous.next) {
+            return;
+        }
+        previous.next = previous.next.next
+    }
+
+    insertAt(data, index) {
+        if (!this.head) {
+          this.head = new Node(data);
+          return;
+        }
+
+        if (index === 0) {
+          this.head = new Node(data, this.head);
+          return;
+        }
+
+        const previous = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, previous.next);
+        previous.next = node;
+    }
+
+    // Run a function for each node in the list
+    forEach(fn) {
+        let node = this.head;
+        let counter = 0;
+        while (node) {
+            fn(node, counter);
+            node = node.next;
+            counter++;
+        }
+    }
+
+}
+```
+
+- I know that there's a lot there so here's a simplified list of properties/methods that I should know how to implement.
+
+```js
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LinkedList() {
+  constructor() {
+    this.head = null;
+  }
+
+  // insert at front of list
+  insertFirst(data) {}
+
+  // insert at back of list
+  insertLast(data) {}
+
+  // return size of the Linked List
+  size(){}
+
+  // return first element
+  getFirst(){}
+
+  // return last element
+  getLast(){}
+
+  // return node at a particular index
+  getAt(index) {}
+
+  // remove first node
+  removeFirst() {}
+
+  // remove last node
+  removeLast() {}
+
+  // remove a node at a particular index
+  removeAt(index) {}
+
+  // insert a node at a particular index
+  insertAt(data, index) {}
+
+  // call a function for each node in the list
+  forEach(fn) {}
+};
+```
 
 [back to top](#top)
 
