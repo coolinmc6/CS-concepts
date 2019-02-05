@@ -468,6 +468,8 @@ class LinkedList() {
     + Queue Implementation: [GeeksforGeeks](https://www.geeksforgeeks.org/implementation-queue-javascript/)
     + [trekhleb/javascript-algorithms: Queue](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/queue)
 - Linked List
+  + [JS Data Structures: Linked List](https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571)
+  + [Doubly Linked List](https://hackernoon.com/the-little-guide-of-linked-list-in-javascript-9daf89b63b54)
 - Tree
 - Graph
 - Hash Table
