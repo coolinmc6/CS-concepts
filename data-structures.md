@@ -461,7 +461,7 @@ class LinkedList() {
     * **Depth-First Traversal** (`traverseDFS`, `traverseDF`)
     + those methods often have as an argument a function, `fn`, that is called within the function (recursion)
     + Other methods include: *contains*, *add*, *remove*, *print*, and others
-* There are a number of implementations I could show, the one below is the one I can describe.
+- There are a number of implementations I could show, the one below is the one I can describe.
 
 
 
