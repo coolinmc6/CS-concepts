@@ -444,6 +444,30 @@ class LinkedList() {
 
 ## Tree
 
+> A Tree is a widely used data structure that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node. A tree data structure can be defined recursively as a collection of nodes (starting at a root node), where each node is a data structure consisting of a value, together with a list of references to nodes (the “children”), with the constraints that no reference is duplicated, and none points to the root node.
+
+- There are many different kinds of trees in terms of data structures but the *tree*, generally, is described as a very useful data structure to know with the Document Object Model (DOM) being the most famous example.
+- I've looked at a number of different implementations of a tree and many of them have the following in common:
+  + Separate constructors for `Node` and `Tree`
+  + Each `Node` typically has the following properties: 
+    * **data**: the value of the node
+    * **children**: an array of children nodes
+    * Major differences:
+      - I've seen an implementation where each `Node` has a method to add or remove children
+      - Some `Node` have a `parent` property
+      - some have nothing else besides *data* and *children*
+  + Each `Tree` typically has these two methods:
+    * **Breadth-First Traversal** (`traverseBFS`, `traverseBF`)
+    * **Depth-First Traversal** (`traverseDFS`, `traverseDF`)
+    + those methods often have as an argument a function, `fn`, that is called within the function (recursion)
+    + Other methods include: *contains*, *add*, *remove*, *print*, and others
+* There are a number of implementations I could show, the one below is the one I can describe.
+
+
+
+
+- Here are the examples of trees I've borrowed from other sources:
+  + 
 
 [back to top](#top)
 
@@ -462,6 +486,8 @@ class LinkedList() {
 
 - General
     + [Medium: Data Structures in JavaScript](https://medium.com/siliconwat/data-structures-in-javascript-1b9aed0ea17c)
+    + [benoitvallon/computer-science-in-javascript](https://github.com/benoitvallon/computer-science-in-javascript)
+    + [Data Structures in JavaScript](https://code.tutsplus.com/series/data-structures-in-javascript--cms-772)
 - Stack
     + [trekhleb/javascript-algorithms: Stack](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/stack)
 - Queue
@@ -471,6 +497,7 @@ class LinkedList() {
   + [JS Data Structures: Linked List](https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571)
   + [Doubly Linked List](https://hackernoon.com/the-little-guide-of-linked-list-in-javascript-9daf89b63b54)
 - Tree
+  + [Data Structures With JavaScript: Tree](https://code.tutsplus.com/articles/data-structures-with-javascript-tree--cms-23393)
 - Graph
 - Hash Table
 
