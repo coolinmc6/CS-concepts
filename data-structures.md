@@ -467,7 +467,9 @@ class LinkedList() {
 
 
 - Here are the examples of trees I've borrowed from other sources:
-  + 
+  + [tree_benoitvallon.js](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures/tree_benoitvallon.js)
+  + [tree_envato-tuts.js](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures/tree_envato-tuts.js)
+  + [tree_thon-ly.js](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures/tree_thon-ly.js)
 
 [back to top](#top)
 
