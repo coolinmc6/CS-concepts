@@ -461,10 +461,118 @@ class LinkedList() {
     * **Depth-First Traversal** (`traverseDFS`, `traverseDF`)
     + those methods often have as an argument a function, `fn`, that is called within the function (recursion)
     + Other methods include: *contains*, *add*, *remove*, *print*, and others
-- There are a number of implementations I could show, the one below is the one I can describe.
+- There are a number of implementations I could show, this is just one that I feel comfortable explaining:
+
+```js
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.children = [];
+    }
+}
+
+class Tree {
+    constructor(data) {
+        var node = new Node(data);
+        this._root = node;
+    }
+
+    // This is how THIS traverse breadth-first functional works:
+    //  - create an array; this array holds every element we want to examine
+    //  - while this array has a length > 0, it will be running
+    //  - add all the children of that node to the BACK of the array
+    //  - run the function
+    traverseBF(fn) {
+        const arr = [this._root];
+
+        while(arr.length) {
+            // remove first item from the array
+            const node = arr.shift();
+
+            // push all of the children from that node into the array
+            arr.push(...node.children)
+
+            // now we can run the function on the node/item
+            fn(node)
+        }
+    }
+
+    // This Depth-First Traverse function is very similar to the one above
+    //  - create an array to hold the elements we want to go through
+    //  - while this array has a length > 0, it will be running (just like above)
+    //  - add all the children of that node to the FRONT of the array
+    //    - this is important and is another way to look at the problem. By adding them to the front,
+    //      you ensure that those nodes are examined first. As long as you add it to the front, any
+    //      children of deeper nodes are examined first, exactly how depth-first works
+    //  - run the function
+    traverseDF(fn) {
+        const arr = [this._root];
+
+        while(arr.length) {
+            const node = arr.shift();
+
+            arr.unshift(...node.children)
+
+            fn(node)
+        }
+    }
+
+    // I created this method to quickly add items to create a tree.
+    cmAdd(data) {
+        let parent = this._root;
+        while(parent.children.length == 2) {
+            parent = parent.children[Math.floor(Math.random()*parent.children.length)]
+        }
+        const node = new Node(data);
+        parent.children.push(node);
+    }
+}
 
 
+var tree = new Tree('CEO');
 
+tree.cmAdd('CTO')
+tree.cmAdd("CMO")
+tree.cmAdd("VP of Sales")
+tree.cmAdd("VP of Marketing")
+tree.cmAdd("VP of Operations")
+
+tree.traverseBF(node => {
+    console.log(node);
+})
+
+tree.traverseDF(node => {
+    console.log(node);
+})
+
+console.log(tree);
+```
+
+- to simplify what I'd need to build for a `Tree`, here are the basic constructors/methods:
+
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
+  }
+}
+
+class Tree {
+  constructor(data) {
+    var node = new Node(data);
+    this._root = node;
+  }
+
+  traverseBF(fn) {
+
+  }
+
+  traverseDF(fn) {
+
+  }
+}
+```
 
 - Here are the examples of trees I've borrowed from other sources:
   + [tree_benoitvallon.js](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures/tree_benoitvallon.js)
