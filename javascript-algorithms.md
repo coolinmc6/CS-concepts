@@ -23,6 +23,13 @@
 			<td></td>
 		</tr>
 		<tr>
+		  <td></td>
+		  <td><a href="https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md">Data Structures (in JavaScript)</a></td>
+		  <td></td>
+		  <td></td>
+		  <td></td>
+		</tr>
+		<tr>
 			<td></td>
 			<td><em>JavaScript Algorithms</em></td>
 			<td></td>
