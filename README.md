@@ -66,6 +66,7 @@ explore a number of different computer science concepts.
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
 | **CS101 Computer Science 101**|Stanford University|[Course link](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)| |
+| **Design of Computer Problems**|Udacity|[Course Link](https://www.udacity.com/course/design-of-computer-programs--cs212)| [Repo](https://github.com/coolinmc6/design-of-computer-programs) |
 
 
 ## Links
