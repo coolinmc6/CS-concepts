@@ -39,7 +39,32 @@
 	</tbody>
 </table>
 
+### Get All Permutations of an Array
 
+```js
+function permute(permutation) {
+  var length = permutation.length,
+      result = [permutation.slice()],
+      c = new Array(length).fill(0),
+      i = 1, k, p;
+
+  while (i < length) {
+    if (c[i] < i) {
+      k = i % 2 && c[i];
+      p = permutation[i];
+      permutation[i] = permutation[k];
+      permutation[k] = p;
+      ++c[i];
+      i = 1;
+      result.push(permutation.slice());
+    } else {
+      c[i] = 0;
+      ++i;
+    }
+  }
+  return result;
+}
+```
 
 ### Get All Permutations of a String
 
@@ -76,7 +101,6 @@ function shuffle(array) {
 
     // swap elements array[i] and array[j]
     // we use "destructuring assignment" syntax to achieve that
-    // you'll find more details about that syntax in later chapters
     // same can be written as:
     // let t = array[i]; array[i] = array[j]; array[j] = t
     [array[i], array[j]] = [array[j], array[i]];
