@@ -49,7 +49,8 @@ courses and explore a number of different CS, ML, and AI concepts.
 
 ### Table of Contents
 
-- [Computer Science Courses](https://github.com/coolinmc6/CS-concepts#completed-computer-science-courses)
+- [Completed Courses](https://github.com/coolinmc6/CS-concepts#completed-courses)
+- [Courses in Progress](https://github.com/coolinmc6/CS-concepts#courses-in-progress)
 - [Data Structures](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md)
 
 ## Completed Courses
@@ -60,7 +61,7 @@ courses and explore a number of different CS, ML, and AI concepts.
 |**Object-Oriented Design**|Lynda|[Course Link](https://www.lynda.com/Java-tutorials/Foundations-Programming-Object-Oriented-Design/96949-2.html)|[My Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OO-design.md)|
 |**Four Semesters of Computer Science in 5 Hours - Part 1**|Lynda|*link expired*|[My Notes](https://github.com/coolinmc6/CS-in-four)<br>[Course Repo](http://btholt.github.io/four-semesters-of-cs/)|
 
-## In Progress / Targeted Courses
+## Courses in Progress
 
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
