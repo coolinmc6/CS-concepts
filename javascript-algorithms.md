@@ -66,6 +66,30 @@ function permute(permutation) {
 }
 ```
 
+### Get All Combinations of an Array
+
+```js
+function cartesian() {
+	var r = [], arg = arguments, max = arg.length-1;
+	function helper(arr, i) {
+		for (var j=0, l=arg[i].length; j<l; j++) {
+			var a = arr.slice(0); // clone arr
+			a.push(arg[i][j]);
+			if (i==max)
+					r.push(a);
+			else
+					helper(a, i+1);
+		}
+	}
+	helper([], 0);
+	return r;
+}
+
+let gifts = ['shirt', 'wine', 'iPhone'] 
+let people = ['Colin', 'Matt', 'Charlie']
+let combos = cartesian(gifts, people)
+```
+
 ### Get All Permutations of a String
 
 ```js

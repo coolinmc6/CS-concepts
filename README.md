@@ -41,10 +41,10 @@
 
 <a name="top"></a>
 
-# Computer Science Concepts
+# Computer Science & Machine Learning Concepts
 
-This repo will aggregate my work in various computer science courses and 
-explore a number of different computer science concepts.
+This repo will aggregate my work in various computer science and machine laerning
+courses and explore a number of different CS, ML, and AI concepts.
 
 
 ### Table of Contents
@@ -52,8 +52,7 @@ explore a number of different computer science concepts.
 - [Computer Science Courses](https://github.com/coolinmc6/CS-concepts#completed-computer-science-courses)
 - [Data Structures](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md)
 
-## Completed Computer Science Courses
-
+## Completed Courses
 
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
@@ -61,12 +60,14 @@ explore a number of different computer science concepts.
 |**Object-Oriented Design**|Lynda|[Course Link](https://www.lynda.com/Java-tutorials/Foundations-Programming-Object-Oriented-Design/96949-2.html)|[My Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OO-design.md)|
 |**Four Semesters of Computer Science in 5 Hours - Part 1**|Lynda|*link expired*|[My Notes](https://github.com/coolinmc6/CS-in-four)<br>[Course Repo](http://btholt.github.io/four-semesters-of-cs/)|
 
-## Targeted Computer Science Courses
+## In Progress / Targeted Courses
 
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
+|**AWS Machine Learning Foundations Course**|Udacity|[Course Link](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)|[Repo](https://github.com/coolinmc6/udacity-001-aws-ml-foundations)|
 | **CS101 Computer Science 101**|Stanford University|[Course link](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)| |
 | **Design of Computer Problems**|Udacity|[Course Link](https://www.udacity.com/course/design-of-computer-programs--cs212)| [Repo](https://github.com/coolinmc6/design-of-computer-programs) |
+
 
 
 ## Links
