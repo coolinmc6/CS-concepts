@@ -35,6 +35,13 @@
 			<td></td>
 			<td></td>
 			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="https://github.com/coolinmc6/CS-concepts/blob/master/cheat-sheets/python.md">Python Cheat Sheet</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
 		</tr>		
 	</tbody>
 </table>
@@ -66,9 +73,9 @@ courses and explore a number of different CS, ML, and AI concepts.
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
 |**AWS Machine Learning Foundations Course**|Udacity|[Course Link](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)|[Repo](https://github.com/coolinmc6/udacity-001-aws-ml-foundations)|
-| **CS101 Computer Science 101**|Stanford University|[Course link](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)| |
+|**Intro to Machine Learning**|Udacity|[Course Link](https://www.udacity.com/course/intro-to-machine-learning--ud120)| |
 | **Design of Computer Problems**|Udacity|[Course Link](https://www.udacity.com/course/design-of-computer-programs--cs212)| [Repo](https://github.com/coolinmc6/design-of-computer-programs) |
-
+| **CS101 Computer Science 101**|Stanford University|[Course link](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)| |
 
 
 ## Links
