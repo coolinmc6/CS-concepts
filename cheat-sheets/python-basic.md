@@ -6,6 +6,7 @@ Useful links:
   more acquainted with Python
 - [Python Tips](https://book.pythontips.com/en/latest/ternary_operators.html)
   - lots of cool stuff; should help me bridge what I know in JS to Python
+- [Kaggle: Python](https://www.kaggle.com/learn/python)
 
 # Getting Started
 

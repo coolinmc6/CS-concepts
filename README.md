@@ -67,15 +67,24 @@ courses and explore a number of different CS, ML, and AI concepts.
 | **CS50 Introduction to Computer Science** | <br>HarvardX<br>edX | [Course Link](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/) |[CS50 Notes](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md) <br> [See the code](https://github.com/coolinmc6/CS-concepts/tree/master/CS50-Intro-to-CS) <br> [Problem Sets](https://github.com/coolinmc6/CS-concepts/blob/master/CS50-Intro-to-CS/CS50-Notes.md#homework)|
 |**Object-Oriented Design**|Lynda|[Course Link](https://www.lynda.com/Java-tutorials/Foundations-Programming-Object-Oriented-Design/96949-2.html)|[My Notes](https://github.com/coolinmc6/CS-concepts/blob/master/OO-design.md)|
 |**Four Semesters of Computer Science in 5 Hours - Part 1**|Lynda|*link expired*|[My Notes](https://github.com/coolinmc6/CS-in-four)<br>[Course Repo](http://btholt.github.io/four-semesters-of-cs/)|
+|**AWS Machine Learning Foundations Course**|Udacity|[Course Link](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)|[Repo](https://github.com/coolinmc6/udacity-001-aws-ml-foundations)|
 
 ## Courses in Progress
 
 | Course | Provider | Comments | Notes |
 |:---:|:---:|:---|:---|
-|**AWS Machine Learning Foundations Course**|Udacity|[Course Link](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)|[Repo](https://github.com/coolinmc6/udacity-001-aws-ml-foundations)|
-|**Intro to Machine Learning**|Udacity|[Course Link](https://www.udacity.com/course/intro-to-machine-learning--ud120)| |
+|**Intro to Machine Learning**|Udacity|[Course Link](https://www.udacity.com/course/intro-to-machine-learning--ud120)|[Repo](https://github.com/coolinmc6/udacity-002-machine-learning)|
+|**Intro to Deep Learning with PyTorch**|Udacity|[Course Link](https://www.udacity.com/course/deep-learning-pytorch--ud188)||
 | **Design of Computer Problems**|Udacity|[Course Link](https://www.udacity.com/course/design-of-computer-programs--cs212)| [Repo](https://github.com/coolinmc6/design-of-computer-programs) |
 | **CS101 Computer Science 101**|Stanford University|[Course link](https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/info)| |
+
+**Potential Courses:**
+- https://www.kaggle.com/learn/python
+- https://www.kaggle.com/learn/intro-to-machine-learning
+- https://www.kaggle.com/learn/deep-learning
+- https://www.kaggle.com/learn/intro-to-game-ai-and-reinforcement-learning
+- https://www.kaggle.com/learn/pandas
+- https://www.kaggle.com/learn/machine-learning-explainability
 
 
 ## Links
