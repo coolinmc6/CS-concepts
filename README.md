@@ -59,7 +59,7 @@ courses and explore a number of different CS, ML, and AI concepts.
 - **Course Work**
   - [Completed Courses](https://github.com/coolinmc6/CS-concepts#completed-courses)
   - [Courses in Progress](https://github.com/coolinmc6/CS-concepts#courses-in-progress)
-- **[Algorithms](#)**
+- **[Algorithms](#algorithms)**
 - [Data Structures](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md)
 
 ## Completed Courses
