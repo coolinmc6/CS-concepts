@@ -56,8 +56,10 @@ courses and explore a number of different CS, ML, and AI concepts.
 
 ### Table of Contents
 
-- [Completed Courses](https://github.com/coolinmc6/CS-concepts#completed-courses)
-- [Courses in Progress](https://github.com/coolinmc6/CS-concepts#courses-in-progress)
+- **Course Work**
+  - [Completed Courses](https://github.com/coolinmc6/CS-concepts#completed-courses)
+  - [Courses in Progress](https://github.com/coolinmc6/CS-concepts#courses-in-progress)
+- **[Algorithms](#)**
 - [Data Structures](https://github.com/coolinmc6/CS-concepts/blob/master/data-structures.md)
 
 ## Completed Courses
@@ -86,10 +88,9 @@ courses and explore a number of different CS, ML, and AI concepts.
 - https://www.kaggle.com/learn/pandas
 - https://www.kaggle.com/learn/machine-learning-explainability
 
+# Algorithms
 
-## Links
-
-[Object-Oriented JavaScript](https://github.com/coolinmc6/CS-concepts/blob/master/OO-javascript.md)
+- [Permutations](https://github.com/coolinmc6/CS-concepts/blob/master/algorithms/permutations.js)
 
 ## Sorting Algorithms
 - Bubble Sort
@@ -111,3 +112,7 @@ courses and explore a number of different CS, ML, and AI concepts.
 - Binary Search Tree
 - AVL Tree
 - Hash Table
+
+## Links
+
+[Object-Oriented JavaScript](https://github.com/coolinmc6/CS-concepts/blob/master/OO-javascript.md)
