@@ -9,7 +9,7 @@ const p2 = p02.permutations('abc'.split(''));
 const p3 = p03.permutations('abc'.split(''));
 const p4 = p04.permutations('abc'.split(''));
 
-const testArray = 'abcdefghi'.split('')
+const testArray = 'abc'.split('')
 
 // util.timing({ name: 'p1', fn: p01.permutations, args: testArray})
 // util.timing({ name: 'p2', fn: p02.permutations, args: testArray})

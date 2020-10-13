@@ -4,9 +4,10 @@ const permutations = array => {
   // Add a copy and initialize our list of permutations
   let perms = [array.slice()];
 
+  console.log({ perms })
+
   while (array) {
     let [i, j, k] = Array(3).fill(array.length - 1);
-
     // Find the first non-increasing element
     while (i > 0 && array[i - 1] >= array[i]) i--;
     // If we don't find one, we're done!
@@ -18,11 +19,14 @@ const permutations = array => {
     // Swap them
     [array[i - 1], array[j]] = [array[j], array[i - 1]];
 
+    console.log({ array })
+
     // Reverse the suffix
     while (i < k) {
       [array[i], array[k]] = [array[k], array[i]];
       i++;
       k--;
+      console.log({ i, j, k})
     }
     // Add a copy of the current state of the array to the list of permutations
     perms.push(array.slice());

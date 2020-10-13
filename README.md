@@ -14,10 +14,12 @@
 			<td><a href="https://github.com/coolinmc6/design-ux-ui#product-design--development">Product Development</a></td>
 			<td><a href="https://github.com/coolinmc6/design-ux-ui">UX / UI Design</a></td>
 			<td><a href="https://github.com/coolinmc6/front-end-dev">Front End Development</a></td>
+			<td><a href="https://github.com/coolinmc6/front-end-dev/blob/master/data-visualization.md">Data Visualization</a></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td><a href="https://github.com/coolinmc6/CS-concepts/blob/master/algorithm-data-structures-interview.md">Algorithm & Data Structures Interview</a></td>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -28,6 +30,7 @@
 		  <td></td>
 		  <td></td>
 		  <td></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -35,10 +38,12 @@
 			<td></td>
 			<td></td>
 			<td></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td><a href="https://github.com/coolinmc6/CS-concepts/blob/master/cheat-sheets/python.md">Python Cheat Sheet</a></td>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
